@@ -196,7 +196,7 @@ def home():
   <header class="intro">
     <p class="eyebrow">{ROLE}</p>
     <h1>Garrett Franks</h1>
-    <p class="lead">I lead mobile teams and build apps end to end, from the first sketch to the App Store, for {rotator()}.</p>
+    <p class="lead">I lead mobile teams and build apps end to end, from the first sketch to the App Store, for {rotator()}</p>
     <ul class="now" aria-label="Currently">{now}</ul>
     <div class="ctas">{profile_links()}</div>
     <dl class="stats">
