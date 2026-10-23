@@ -278,7 +278,8 @@ def architecture(app):
     for tier in app.get("architecture", []):
         nodes = "".join(f'<li><strong>{e(n["name"])}</strong><span>{e(n["detail"])}</span></li>' for n in tier["nodes"])
         flow = f'\n        <p class="flow"><span>{e(tier["flow"])}</span></p>' if tier.get("flow") else ""
-        tiers.append(f'\n        <div class="tier"><h3>{e(tier["label"])}</h3><ul>{nodes}</ul></div>{flow}')
+        cols = {1: 1, 2: 2, 3: 3, 4: 2}.get(len(tier["nodes"]), 3)
+        tiers.append(f'\n        <div class="tier"><h3>{e(tier["label"])}</h3><ul style="--cols:{cols}">{nodes}</ul></div>{flow}')
     if not tiers:
         return ""
     return f"""
