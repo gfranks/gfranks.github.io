@@ -82,9 +82,10 @@ def head(title, description, icon, extra_css, path, og_image, app_id=None, scrip
 
 
 def footer():
+    linkedin = f' · <a href="{e(LINKEDIN)}">LinkedIn</a>' if LINKEDIN else ""
     return f"""
   <footer>
-    <p><a href="/">Garrett Franks</a> · <a href="mailto:{CONTACT}">{CONTACT}</a> · <a href="{GITHUB}">GitHub</a></p>
+    <p><a href="/">Garrett Franks</a> · <a href="mailto:{CONTACT}">{CONTACT}</a> · <a href="{GITHUB}">GitHub</a>{linkedin}</p>
     <p class="fine">© {YEAR} Garrett Franks</p>
   </footer>
 
