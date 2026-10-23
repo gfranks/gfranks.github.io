@@ -29,3 +29,11 @@ if (rotator && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
     setTimeout(() => previous.classList.remove("out"), 500);
   }, 2400);
 }
+
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  for (const clip of document.querySelectorAll("video[autoplay]")) {
+    clip.removeAttribute("autoplay");
+    clip.pause();
+    clip.currentTime = 0;
+  }
+}

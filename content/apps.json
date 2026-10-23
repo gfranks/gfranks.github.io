@@ -36,7 +36,92 @@
       "appStore": "https://apps.apple.com/app/id6762307221",
       "website": null,
       "legal": true,
-      "shotShape": "portrait"
+      "shotShape": "portrait",
+      "architecture": [
+        {
+          "label": "Interface",
+          "nodes": [
+            {
+              "name": "Scroll feed & Chapters reader",
+              "detail": "SwiftUI"
+            },
+            {
+              "name": "Word study & search",
+              "detail": "Interlinear, Strong's, grammar"
+            },
+            {
+              "name": "Chronicle & maps",
+              "detail": "MapKit, CATiledLayer chart"
+            },
+            {
+              "name": "System features",
+              "detail": "Siri, Spotlight, Handoff, Live Activity"
+            }
+          ],
+          "flow": "async loads and SwiftData queries"
+        },
+        {
+          "label": "Services",
+          "nodes": [
+            {
+              "name": "BibleService & BibleCatalog",
+              "detail": "Bundled or online, per version"
+            },
+            {
+              "name": "InterlinearService",
+              "detail": "In-memory, loaded per version"
+            },
+            {
+              "name": "BibleSearchIndex",
+              "detail": "SQLite FTS5, read-only"
+            },
+            {
+              "name": "ReadingTracker & SpeechService",
+              "detail": "Reading credit, Read to Me"
+            }
+          ],
+          "flow": "one ModelContainer, bundle files"
+        },
+        {
+          "label": "Storage",
+          "nodes": [
+            {
+              "name": "Bible text",
+              "detail": "SwiftData, bundled, never syncs"
+            },
+            {
+              "name": "Online cache",
+              "detail": "SwiftData, 30-day expiry"
+            },
+            {
+              "name": "User data",
+              "detail": "SwiftData + CloudKit"
+            },
+            {
+              "name": "Reference bundles",
+              "detail": "Commentaries, lexicons, maps"
+            }
+          ],
+          "flow": "fetch, sync and build"
+        },
+        {
+          "label": "Outside the app",
+          "nodes": [
+            {
+              "name": "YouVersion API",
+              "detail": "Live NASB text, per chapter"
+            },
+            {
+              "name": "iCloud",
+              "detail": "Private CloudKit database"
+            },
+            {
+              "name": "Python pipelines",
+              "detail": "Public-domain sources to validated bundles"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "pyllar",
@@ -69,7 +154,100 @@
       "appStore": null,
       "website": "https://pyllarhq.com",
       "legal": false,
-      "shotShape": "portrait"
+      "shotShape": "portrait",
+      "architecture": [
+        {
+          "label": "Clients",
+          "nodes": [
+            {
+              "name": "iOS",
+              "detail": "SwiftUI, offline-first, Live Activity"
+            },
+            {
+              "name": "Android",
+              "detail": "Jetpack Compose, offline-first"
+            },
+            {
+              "name": "Web app",
+              "detail": "Next.js, for owners"
+            },
+            {
+              "name": "Customer portal",
+              "detail": "Next.js, self-serve"
+            },
+            {
+              "name": "Staff portal",
+              "detail": "Next.js, internal"
+            }
+          ],
+          "flow": "HTTPS REST and WebSocket, JWT"
+        },
+        {
+          "label": "API (TypeScript, Fastify)",
+          "nodes": [
+            {
+              "name": "Core API",
+              "detail": "Jobs, scheduling, invoicing, CRM"
+            },
+            {
+              "name": "AI service",
+              "detail": "Claude intents, role checks"
+            },
+            {
+              "name": "Payments",
+              "detail": "Stripe Connect"
+            },
+            {
+              "name": "Weather",
+              "detail": "Cached per job site"
+            }
+          ],
+          "flow": "shared database and job queues"
+        },
+        {
+          "label": "Data & jobs",
+          "nodes": [
+            {
+              "name": "PostgreSQL",
+              "detail": "Drizzle schema and migrations"
+            },
+            {
+              "name": "Redis & BullMQ",
+              "detail": "Background workers"
+            },
+            {
+              "name": "Typesense",
+              "detail": "Search"
+            },
+            {
+              "name": "Cloudflare R2",
+              "detail": "Photos and files"
+            }
+          ],
+          "flow": "notifications and integrations"
+        },
+        {
+          "label": "Outside",
+          "nodes": [
+            {
+              "name": "Stripe",
+              "detail": "Billing and invoice payments"
+            },
+            {
+              "name": "Claude API",
+              "detail": "Assistant"
+            },
+            {
+              "name": "APNs & FCM",
+              "detail": "Push"
+            },
+            {
+              "name": "Twilio & Resend",
+              "detail": "SMS and email"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "tyde",
@@ -81,7 +259,7 @@
       "about": "Every task is sorted Easy, Medium or Deep, so a low-energy day still has a real session in it. Pick up to three must-dos, and spin the wheel when you can't decide where to start.",
       "highlights": [
         "SwiftData with CloudKit sync for rooms, tasks, plans and history, with no account and no server.",
-        "A Home Screen widget and a Live Activity showing today's room, sharing data with the app through an App Group.",
+        "A Home Screen widget that shows today's room and can spin for a task without opening the app, plus a Live Activity for the focus timer, sharing data through an App Group.",
         "Siri and Shortcuts through App Intents: spin for a task or hear today's room hands-free.",
         "Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt."
       ],
@@ -99,7 +277,76 @@
       "appStore": "https://apps.apple.com/app/id6792855453",
       "website": null,
       "legal": true,
-      "shotShape": "portrait"
+      "shotShape": "portrait",
+      "architecture": [
+        {
+          "label": "Interface",
+          "nodes": [
+            {
+              "name": "Today, wheel & focus timer",
+              "detail": "SwiftUI, Lottie"
+            },
+            {
+              "name": "Rooms, plan & progress",
+              "detail": "SwiftUI"
+            },
+            {
+              "name": "Siri & Shortcuts",
+              "detail": "App Intents"
+            }
+          ],
+          "flow": "SwiftData queries"
+        },
+        {
+          "label": "Logic",
+          "nodes": [
+            {
+              "name": "TodayZoneResolver",
+              "detail": "Which room is today's"
+            },
+            {
+              "name": "TaskSuggestions",
+              "detail": "What the wheel can land on"
+            },
+            {
+              "name": "NotificationManager",
+              "detail": "Local reminders only"
+            }
+          ],
+          "flow": "one model container"
+        },
+        {
+          "label": "Storage",
+          "nodes": [
+            {
+              "name": "SwiftData models",
+              "detail": "Home, zones, tasks, completions"
+            },
+            {
+              "name": "App Group snapshot",
+              "detail": "Today's room for the widget"
+            }
+          ],
+          "flow": "sync and share"
+        },
+        {
+          "label": "System",
+          "nodes": [
+            {
+              "name": "iCloud",
+              "detail": "Private CloudKit database"
+            },
+            {
+              "name": "Home Screen widget",
+              "detail": "Shows the room, spins for a task"
+            },
+            {
+              "name": "Live Activity",
+              "detail": "Focus timer"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "whispercourt",
@@ -125,7 +372,54 @@
       "appStore": null,
       "website": null,
       "legal": true,
-      "shotShape": "portrait"
+      "shotShape": "portrait",
+      "architecture": [
+        {
+          "label": "App (SwiftUI)",
+          "nodes": [
+            {
+              "name": "Court board",
+              "detail": "Characters, links, rumor animation"
+            },
+            {
+              "name": "Levels & progress",
+              "detail": "Stored on device"
+            }
+          ],
+          "flow": "actions in, new state out"
+        },
+        {
+          "label": "WhisperCore (Swift package, no UI)",
+          "nodes": [
+            {
+              "name": "Engine",
+              "detail": "Deterministic rules"
+            },
+            {
+              "name": "Solver",
+              "detail": "Finds each level's best solution"
+            },
+            {
+              "name": "LevelLibrary",
+              "detail": "levelNN.json"
+            }
+          ],
+          "flow": "checked by"
+        },
+        {
+          "label": "Tests (Swift Testing)",
+          "nodes": [
+            {
+              "name": "Rule tests",
+              "detail": "Required with every engine change"
+            },
+            {
+              "name": "Level tests",
+              "detail": "Par equals the solver's optimum; each new mechanic is required"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

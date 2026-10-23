@@ -27,7 +27,8 @@ ROLE = "Mobile technical lead · iOS & Android"
 INTRO = ("I lead mobile teams and build apps end to end, from the first sketch to the App Store: "
          "Swift and SwiftUI, Kotlin and Compose, and the web and backend behind them.")
 
-NOW = [("Mobile technical lead", "Wahoo Fitness"), ("Founder", "C&F Solutions LLC")]
+NOW = [("Mobile technical lead", "Wahoo Fitness", "https://www.wahoofitness.com"),
+       ("Founder", "C&F Solutions LLC", "/pyllar/")]
 
 ROTATING = ["iPhone", "iPad", "Android", "the web"]
 TICKER = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "SwiftData", "CloudKit", "TypeScript", "Next.js",
@@ -47,6 +48,9 @@ SKILLS = [
 
 ARROW = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 NEXT = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+MAIL = '<svg class="ic logo" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m2.5 4.5 5.5 4 5.5-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+GITHUB_LOGO = '<svg class="ic logo" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
+LINKEDIN_LOGO = '<svg class="ic logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0h.01z"/></svg>'
 BACK = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 e = html.escape
@@ -116,10 +120,10 @@ def chips(items, cls="chips", limit=None):
 
 
 def profile_links():
-    links = [f'<a class="cta primary" href="mailto:{CONTACT}">Email me {ARROW}</a>',
-             f'<a class="cta" href="{GITHUB}">GitHub {ARROW}</a>']
+    links = [f'<a class="cta primary" href="mailto:{CONTACT}">{MAIL} Email me</a>',
+             f'<a class="cta" href="{GITHUB}">{GITHUB_LOGO} GitHub</a>']
     if LINKEDIN:
-        links.append(f'<a class="cta" href="{e(LINKEDIN)}">LinkedIn {ARROW}</a>')
+        links.append(f'<a class="cta" href="{e(LINKEDIN)}">{LINKEDIN_LOGO} LinkedIn</a>')
     return "".join(links)
 
 
@@ -131,13 +135,25 @@ def icon(app, cls="app-icon"):
             f'<img src="{src}" alt="" width="512" height="512"></a>')
 
 
+def video(app, cls=""):
+    a = app["id"]
+    if not (ROOT / "assets" / "video" / f"{a}.mp4").exists():
+        return ""
+    poster = f"/assets/video/{a}-poster.jpg?v={asset_version(f'video/{a}-poster.jpg')}"
+    src = f"/assets/video/{a}.mp4?v={asset_version(f'video/{a}.mp4')}"
+    return (f'<video class="{cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline '
+            f'preload="metadata" aria-label="{e(app["name"])} in use"></video>')
+
+
 def card_art(app):
     a = app["id"]
     if not app["shots"]:
         return f'<div class="app-art">{icon(app)}</div>'
     order = [1, 2] if app["shotShape"] == "landscape" else [2, 1, 3]
     width, height = (1280, 900) if app["shotShape"] == "landscape" else (441, 960)
+    clip = video(app) if app["shotShape"] == "portrait" else ""
     shots = "".join(
+        clip if n == 1 and clip else
         f'<img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="" width="{width}" height="{height}">'
         for n in order)
     return f'<a class="app-shots {app["shotShape"]}" href="/{a}/" aria-hidden="true" tabindex="-1">{shots}</a>'
@@ -187,7 +203,7 @@ def home():
       </div>""" for title, items in SKILLS)
 
     on_store = sum(1 for app in APPS if app["appStore"])
-    now = "".join(f"<li><span>{e(role)}</span> {e(org)}</li>" for role, org in NOW)
+    now = "".join(f'<li><span>{e(role)}</span> <a href="{e(url)}">{e(org)}</a></li>' for role, org, url in NOW)
     return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["home.css"], "/", "home",
                 scripts=["home.js"]) + f"""<body class="home">
 
@@ -257,13 +273,31 @@ def pillbar(app, current=None):
     return f'\n  <nav class="pillbar">{links}</nav>\n'
 
 
+def architecture(app):
+    tiers = []
+    for tier in app.get("architecture", []):
+        nodes = "".join(f'<li><strong>{e(n["name"])}</strong><span>{e(n["detail"])}</span></li>' for n in tier["nodes"])
+        flow = f'\n        <p class="flow"><span>{e(tier["flow"])}</span></p>' if tier.get("flow") else ""
+        tiers.append(f'\n        <div class="tier"><h3>{e(tier["label"])}</h3><ul>{nodes}</ul></div>{flow}')
+    if not tiers:
+        return ""
+    return f"""
+    <section class="card">
+      <h2>How it fits together</h2>
+      <div class="arch">{"".join(tiers)}
+      </div>
+    </section>
+"""
+
+
 def gallery(app):
     if not app["shots"]:
         return ""
     a = app["id"]
     shape = app["shotShape"]
     width, height = (1280, 900) if shape == "landscape" else (441, 960)
-    shots = "".join(
+    clip = video(app, "clip") if shape == "portrait" else ""
+    shots = (f"\n      {clip}" if clip else "") + "".join(
         f'\n      <img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="{e(app["name"])} screenshot {n}" loading="lazy" width="{width}" height="{height}">'
         for n in range(1, app["shots"] + 1))
     return f'\n  <div class="gallery {shape}" tabindex="0" aria-label="{e(app["name"])} screenshots">{shots}\n  </div>\n'
@@ -278,7 +312,7 @@ def app_page(app):
         <a class="tile" href="/{a}/{slug}/"><span>{title}</span>{ARROW}</a>""" for slug, title in PAGES)
         tiles = f'\n    <div class="tiles">{tiles}\n    </div>'
     return head(f'{app["name"]} — Garrett Franks', f'{app["name"]}: {app["tagline"]}', f"/assets/icons/{a}.jpg",
-                ["legal.css", "themes.css"], f"/{a}/", a, a) + \
+                ["legal.css", "themes.css"], f"/{a}/", a, a, scripts=["home.js"]) + \
         "<body>\n" + app_hero(app, f'{app["kind"]} · {app["platforms"]}', big=True) + pillbar(app) + \
         gallery(app) + f"""
   <main>
@@ -293,7 +327,7 @@ def app_page(app):
       <ul class="built">{highlights}
       </ul>
     </section>
-{tiles}
+{architecture(app)}{tiles}
   </main>
 """ + footer()
 

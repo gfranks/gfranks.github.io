@@ -19,8 +19,9 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/tyde.jpg?v=c6dfd00d">
 <link rel="icon" type="image/jpeg" href="/assets/icons/tyde.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/tyde.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=0b490a8c">
+<link rel="stylesheet" href="/assets/legal.css?v=e08a5e92">
 <link rel="stylesheet" href="/assets/themes.css?v=2358de7b">
+<script src="/assets/home.js?v=7621e0b1" defer></script>
 </head>
 <body>
 
@@ -55,10 +56,23 @@
       <h2>What I built</h2>
       <ul class="built">
         <li>SwiftData with CloudKit sync for rooms, tasks, plans and history, with no account and no server.</li>
-        <li>A Home Screen widget and a Live Activity showing today&#x27;s room, sharing data with the app through an App Group.</li>
+        <li>A Home Screen widget that shows today&#x27;s room and can spin for a task without opening the app, plus a Live Activity for the focus timer, sharing data through an App Group.</li>
         <li>Siri and Shortcuts through App Intents: spin for a task or hear today&#x27;s room hands-free.</li>
         <li>Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt.</li>
       </ul>
+    </section>
+
+    <section class="card">
+      <h2>How it fits together</h2>
+      <div class="arch">
+        <div class="tier"><h3>Interface</h3><ul><li><strong>Today, wheel &amp; focus timer</strong><span>SwiftUI, Lottie</span></li><li><strong>Rooms, plan &amp; progress</strong><span>SwiftUI</span></li><li><strong>Siri &amp; Shortcuts</strong><span>App Intents</span></li></ul></div>
+        <p class="flow"><span>SwiftData queries</span></p>
+        <div class="tier"><h3>Logic</h3><ul><li><strong>TodayZoneResolver</strong><span>Which room is today&#x27;s</span></li><li><strong>TaskSuggestions</strong><span>What the wheel can land on</span></li><li><strong>NotificationManager</strong><span>Local reminders only</span></li></ul></div>
+        <p class="flow"><span>one model container</span></p>
+        <div class="tier"><h3>Storage</h3><ul><li><strong>SwiftData models</strong><span>Home, zones, tasks, completions</span></li><li><strong>App Group snapshot</strong><span>Today&#x27;s room for the widget</span></li></ul></div>
+        <p class="flow"><span>sync and share</span></p>
+        <div class="tier"><h3>System</h3><ul><li><strong>iCloud</strong><span>Private CloudKit database</span></li><li><strong>Home Screen widget</strong><span>Shows the room, spins for a task</span></li><li><strong>Live Activity</strong><span>Focus timer</span></li></ul></div>
+      </div>
     </section>
 
     <div class="tiles">

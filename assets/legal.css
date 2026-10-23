@@ -127,6 +127,16 @@ a.hero-store:hover { transform: translateY(-2px); }
   scroll-snap-align: center;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
+.gallery video.clip {
+  flex: 0 0 auto;
+  width: min(62vw, 240px);
+  aspect-ratio: 1206 / 2622;
+  border-radius: 22px;
+  object-fit: cover;
+  scroll-snap-align: center;
+  background: #000;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
 .gallery.landscape img { width: min(86vw, 560px); border-radius: 18px; }
 
 ul.built {
@@ -251,6 +261,60 @@ section.card p.lede { font-size: 18px; margin: 20px 0 20px; }
   color: var(--text-secondary);
 }
 .facts li.more { border-style: dashed; }
+
+.arch { display: grid; gap: 0; margin-top: 22px; }
+.tier {
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--bg-app);
+}
+.tier h3 { margin: 0 0 12px !important; font-size: 12px !important; }
+.tier ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 8px;
+}
+.tier li {
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+  min-width: 0;
+}
+.tier strong { font-size: 14px; line-height: 1.3; }
+.tier li span { font-size: 12.5px; line-height: 1.4; color: var(--text-secondary); }
+.flow {
+  position: relative;
+  margin: 0 !important;
+  padding: 10px 0 10px 34px;
+  font-size: 12.5px !important;
+  color: var(--text-secondary);
+}
+.flow::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+}
+.flow::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  bottom: 2px;
+  border: 5px solid transparent;
+  border-top: 6px solid var(--accent);
+  border-bottom: 0;
+}
+.flow span { display: inline-block; padding-left: 4px; }
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
