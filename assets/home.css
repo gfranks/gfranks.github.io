@@ -7,6 +7,7 @@
   --blob-a: #E9A27C;
   --blob-b: #FF8A9A;
   --blob-c: #E3C77A;
+  --blob-d: #8FB0F5;
   --blob-opacity: 0.55;
   --rot-a: #B8562F;
   --rot-b: #C2304A;
@@ -21,6 +22,7 @@
     --blob-a: #C97952;
     --blob-b: #C2304A;
     --blob-c: #8F7420;
+    --blob-d: #2A54AE;
     --blob-opacity: 0.4;
     --rot-a: #F0A27A;
     --rot-b: #FF7A8E;
@@ -68,7 +70,8 @@ a { color: inherit; }
 }
 .aurora span:nth-child(1) { background: var(--blob-a); top: -22vmax; left: -12vmax; }
 .aurora span:nth-child(2) { background: var(--blob-b); top: -26vmax; right: -14vmax; animation-delay: -9s; animation-duration: 31s; }
-.aurora span:nth-child(3) { background: var(--blob-c); top: -6vmax; left: 30%; width: 34vmax; height: 34vmax; animation-delay: -17s; animation-duration: 37s; }
+.aurora span:nth-child(3) { background: var(--blob-c); top: -6vmax; left: 22%; width: 30vmax; height: 30vmax; animation-delay: -17s; animation-duration: 37s; }
+.aurora span:nth-child(4) { background: var(--blob-d); top: 2vmax; right: 4%; width: 34vmax; height: 34vmax; animation-delay: -5s; animation-duration: 33s; animation-direction: alternate-reverse; }
 @keyframes drift {
   from { transform: translate3d(0, 0, 0) scale(1); }
   to { transform: translate3d(6vmax, 5vmax, 0) scale(1.12); }

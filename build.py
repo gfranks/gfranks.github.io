@@ -191,7 +191,7 @@ def home():
     return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["home.css"], "/", "home",
                 scripts=["home.js"]) + f"""<body class="home">
 
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <header class="intro">
     <p class="eyebrow">{ROLE}</p>
@@ -318,7 +318,7 @@ def not_found():
     return head("Page not found — Garrett Franks", "Page not found.", "/assets/favicon.svg", ["home.css"],
                 "/404.html", "home") + """<body class="home">
 
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <header class="intro">
     <p class="eyebrow">404</p>
