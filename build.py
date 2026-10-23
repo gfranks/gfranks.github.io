@@ -27,6 +27,8 @@ ROLE = "Mobile technical lead · iOS & Android"
 INTRO = ("I lead mobile teams and build apps end to end, from the first sketch to the App Store: "
          "Swift and SwiftUI, Kotlin and Compose, and the web and backend behind them.")
 
+NOW = [("Mobile technical lead", "Wahoo Fitness"), ("Founder", "C&F Solutions LLC")]
+
 PAGES = [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support")]
 
 SKILLS = [
@@ -147,6 +149,7 @@ def home():
       </div>""" for title, items in SKILLS)
 
     on_store = sum(1 for app in APPS if app["appStore"])
+    now = "".join(f"<li><span>{e(role)}</span> {e(org)}</li>" for role, org in NOW)
     return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["home.css"], "/", "home",
                 scripts=["home.js"]) + f"""<body class="home">
 
@@ -156,6 +159,7 @@ def home():
     <p class="eyebrow">{ROLE}</p>
     <h1>Garrett Franks</h1>
     <p class="lead">{INTRO}</p>
+    <ul class="now" aria-label="Currently">{now}</ul>
     <div class="ctas">{profile_links()}</div>
     <dl class="stats">
       <div style="--i:0"><dt>{len(APPS)}</dt><dd>Products</dd></div>

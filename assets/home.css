@@ -103,6 +103,27 @@ a { color: inherit; }
   margin: 28px 0 0;
   color: var(--ink-2);
 }
+.now {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 0;
+  margin: 24px 0 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+.now li { display: flex; align-items: center; gap: 8px; }
+.now li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #34C759 22%, transparent);
+}
+.now li + li::before { background: var(--ink-2); box-shadow: none; }
+.now span { color: var(--ink-2); font-weight: 500; }
 .ctas {
   display: flex;
   flex-wrap: wrap;
