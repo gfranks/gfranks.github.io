@@ -124,8 +124,8 @@ def home():
       <article class="app" data-app="{a}" style="--i:{i}">
         <span class="spot" aria-hidden="true"></span>
         <a class="app-icon" href="/{a}/" aria-hidden="true" tabindex="-1">
-          <img src="/assets/icons/{a}.jpg" alt="" class="glow" width="512" height="512">
-          <img src="/assets/icons/{a}.jpg" alt="" width="512" height="512">
+          <img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="" class="glow" width="512" height="512">
+          <img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="" width="512" height="512">
         </a>
         <div class="app-body">
           <p class="kind">{e(app["kind"])} <span class="status">{e(app["status"])}</span></p>
@@ -194,7 +194,7 @@ def app_hero(app, subtitle, big=False):
     return f"""
   <div class="hero{' hero-big' if big else ''}">
     <a class="back" href="/">{BACK} Garrett Franks</a>
-    <a href="/{a}/"><img src="/assets/icons/{a}.jpg" alt="{e(app["name"])} icon" width="512" height="512"></a>
+    <a href="/{a}/"><img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="{e(app["name"])} icon" width="512" height="512"></a>
     <h1>{e(app["name"])}</h1>
     <p>{e(subtitle)}</p>{extra}
   </div>
@@ -218,7 +218,7 @@ def gallery(app):
     shape = app["shotShape"]
     width, height = (1280, 900) if shape == "landscape" else (441, 960)
     shots = "".join(
-        f'\n      <img src="/assets/shots/{a}/{n:02d}.jpg" alt="{e(app["name"])} screenshot {n}" loading="lazy" width="{width}" height="{height}">'
+        f'\n      <img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="{e(app["name"])} screenshot {n}" loading="lazy" width="{width}" height="{height}">'
         for n in range(1, app["shots"] + 1))
     return f'\n  <div class="gallery {shape}" tabindex="0" aria-label="{e(app["name"])} screenshots">{shots}\n  </div>\n'
 
