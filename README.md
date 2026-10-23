@@ -15,7 +15,7 @@ These are the URLs to give App Store Connect. Don't rename an app's folder once 
 
 ## Editing
 
-The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` and commit everything. Run `python3 -I build.py --og` instead when anything on a share image changes (an app's name, kind, tagline or icon, or the role line); it re-renders `assets/og/*.jpg` with headless Chrome.
+The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` and commit everything. Run `python3 -I build.py --og` instead when anything on a share image changes (an app's name, kind, tagline or icon, or the role line); it re-renders `assets/og/*.jpg`, `favicon.ico` and `assets/apple-touch-icon.png` (from `assets/favicon.svg`) with headless Chrome.
 
 - `content/apps.json`: contact email, GitHub and LinkedIn links, and per app its id (the folder name), name, kind, platforms, status, tagline, about text, highlights ("What I built"), stack, screenshot count, App Store link or website, and whether it has legal pages here (`legal`).
 - `build.py`: the role line, intro and the "What I work with" skills list.

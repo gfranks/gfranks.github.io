@@ -63,7 +63,12 @@ def asset_version(name):
 def head(title, description, icon, extra_css, path, og_image, app_id=None, scripts=()):
     data_app = f' data-app="{app_id}"' if app_id else ""
     icon_type = "image/svg+xml" if icon.endswith(".svg") else "image/jpeg"
-    touch = f'\n<link rel="apple-touch-icon" href="{icon}">' if icon.endswith(".jpg") else ""
+    if icon.endswith(".jpg"):
+        touch = f'\n<link rel="apple-touch-icon" href="{icon}">'
+    else:
+        icon = f"{icon}?v={asset_version('favicon.svg')}"
+        touch = (f'\n<link rel="icon" href="/favicon.ico?v={asset_version("../favicon.ico")}" sizes="48x48">'
+                 f'\n<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v={asset_version("apple-touch-icon.png")}">')
     css = "".join(f'\n<link rel="stylesheet" href="/assets/{c}?v={asset_version(c)}">' for c in extra_css)
     js = "".join(f'\n<script src="/assets/{j}?v={asset_version(j)}" defer></script>' for j in scripts)
     image = f"{SITE_URL}/assets/og/{og_image}.jpg?v={asset_version(f'og/{og_image}.jpg')}"
@@ -424,11 +429,30 @@ def og_app(app):
 </body></html>"""
 
 
+def render_icons(tmp):
+    """favicon.ico (16/32/48, rounded, transparent) and a full-bleed 180 px apple-touch-icon from assets/favicon.svg."""
+    from PIL import Image
+    svg = (ROOT / "assets" / "favicon.svg").read_text()
+    for name, art in (("round", svg), ("square", svg.replace(' rx="15"', ""))):
+        page = pathlib.Path(tmp) / f"icon-{name}.html"
+        sized = art.replace("<svg ", '<svg width="512" height="512" ')
+        page.write_text('<html><body style="margin:0;background:transparent">'
+                        f'<div style="width:512px;height:512px">{sized}</div></body></html>')
+        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--default-background-color=00000000",
+                        "--force-device-scale-factor=1", "--window-size=512,512",
+                        f"--screenshot={pathlib.Path(tmp) / f'icon-{name}.png'}", page.as_uri()], check=True, capture_output=True)
+    round_png = Image.open(pathlib.Path(tmp) / "icon-round.png").convert("RGBA")
+    round_png.save(ROOT / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+    square = Image.open(pathlib.Path(tmp) / "icon-square.png").convert("RGB")
+    square.resize((180, 180), Image.LANCZOS).save(ROOT / "assets" / "apple-touch-icon.png", optimize=True)
+
+
 def render_og():
     out = ROOT / "assets" / "og"
     out.mkdir(parents=True, exist_ok=True)
     jobs = [("home", og_home())] + [(app["id"], og_app(app)) for app in APPS]
     with tempfile.TemporaryDirectory() as tmp:
+        render_icons(tmp)
         for name, page in jobs:
             src = pathlib.Path(tmp) / f"{name}.html"
             src.write_text(page)
