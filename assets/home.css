@@ -297,7 +297,7 @@ main {
 .app-shots img:nth-child(1) { --x: -82px; --r: -10deg; }
 .app-shots img:nth-child(2) { --y: -22px; z-index: 2; }
 .app-shots img:nth-child(3) { --x: 82px; --r: 10deg; }
-.app:hover .app-shots img:nth-child(1) { --x: -100px; --y: -10px; --r: -14deg; }
+.app:hover .app-shots img:nth-child(1) { --x: -88px; --y: -12px; --r: -11deg; }
 .app:hover .app-shots img:nth-child(2) { --y: -44px; }
 .app:hover .app-shots img:nth-child(3) { --x: 112px; --y: -10px; --r: 14deg; }
 .app-shots.landscape img { width: 300px; border-radius: 16px; }
