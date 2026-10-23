@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Builds the site from content/ into the repo root. Run: python3 -I build.py"""
+import hashlib
 import html
 import json
 import pathlib
@@ -19,11 +20,15 @@ BACK = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 
 e = html.escape
 
 
+def asset_version(name):
+    return hashlib.sha256((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
+
+
 def head(title, description, icon, extra_css, app_id=None):
     data_app = f' data-app="{app_id}"' if app_id else ""
     icon_type = "image/svg+xml" if icon.endswith(".svg") else "image/jpeg"
     touch = f'\n<link rel="apple-touch-icon" href="{icon}">' if icon.endswith(".jpg") else ""
-    css = "".join(f'\n<link rel="stylesheet" href="/assets/{c}">' for c in extra_css)
+    css = "".join(f'\n<link rel="stylesheet" href="/assets/{c}?v={asset_version(c)}">' for c in extra_css)
     return f"""<!doctype html>
 <html lang="en"{data_app}>
 <head>
