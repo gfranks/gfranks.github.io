@@ -24,10 +24,11 @@ def asset_version(name):
     return hashlib.sha256((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
 
 
-def head(title, description, icon, extra_css, app_id=None):
+def head(title, description, icon, extra_css, app_id=None, scripts=()):
     data_app = f' data-app="{app_id}"' if app_id else ""
     icon_type = "image/svg+xml" if icon.endswith(".svg") else "image/jpeg"
     touch = f'\n<link rel="apple-touch-icon" href="{icon}">' if icon.endswith(".jpg") else ""
+    js = "".join(f'\n<script src="/assets/{j}?v={asset_version(j)}" defer></script>' for j in scripts)
     css = "".join(f'\n<link rel="stylesheet" href="/assets/{c}?v={asset_version(c)}">' for c in extra_css)
     return f"""<!doctype html>
 <html lang="en"{data_app}>
@@ -39,9 +40,7 @@ def head(title, description, icon, extra_css, app_id=None):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <link rel="icon" type="{icon_type}" href="{icon}">{touch}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..600&display=swap">{css}
+{css}{js}
 </head>
 """
 
@@ -74,6 +73,7 @@ def home():
         a = app["id"]
         cards.append(f"""
       <article class="app" data-app="{a}" style="--i:{i}">
+        <span class="spot" aria-hidden="true"></span>
         <a class="app-icon" href="/{a}/" aria-hidden="true" tabindex="-1">
           <img src="/assets/icons/{a}.jpg" alt="" class="glow" width="512" height="512">
           <img src="/assets/icons/{a}.jpg" alt="" width="512" height="512">
@@ -93,17 +93,20 @@ def home():
         </div>
       </article>""")
     return head("Garrett Franks", "Apps for iPhone and iPad by Garrett Franks: Arkive, Tydé and Whisper Court.",
-                "/assets/favicon.svg", ["home.css"]) + f"""<body class="home">
+                "/assets/favicon.svg", ["home.css"], scripts=["home.js"]) + f"""<body class="home">
 
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <header class="intro">
     <p class="eyebrow">Independent apps for iPhone &amp; iPad</p>
     <h1>Garrett Franks</h1>
-    <p class="lead">I make small, careful apps that do one thing well and leave you alone. No ads, no tracking, no accounts.</p>
-    <ul class="principles">
-      <li>No ads</li><li>No tracking</li><li>No accounts</li><li>Your data stays yours</li>
-    </ul>
+    <p class="lead">I make small, careful apps that do one thing well and leave you alone.</p>
+    <dl class="stats">
+      <div style="--i:0"><dt>{len(APPS)}</dt><dd>Apps</dd></div>
+      <div style="--i:1"><dt>0</dt><dd>Ads</dd></div>
+      <div style="--i:2"><dt>0</dt><dd>Trackers</dd></div>
+      <div style="--i:3"><dt>0</dt><dd>Accounts</dd></div>
+    </dl>
   </header>
 
   <main>
