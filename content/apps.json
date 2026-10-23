@@ -1,44 +1,90 @@
 {
   "contact": "lgfz71@gmail.com",
+  "github": "https://github.com/gfranks",
+  "linkedin": null,
   "apps": [
     {
       "id": "arkive",
       "name": "Arkive",
       "kind": "Bible study",
+      "platforms": "iPhone & iPad",
+      "status": "On the App Store",
       "tagline": "Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.",
       "about": "Read a verse per page or by chapter, tap any word for the original language, and follow it through the whole Bible. Commentaries, dictionaries, a timeline and journey maps sit behind the text, and your notes and study threads sync through your own iCloud.",
-      "facts": [
-        "Free, forever",
-        "Works offline",
-        "No account"
+      "highlights": [
+        "Three SwiftData stores in one container: bundled Bible text, a purgeable cache for online text, and CloudKit-synced user data with merge rules for records two devices create at once.",
+        "Full-text and grammar search over a prebuilt SQLite FTS5 index, including 440,000 original-language words searchable by Strong's number, tense and voice.",
+        "A licensed translation fetched live from the YouVersion API and transcoded from HTML into the app's own text format, so every reader feature works on it unchanged.",
+        "Read to Me: on-device speech with an IPA pronunciation lexicon for biblical names, a Live Activity, a sleep timer and Personal Voice support.",
+        "MapKit timelines and animated journey routes, plus a deep-zoom 1878 history chart drawn with CATiledLayer and tappable scenes.",
+        "Python data pipelines that turn public-domain lexicons, dictionaries and commentaries into validated bundles, with license checks built in.",
+        "Siri and Shortcuts, Spotlight, Handoff, hardware keyboard shortcuts and the iPad menu bar."
       ],
-      "appStore": "https://apps.apple.com/app/id6762307221"
+      "stack": ["Swift", "SwiftUI", "SwiftData", "CloudKit", "SQLite FTS5", "MapKit", "ActivityKit", "App Intents", "Swift Charts", "PencilKit"],
+      "shots": 6,
+      "appStore": "https://apps.apple.com/app/id6762307221",
+      "website": null,
+      "legal": true
+    },
+    {
+      "id": "pyllar",
+      "name": "Pyllar",
+      "kind": "Field service platform",
+      "platforms": "iOS, Android & web",
+      "status": "In beta",
+      "tagline": "Run a lawn care business from one place: scheduling, dispatch, invoicing and the crew's day.",
+      "about": "A multi-tenant SaaS for lawn care and landscaping companies. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.",
+      "highlights": [
+        "Native iOS (Swift 6, SwiftUI) and Android (Kotlin, Jetpack Compose) apps kept at feature parity, with a Live Activity for the job in progress.",
+        "Next.js web app, customer portal and internal staff portal on a TypeScript Fastify API with PostgreSQL and Drizzle.",
+        "An AI assistant built on Claude that returns structured intents, which the API validates and permission-checks by role before acting.",
+        "Stripe billing and invoice payments, Typesense search, and role-based access control across owners, managers and technicians.",
+        "Dockerized deploys to staging and production through GitHub Actions."
+      ],
+      "stack": ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "TypeScript", "Next.js", "Fastify", "PostgreSQL", "Stripe", "Claude API"],
+      "shots": 6,
+      "appStore": null,
+      "website": "https://pyllarhq.com",
+      "legal": false
     },
     {
       "id": "tyde",
       "name": "Tydé",
       "kind": "Cleaning planner",
+      "platforms": "iPhone & iPad",
+      "status": "On the App Store",
       "tagline": "A calm cleaning planner built for ADHD brains: one room a day, and no guilt.",
       "about": "Every task is sorted Easy, Medium or Deep, so a low-energy day still has a real session in it. Pick up to three must-dos, and spin the wheel when you can't decide where to start.",
-      "facts": [
-        "No streak-shaming",
-        "No account",
-        "Syncs with iCloud"
+      "highlights": [
+        "SwiftData with CloudKit sync for rooms, tasks, plans and history, with no account and no server.",
+        "A Home Screen widget and a Live Activity showing today's room, sharing data with the app through an App Group.",
+        "Siri and Shortcuts through App Intents: spin for a task or hear today's room hands-free.",
+        "Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt."
       ],
-      "appStore": "https://apps.apple.com/app/id6792855453"
+      "stack": ["Swift", "SwiftUI", "SwiftData", "CloudKit", "WidgetKit", "ActivityKit", "App Intents", "Lottie"],
+      "shots": 6,
+      "appStore": "https://apps.apple.com/app/id6792855453",
+      "website": null,
+      "legal": true
     },
     {
       "id": "whispercourt",
       "name": "Whisper Court",
       "kind": "Strategy game",
+      "platforms": "iPhone",
+      "status": "Coming soon",
       "tagline": "You are a Renaissance spymaster. Spread one rumor through the court.",
       "about": "Gossips spread it, skeptics need two sources, and the loyal will expose you. Each turn you whisper, silence, forge or bribe before the rumor travels one more step, and every court can be won in a set number of turns.",
-      "facts": [
-        "Hand-built puzzles",
-        "No ads",
-        "Plays offline"
+      "highlights": [
+        "A deterministic rules engine in its own Swift package, with no UI code, so every rule is unit-tested.",
+        "A solver that proves each level's best score; tests fail if a level's par isn't the true optimum or if its new mechanic isn't actually needed.",
+        "Swift 6 and SwiftUI, with Swift Testing and an XcodeGen project."
       ],
-      "appStore": null
+      "stack": ["Swift 6", "SwiftUI", "Swift Testing", "Swift Package Manager", "XcodeGen"],
+      "shots": 0,
+      "appStore": null,
+      "website": null,
+      "legal": true
     }
   ]
 }

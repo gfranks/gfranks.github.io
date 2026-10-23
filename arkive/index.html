@@ -3,15 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arkive</title>
+<title>Arkive — Garrett Franks</title>
 <meta name="description" content="Arkive: Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.">
-<meta property="og:title" content="Arkive">
+<link rel="canonical" href="https://gfranks.github.io/arkive/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Garrett Franks">
+<meta property="og:url" content="https://gfranks.github.io/arkive/">
+<meta property="og:title" content="Arkive — Garrett Franks">
 <meta property="og:description" content="Arkive: Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.">
+<meta property="og:image" content="https://gfranks.github.io/assets/og/arkive.jpg?v=a0cb6f0d">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arkive — Garrett Franks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gfranks.github.io/assets/og/arkive.jpg?v=a0cb6f0d">
 <link rel="icon" type="image/jpeg" href="/assets/icons/arkive.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/arkive.jpg">
-
-<link rel="stylesheet" href="/assets/legal.css?v=87e5e57c">
-<link rel="stylesheet" href="/assets/themes.css?v=d62f99cb">
+<link rel="stylesheet" href="/assets/legal.css?v=910d3432">
+<link rel="stylesheet" href="/assets/themes.css?v=2358de7b">
 </head>
 <body>
 
@@ -19,28 +28,51 @@
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
     <a href="/arkive/"><img src="/assets/icons/arkive.jpg" alt="Arkive icon" width="512" height="512"></a>
     <h1>Arkive</h1>
-    <p>Bible study</p>
+    <p>Bible study · iPhone &amp; iPad</p>
     <p class="hero-tagline">Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.</p>
-    <a class="hero-store" href="https://apps.apple.com/app/id6762307221">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6762307221">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="hero-status">On the App Store</span></div>
   </div>
 
   <nav class="pillbar"><a href="/arkive/privacy/">Privacy Policy</a><a href="/arkive/terms/">Terms of Use</a><a href="/arkive/support/">Support</a></nav>
+
+  <div class="gallery" tabindex="0" aria-label="Arkive screenshots">
+      <img src="/assets/shots/arkive/01.jpg" alt="Arkive screenshot 1" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/arkive/02.jpg" alt="Arkive screenshot 2" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/arkive/03.jpg" alt="Arkive screenshot 3" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/arkive/04.jpg" alt="Arkive screenshot 4" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/arkive/05.jpg" alt="Arkive screenshot 5" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/arkive/06.jpg" alt="Arkive screenshot 6" loading="lazy" width="441" height="960">
+  </div>
 
   <main>
     <section class="card">
       <h2>About</h2>
       <p class="lede">Read a verse per page or by chapter, tap any word for the original language, and follow it through the whole Bible. Commentaries, dictionaries, a timeline and journey maps sit behind the text, and your notes and study threads sync through your own iCloud.</p>
-      <ul class="facts"><li>Free, forever</li><li>Works offline</li><li>No account</li></ul>
-      <div class="tiles">
+      <ul class="facts"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>SQLite FTS5</li><li>MapKit</li><li>ActivityKit</li><li>App Intents</li><li>Swift Charts</li><li>PencilKit</li></ul>
+    </section>
+
+    <section class="card">
+      <h2>What I built</h2>
+      <ul class="built">
+        <li>Three SwiftData stores in one container: bundled Bible text, a purgeable cache for online text, and CloudKit-synced user data with merge rules for records two devices create at once.</li>
+        <li>Full-text and grammar search over a prebuilt SQLite FTS5 index, including 440,000 original-language words searchable by Strong&#x27;s number, tense and voice.</li>
+        <li>A licensed translation fetched live from the YouVersion API and transcoded from HTML into the app&#x27;s own text format, so every reader feature works on it unchanged.</li>
+        <li>Read to Me: on-device speech with an IPA pronunciation lexicon for biblical names, a Live Activity, a sleep timer and Personal Voice support.</li>
+        <li>MapKit timelines and animated journey routes, plus a deep-zoom 1878 history chart drawn with CATiledLayer and tappable scenes.</li>
+        <li>Python data pipelines that turn public-domain lexicons, dictionaries and commentaries into validated bundles, with license checks built in.</li>
+        <li>Siri and Shortcuts, Spotlight, Handoff, hardware keyboard shortcuts and the iPad menu bar.</li>
+      </ul>
+    </section>
+
+    <div class="tiles">
         <a class="tile" href="/arkive/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="tile" href="/arkive/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="tile" href="/arkive/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p><a href="/">Garrett Franks</a> · <a href="mailto:lgfz71@gmail.com">lgfz71@gmail.com</a></p>
+    <p><a href="/">Garrett Franks</a> · <a href="mailto:lgfz71@gmail.com">lgfz71@gmail.com</a> · <a href="https://github.com/gfranks">GitHub</a></p>
     <p class="fine">© 2026 Garrett Franks</p>
   </footer>
 
