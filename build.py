@@ -192,10 +192,11 @@ def home():
 def app_hero(app, subtitle, big=False):
     a = app["id"]
     extra = ""
+    status = "" if app["appStore"] else f'<span class="hero-status">{e(app["status"])}</span>'
     if big:
         extra = f"""
     <p class="hero-tagline">{e(app["tagline"])}</p>
-    <div class="hero-actions">{primary_link(app, "hero-store")}<span class="hero-status">{e(app["status"])}</span></div>"""
+    <div class="hero-actions">{primary_link(app, "hero-store")}{status}</div>"""
     return f"""
   <div class="hero{' hero-big' if big else ''}">
     <a class="back" href="/">{BACK} Garrett Franks</a>
