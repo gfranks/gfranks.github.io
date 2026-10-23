@@ -284,6 +284,7 @@ section.card p.lede { font-size: 18px; margin: 20px 0 20px; }
 }
 .tier li {
   display: grid;
+  align-content: start;
   gap: 3px;
   padding: 10px 12px;
   border-radius: 12px;
