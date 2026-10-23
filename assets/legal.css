@@ -147,7 +147,7 @@ section.card h2::before {
   background: var(--accent);
   border-radius: 3px;
 }
-.updated {
+section.card p.updated {
   font-size: 13px;
   color: var(--text-secondary);
   margin: 0 0 28px;
@@ -165,7 +165,7 @@ section.card p {
   line-height: 1.65;
   margin: 0 0 6px;
 }
-section.card h2 + p { margin-top: 20px; }
+section.card h2 + p:not(.updated) { margin-top: 20px; }
 section.card p.lede { font-size: 18px; margin: 20px 0 20px; }
 
 .facts {
@@ -203,6 +203,11 @@ section.card p.lede { font-size: 18px; margin: 20px 0 20px; }
   transition: border-color 0.2s, color 0.2s;
 }
 .tile:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 420px) {
+  nav.pillbar { gap: 6px; padding: 0 12px; }
+  nav.pillbar a { font-size: 13px; padding: 9px 13px; }
+}
 
 footer {
   text-align: center;
