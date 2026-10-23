@@ -29,3 +29,15 @@ The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` an
 1. Add it to `content/apps.json` and, if it has `legal: true`, create `content/<id>/privacy.html`, `terms.html` and `support.html`.
 2. Add its icon as `assets/icons/<id>.jpg`, its colors to `assets/themes.css`, `assets/home.css` (`.app[data-app="<id>"]`) and `OG_CARDS` in `build.py`, and any screenshots.
 3. Run `python3 -I build.py --og`, commit and push.
+
+## Framing screenshots and clips
+
+Screenshots and clips that aren't already store-framed (and every clip) go through `tools/frame_media.py`, which puts them in the ai-toolkit iPhone frame under a caption, store-screenshot style. `tools/style-<app>.json` holds each app's background and caption colors.
+
+```bash
+python3 -I tools/frame_media.py shot  tools/style-<app>.json <raw.jpg> assets/shots/<app>/NN.jpg "Title." "Subtitle."
+python3 -I tools/frame_media.py video tools/style-<app>.json <raw.mp4> assets/video/<app>.mp4 assets/video/<app>-poster.jpg "Title." "Subtitle."
+```
+
+A clip in `assets/video/<app>.mp4` (with its `-poster.jpg`) plays in the middle of the app's screenshot fan on the home page and first in its gallery. Record clips as plain simulator video (`xcrun simctl io <udid> recordVideo`), about 8–10 seconds that loop cleanly.
+
