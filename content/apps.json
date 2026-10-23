@@ -1,7 +1,7 @@
 {
   "contact": "lgfz71@gmail.com",
   "github": "https://github.com/gfranks",
-  "linkedin": null,
+  "linkedin": "https://www.linkedin.com/in/garrett-franks-96528837/",
   "apps": [
     {
       "id": "arkive",
@@ -20,20 +20,32 @@
         "Python data pipelines that turn public-domain lexicons, dictionaries and commentaries into validated bundles, with license checks built in.",
         "Siri and Shortcuts, Spotlight, Handoff, hardware keyboard shortcuts and the iPad menu bar."
       ],
-      "stack": ["Swift", "SwiftUI", "SwiftData", "CloudKit", "SQLite FTS5", "MapKit", "ActivityKit", "App Intents", "Swift Charts", "PencilKit"],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "SwiftData",
+        "CloudKit",
+        "SQLite FTS5",
+        "MapKit",
+        "ActivityKit",
+        "App Intents",
+        "Swift Charts",
+        "PencilKit"
+      ],
       "shots": 6,
       "appStore": "https://apps.apple.com/app/id6762307221",
       "website": null,
-      "legal": true
+      "legal": true,
+      "shotShape": "portrait"
     },
     {
       "id": "pyllar",
       "name": "Pyllar",
       "kind": "Field service platform",
       "platforms": "iOS, Android & web",
-      "status": "In beta",
+      "status": "Launching soon",
       "tagline": "Run a lawn care business from one place: scheduling, dispatch, invoicing and the crew's day.",
-      "about": "A multi-tenant SaaS for lawn care and landscaping companies. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.",
+      "about": "A multi-tenant SaaS for lawn care and landscaping companies, built and run by my company, C&F Solutions LLC. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.",
       "highlights": [
         "Native iOS (Swift 6, SwiftUI) and Android (Kotlin, Jetpack Compose) apps kept at feature parity, with a Live Activity for the job in progress.",
         "Next.js web app, customer portal and internal staff portal on a TypeScript Fastify API with PostgreSQL and Drizzle.",
@@ -41,11 +53,23 @@
         "Stripe billing and invoice payments, Typesense search, and role-based access control across owners, managers and technicians.",
         "Dockerized deploys to staging and production through GitHub Actions."
       ],
-      "stack": ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "TypeScript", "Next.js", "Fastify", "PostgreSQL", "Stripe", "Claude API"],
-      "shots": 6,
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "Kotlin",
+        "Jetpack Compose",
+        "TypeScript",
+        "Next.js",
+        "Fastify",
+        "PostgreSQL",
+        "Stripe",
+        "Claude API"
+      ],
+      "shots": 7,
       "appStore": null,
       "website": "https://pyllarhq.com",
-      "legal": false
+      "legal": false,
+      "shotShape": "landscape"
     },
     {
       "id": "tyde",
@@ -61,11 +85,21 @@
         "Siri and Shortcuts through App Intents: spin for a task or hear today's room hands-free.",
         "Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt."
       ],
-      "stack": ["Swift", "SwiftUI", "SwiftData", "CloudKit", "WidgetKit", "ActivityKit", "App Intents", "Lottie"],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "SwiftData",
+        "CloudKit",
+        "WidgetKit",
+        "ActivityKit",
+        "App Intents",
+        "Lottie"
+      ],
       "shots": 6,
       "appStore": "https://apps.apple.com/app/id6792855453",
       "website": null,
-      "legal": true
+      "legal": true,
+      "shotShape": "portrait"
     },
     {
       "id": "whispercourt",
@@ -80,11 +114,18 @@
         "A solver that proves each level's best score; tests fail if a level's par isn't the true optimum or if its new mechanic isn't actually needed.",
         "Swift 6 and SwiftUI, with Swift Testing and an XcodeGen project."
       ],
-      "stack": ["Swift 6", "SwiftUI", "Swift Testing", "Swift Package Manager", "XcodeGen"],
+      "stack": [
+        "Swift 6",
+        "SwiftUI",
+        "Swift Testing",
+        "Swift Package Manager",
+        "XcodeGen"
+      ],
       "shots": 0,
       "appStore": null,
       "website": null,
-      "legal": true
+      "legal": true,
+      "shotShape": "portrait"
     }
   ]
 }
