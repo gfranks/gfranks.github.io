@@ -1,0 +1,44 @@
+{
+  "contact": "lgfz71@gmail.com",
+  "apps": [
+    {
+      "id": "arkive",
+      "name": "Arkive",
+      "kind": "Bible study",
+      "tagline": "Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.",
+      "about": "Read a verse per page or by chapter, tap any word for the original language, and follow it through the whole Bible. Commentaries, dictionaries, a timeline and journey maps sit behind the text, and your notes and study threads sync through your own iCloud.",
+      "facts": [
+        "Free, forever",
+        "Works offline",
+        "No account"
+      ],
+      "appStore": "https://apps.apple.com/app/id6762307221"
+    },
+    {
+      "id": "tyde",
+      "name": "Tydé",
+      "kind": "Cleaning planner",
+      "tagline": "A calm cleaning planner built for ADHD brains: one room a day, and no guilt.",
+      "about": "Every task is sorted Easy, Medium or Deep, so a low-energy day still has a real session in it. Pick up to three must-dos, and spin the wheel when you can't decide where to start.",
+      "facts": [
+        "No streak-shaming",
+        "No account",
+        "Syncs with iCloud"
+      ],
+      "appStore": null
+    },
+    {
+      "id": "whispercourt",
+      "name": "Whisper Court",
+      "kind": "Strategy game",
+      "tagline": "You are a Renaissance spymaster. Spread one rumor through the court.",
+      "about": "Gossips spread it, skeptics need two sources, and the loyal will expose you. Each turn you whisper, silence, forge or bribe before the rumor travels one more step, and every court can be won in a set number of turns.",
+      "facts": [
+        "Hand-built puzzles",
+        "No ads",
+        "Plays offline"
+      ],
+      "appStore": null
+    }
+  ]
+}
