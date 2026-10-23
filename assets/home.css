@@ -8,6 +8,8 @@
   --blob-b: #FF8A9A;
   --blob-c: #E3C77A;
   --blob-opacity: 0.55;
+  --rot-a: #B8562F;
+  --rot-b: #C2304A;
   --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -20,6 +22,8 @@
     --blob-b: #C2304A;
     --blob-c: #8F7420;
     --blob-opacity: 0.4;
+    --rot-a: #F0A27A;
+    --rot-b: #FF7A8E;
   }
 }
 
@@ -193,12 +197,14 @@ main {
 
 .app {
   --ink-on: #FBF4EA;
+  --pad: clamp(24px, 4.5vw, 48px);
   position: relative;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: clamp(24px, 4vw, 48px);
-  align-items: center;
-  padding: clamp(24px, 4.5vw, 48px);
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: clamp(24px, 4vw, 40px);
+  align-items: stretch;
+  min-height: 380px;
+  padding: var(--pad);
   border-radius: 28px;
   color: var(--ink-on);
   overflow: hidden;
@@ -241,7 +247,9 @@ main {
 .app[data-app="whispercourt"] { --card: linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%); --pill: #E9DCC0; --ink-on: #EFE3C8; }
 .app[data-app="whispercourt"] .kind { color: #D9B648; }
 
-.app-icon { position: relative; display: block; width: 200px; aspect-ratio: 1; }
+.app-icon { position: relative; display: block; width: 76px; flex: none; aspect-ratio: 1; }
+.app-art { display: grid; place-items: center; }
+.app-art .app-icon { width: 220px; }
 .app-icon img {
   position: relative;
   width: 100%;
@@ -261,7 +269,107 @@ main {
 }
 .app:hover .app-icon img:not(.glow) { transition-duration: 0.15s; }
 
-.app-body { min-width: 0; }
+.app-body { min-width: 0; align-self: center; }
+.app-head { display: flex; align-items: center; gap: 18px; margin-bottom: 16px; }
+.app-head .kind { margin-bottom: 8px; }
+.app-head h3 { margin: 0; }
+
+.app-shots {
+  position: relative;
+  display: block;
+  min-height: 300px;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.6s cubic-bezier(.2, .8, .2, 1);
+}
+.app-shots img {
+  --x: 0px; --y: 0px; --r: 0deg;
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--pad) * -1 - 44px);
+  width: 158px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) translate(var(--x), var(--y)) rotate(var(--r));
+  transition: transform 0.6s cubic-bezier(.2, .8, .2, 1);
+}
+.app-shots img:nth-child(1) { --x: -94px; --r: -10deg; }
+.app-shots img:nth-child(2) { --y: -22px; z-index: 2; }
+.app-shots img:nth-child(3) { --x: 94px; --r: 10deg; }
+.app:hover .app-shots img:nth-child(1) { --x: -128px; --y: -8px; --r: -15deg; }
+.app:hover .app-shots img:nth-child(2) { --y: -44px; }
+.app:hover .app-shots img:nth-child(3) { --x: 128px; --y: -8px; --r: 15deg; }
+.app-shots.landscape img { width: 300px; border-radius: 16px; }
+.app-shots.landscape img:nth-child(1) { --x: -26px; --y: -118px; --r: -5deg; }
+.app-shots.landscape img:nth-child(2) { --x: 22px; --y: -6px; --r: 3deg; }
+.app:hover .app-shots.landscape img:nth-child(1) { --x: -44px; --y: -138px; --r: -7deg; }
+.app:hover .app-shots.landscape img:nth-child(2) { --x: 36px; --y: -14px; --r: 4deg; }
+
+.rotator {
+  display: inline-grid;
+  vertical-align: bottom;
+  font-weight: 700;
+}
+.rotator span {
+  grid-area: 1 / 1;
+  background: linear-gradient(90deg, var(--rot-a), var(--rot-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transform: translateY(0.45em);
+  transition: opacity 0.45s, transform 0.45s cubic-bezier(.2, .8, .2, 1);
+}
+.rotator span.on { opacity: 1; transform: none; }
+.rotator span.out { opacity: 0; transform: translateY(-0.45em); }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.ticker {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-block: 8px;
+  margin: 0 0 64px;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker span {
+  font-family: var(--display);
+  font-size: clamp(34px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  white-space: nowrap;
+  padding-inline: 24px;
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--ink-2);
+}
+.ticker span:nth-of-type(3n + 1) { color: var(--ink); -webkit-text-stroke: 0; }
+.ticker i {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blob-a);
+}
+.ticker i:nth-of-type(3n + 2) { background: var(--blob-b); }
+.ticker i:nth-of-type(3n) { background: #3B6FD8; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 .kind {
   margin: 0 0 6px;
   font-size: 12px;
@@ -442,12 +550,22 @@ footer .fine { opacity: 0.7; }
 @media (max-width: 680px) {
   .ctas { gap: 8px; }
   .cta { padding: 10px 14px; font-size: 14px; gap: 6px; }
-  .app { grid-template-columns: 1fr; border-radius: 24px; }
-  .app-icon { width: 96px; }
+  .app { grid-template-columns: 1fr; border-radius: 24px; min-height: 0; }
+  .app-head .app-icon { width: 60px; }
+  .app-art .app-icon { width: 150px; }
+  .app-art { padding-block: 8px 4px; }
   .app-icon img.glow { filter: blur(22px) saturate(1.6); }
+  .app-shots { min-height: 250px; }
+  .app-shots img { width: 122px; border-radius: 16px; }
+  .app-shots img:nth-child(1) { --x: -74px; }
+  .app-shots img:nth-child(3) { --x: 74px; }
+  .app-shots.landscape { min-height: 290px; }
+  .app-shots.landscape img { width: min(250px, 70vw); }
+  .app-shots.landscape img:nth-child(1) { --x: -18px; --y: -104px; }
+  .app-shots.landscape img:nth-child(2) { --x: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora span, .app, .stats div { animation: none; }
-  .app, .app-icon img, .store { transition: none; }
+  .aurora span, .app, .stats div, .ticker-track { animation: none; }
+  .app, .app-icon img, .store, .app-shots, .app-shots img, .rotator span { transition: none; }
 }

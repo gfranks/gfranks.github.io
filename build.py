@@ -29,6 +29,10 @@ INTRO = ("I lead mobile teams and build apps end to end, from the first sketch t
 
 NOW = [("Mobile technical lead", "Wahoo Fitness"), ("Founder", "C&F Solutions LLC")]
 
+ROTATING = ["iPhone", "iPad", "Android", "the web"]
+TICKER = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "SwiftData", "CloudKit", "TypeScript", "Next.js",
+          "PostgreSQL", "App Intents", "WidgetKit", "Live Activities", "MapKit", "Claude API"]
+
 PAGES = [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support")]
 
 SKILLS = [
@@ -119,6 +123,38 @@ def profile_links():
     return "".join(links)
 
 
+def icon(app, cls="app-icon"):
+    a = app["id"]
+    src = f"/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}"
+    return (f'<a class="{cls}" href="/{a}/" aria-hidden="true" tabindex="-1">'
+            f'<img src="{src}" alt="" class="glow" width="512" height="512">'
+            f'<img src="{src}" alt="" width="512" height="512"></a>')
+
+
+def card_art(app):
+    a = app["id"]
+    if not app["shots"]:
+        return f'<div class="app-art">{icon(app)}</div>'
+    order = [1, 2] if app["shotShape"] == "landscape" else [2, 1, 3]
+    width, height = (1280, 900) if app["shotShape"] == "landscape" else (441, 960)
+    shots = "".join(
+        f'<img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="" width="{width}" height="{height}">'
+        for n in order)
+    return f'<a class="app-shots {app["shotShape"]}" href="/{a}/" aria-hidden="true" tabindex="-1">{shots}</a>'
+
+
+def rotator():
+    on = ' class="on"'
+    words = "".join(f'<span{on if i == 0 else ""}>{e(w)}</span>' for i, w in enumerate(ROTATING))
+    spoken = ", ".join(ROTATING[:-1]) + " and " + ROTATING[-1]
+    return f'<span class="rotator" aria-hidden="true">{words}</span><span class="sr-only">{e(spoken)}</span>'
+
+
+def ticker():
+    items = "".join(f'<span>{e(t)}</span><i></i>' for t in TICKER)
+    return f'<div class="ticker" aria-hidden="true"><div class="ticker-track">{items}{items}</div></div>'
+
+
 def home():
     cards = []
     for i, app in enumerate(APPS):
@@ -126,13 +162,14 @@ def home():
         cards.append(f"""
       <article class="app" data-app="{a}" style="--i:{i}">
         <span class="spot" aria-hidden="true"></span>
-        <a class="app-icon" href="/{a}/" aria-hidden="true" tabindex="-1">
-          <img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="" class="glow" width="512" height="512">
-          <img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="" width="512" height="512">
-        </a>
         <div class="app-body">
-          <p class="kind">{e(app["kind"])} <span class="status">{e(app["status"])}</span></p>
-          <h3><a href="/{a}/">{e(app["name"])}</a></h3>
+          <div class="app-head">
+            {icon(app)}
+            <div>
+              <p class="kind">{e(app["kind"])} <span class="status">{e(app["status"])}</span></p>
+              <h3><a href="/{a}/">{e(app["name"])}</a></h3>
+            </div>
+          </div>
           <p class="tagline">{e(app["tagline"])}</p>
           {chips(app["stack"], "facts", 6)}
           <div class="actions">
@@ -140,6 +177,7 @@ def home():
             {primary_link(app, "secondary")}
           </div>
         </div>
+        {card_art(app)}
       </article>""")
 
     groups = "".join(f"""
@@ -158,7 +196,7 @@ def home():
   <header class="intro">
     <p class="eyebrow">{ROLE}</p>
     <h1>Garrett Franks</h1>
-    <p class="lead">{INTRO}</p>
+    <p class="lead">I lead mobile teams and build apps end to end, from the first sketch to the App Store, for {rotator()}.</p>
     <ul class="now" aria-label="Currently">{now}</ul>
     <div class="ctas">{profile_links()}</div>
     <dl class="stats">
@@ -168,6 +206,8 @@ def home():
       <div style="--i:3"><dt>0</dt><dd>Trackers</dd></div>
     </dl>
   </header>
+
+  {ticker()}
 
   <main>
     <h2 class="section-title">Selected work</h2>

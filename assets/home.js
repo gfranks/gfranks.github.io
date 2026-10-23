@@ -15,3 +15,17 @@ if (matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").mat
     });
   }
 }
+
+const rotator = document.querySelector(".rotator");
+if (rotator && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+  const words = [...rotator.children];
+  let current = 0;
+  setInterval(() => {
+    const previous = words[current];
+    current = (current + 1) % words.length;
+    previous.classList.replace("on", "out");
+    words[current].classList.remove("out");
+    words[current].classList.add("on");
+    setTimeout(() => previous.classList.remove("out"), 500);
+  }, 2400);
+}
