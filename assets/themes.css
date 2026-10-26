@@ -21,6 +21,11 @@
   --accent: #A31C25; --accent-ink: #ffffff; --hero-top: #3A2A1E; --hero-bottom: #16110D; --hero-ink: #E9DCC0;
   --card-border: rgba(42, 31, 23, 0.12); --rule: rgba(42, 31, 23, 0.14);
 }
+[data-app="candidly"] {
+  --bg: #F5F7FF; --bg-app: #EDF1FD; --text: #111633; --text-secondary: #59618A;
+  --accent: #3348F5; --accent-ink: #ffffff; --hero-top: #22A8F0; --hero-bottom: #1A1050; --hero-ink: #EEF2FF;
+  --card-border: rgba(17, 22, 51, 0.10); --rule: rgba(17, 22, 51, 0.12);
+}
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"])[data-app="arkive"] {
@@ -42,5 +47,10 @@
     --bg: #241B14; --bg-app: #16110D; --text: #E9DCC0; --text-secondary: #9C8C73;
     --accent: #D6454E; --accent-ink: #16110D;
     --card-border: rgba(233, 220, 192, 0.12); --rule: rgba(233, 220, 192, 0.14);
+  }
+  :root:not([data-theme="light"])[data-app="candidly"] {
+    --bg: #12142A; --bg-app: #0B0D1C; --text: #EEF1FF; --text-secondary: #9AA2C8;
+    --accent: #8C9BFF; --accent-ink: #0B0D1C; --hero-top: #2440C8; --hero-bottom: #0B0D1C;
+    --card-border: rgba(238, 241, 255, 0.10); --rule: rgba(238, 241, 255, 0.12);
   }
 }

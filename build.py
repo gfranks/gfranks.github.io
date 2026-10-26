@@ -37,7 +37,7 @@ TICKER = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "SwiftData", "CloudKi
 PAGES = [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support")]
 
 SKILLS = [
-    ("Apple platforms", ["Swift", "SwiftUI", "UIKit", "SwiftData", "CloudKit", "WidgetKit", "ActivityKit",
+    ("Apple platforms", ["Swift", "SwiftUI", "UIKit", "AppKit", "Metal", "SwiftData", "CloudKit", "WidgetKit", "ActivityKit",
                          "App Intents", "MapKit", "StoreKit", "Swift Testing"]),
     ("Android", ["Kotlin", "Jetpack Compose", "Gradle"]),
     ("Web & backend", ["TypeScript", "Next.js", "React", "Fastify", "PostgreSQL", "Drizzle", "Docker",
@@ -223,7 +223,7 @@ def home():
     <dl class="stats">
       <div style="--i:0"><dt>{len(APPS)}</dt><dd>Products</dd></div>
       <div style="--i:1"><dt>{on_store}</dt><dd>On the App Store</dd></div>
-      <div style="--i:2"><dt>3</dt><dd>Platforms</dd></div>
+      <div style="--i:2"><dt>4</dt><dd>Platforms</dd></div>
       <div style="--i:3"><dt>0</dt><dd>Trackers</dd></div>
     </dl>
   </header>
@@ -401,6 +401,7 @@ OG_CARDS = {
     "pyllar": ("linear-gradient(135deg, #3B6FD8 0%, #1E4596 50%, #0C1630 100%)", "#F2F6FF"),
     "tyde": ("linear-gradient(135deg, #FF6B7A 0%, #8E2F52 48%, #14121F 100%)", "#FBEEF0"),
     "whispercourt": ("linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%)", "#EFE3C8"),
+    "candidly": ("linear-gradient(135deg, #22C3FF 0%, #3348F5 48%, #1A1050 100%)", "#EEF2FF"),
 }
 
 

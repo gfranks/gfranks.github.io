@@ -258,6 +258,7 @@ main {
 .app[data-app="tyde"] { --card: linear-gradient(135deg, #FF6B7A 0%, #8E2F52 48%, #14121F 100%); --pill: #FBEEF0; }
 .app[data-app="whispercourt"] { --card: linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%); --pill: #E9DCC0; --ink-on: #EFE3C8; }
 .app[data-app="whispercourt"] .kind { color: #D9B648; }
+.app[data-app="candidly"] { --card: linear-gradient(135deg, #22C3FF 0%, #3348F5 48%, #1A1050 100%); --pill: #EEF2FF; }
 
 .app-icon { position: relative; display: block; width: 76px; flex: none; aspect-ratio: 1; }
 .app-art { display: grid; place-items: center; }

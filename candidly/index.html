@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-app="candidly">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candidly — Garrett Franks</title>
+<meta name="description" content="Candidly: Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.">
+<link rel="canonical" href="https://gfranks.github.io/candidly/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Garrett Franks">
+<meta property="og:url" content="https://gfranks.github.io/candidly/">
+<meta property="og:title" content="Candidly — Garrett Franks">
+<meta property="og:description" content="Candidly: Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.">
+<meta property="og:image" content="https://gfranks.github.io/assets/og/candidly.jpg?v=105cd686">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Candidly — Garrett Franks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gfranks.github.io/assets/og/candidly.jpg?v=105cd686">
+<link rel="icon" type="image/jpeg" href="/assets/icons/candidly.jpg">
+<link rel="apple-touch-icon" href="/assets/icons/candidly.jpg">
+<link rel="stylesheet" href="/assets/legal.css?v=03ac2612">
+<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
+<script src="/assets/home.js?v=7621e0b1" defer></script>
+</head>
+<body>
+
+  <div class="hero hero-big">
+    <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
+    <a href="/candidly/"><img src="/assets/icons/candidly.jpg?v=c912c392" alt="Candidly icon" width="512" height="512"></a>
+    <h1>Candidly</h1>
+    <p>Remote desktop · iPhone, iPad &amp; Mac</p>
+    <p class="hero-tagline">Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.</p>
+    <div class="hero-actions"><span class="hero-store soon">Coming soon to the App Store</span><span class="hero-status">In development</span></div>
+  </div>
+
+  <main>
+    <section class="card">
+      <h2>About</h2>
+      <p class="lede">Candidly connects to the Screen Sharing that&#x27;s already built into macOS, so there&#x27;s nothing to install on the Mac. Sign in with your Mac account, pick a display, and work with touch, a trackpad-style cursor, or a hardware keyboard and mouse. Your computers and their passwords follow you through iCloud.</p>
+      <ul class="facts"><li>Swift 6</li><li>SwiftUI</li><li>UIKit &amp; AppKit</li><li>Metal</li><li>Network framework</li><li>CryptoKit &amp; Security</li><li>iCloud Keychain</li><li>Swift Testing</li><li>XcodeGen</li></ul>
+    </section>
+
+    <section class="card">
+      <h2>What I built</h2>
+      <ul class="built">
+        <li>The VNC (RFB) protocol written from scratch in Swift, including Apple&#x27;s Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice and the Mac clipboard. No third-party code.</li>
+        <li>ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server, with output and size limits, and tested against an in-process fake server and a real VNC server.</li>
+        <li>A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone.</li>
+        <li>Touch and Trackpad modes with the full gesture set: multi-finger clicks and drags, two-finger scroll, pinch zoom, edge and corner swipes, and three-finger swipes for Mission Control and Spaces.</li>
+        <li>Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>How it fits together</h2>
+      <div class="arch">
+        <div class="tier"><h3>Apps</h3><ul style="--cols:3"><li><strong>iPhone &amp; iPad viewer</strong><span>Gestures, key bar, Metal</span></li><li><strong>Mac viewer</strong><span>AppKit, Metal</span></li><li><strong>Computer list</strong><span>SwiftUI, shared</span></li></ul></div>
+        <p class="flow"><span>one session per open viewer</span></p>
+        <div class="tier"><h3>CandidlyKit</h3><ul style="--cols:3"><li><strong>ComputerStore</strong><span>iCloud key-value store + local file</span></li><li><strong>CredentialStore</strong><span>iCloud Keychain</span></li><li><strong>BonjourBrowser</strong><span>Finds Macs with Screen Sharing on</span></li></ul></div>
+        <p class="flow"><span>connect, sign in, stream</span></p>
+        <div class="tier"><h3>RFBKit (Swift package, no UI)</h3><ul style="--cols:2"><li><strong>Transport</strong><span>Network framework, keepalive</span></li><li><strong>Sign-in</strong><span>VNC, Apple DH, RSA tunnel</span></li><li><strong>Decoders</strong><span>ZRLE, Zlib, Hextile, CopyRect</span></li><li><strong>Apple extensions</strong><span>Displays, sessions, clipboard</span></li></ul></div>
+        <p class="flow"><span>RFB over TCP, on the LAN or Tailscale</span></p>
+        <div class="tier"><h3>Your Mac</h3><ul style="--cols:1"><li><strong>macOS Screen Sharing</strong><span>Built in, nothing to install</span></li></ul></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><a href="/">Garrett Franks</a> · <a href="mailto:lgfz71@gmail.com">lgfz71@gmail.com</a> · <a href="https://github.com/gfranks">GitHub</a> · <a href="https://www.linkedin.com/in/garrett-franks-96528837/">LinkedIn</a></p>
+    <p class="fine">© 2026 Garrett Franks</p>
+  </footer>
+
+</body>
+</html>

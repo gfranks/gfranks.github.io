@@ -420,6 +420,107 @@
           ]
         }
       ]
+    },
+    {
+      "id": "candidly",
+      "name": "Candidly",
+      "kind": "Remote desktop",
+      "platforms": "iPhone, iPad & Mac",
+      "status": "In development",
+      "tagline": "Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.",
+      "about": "Candidly connects to the Screen Sharing that's already built into macOS, so there's nothing to install on the Mac. Sign in with your Mac account, pick a display, and work with touch, a trackpad-style cursor, or a hardware keyboard and mouse. Your computers and their passwords follow you through iCloud.",
+      "highlights": [
+        "The VNC (RFB) protocol written from scratch in Swift, including Apple's Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice and the Mac clipboard. No third-party code.",
+        "ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server, with output and size limits, and tested against an in-process fake server and a real VNC server.",
+        "A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone.",
+        "Touch and Trackpad modes with the full gesture set: multi-finger clicks and drags, two-finger scroll, pinch zoom, edge and corner swipes, and three-finger swipes for Mission Control and Spaces.",
+        "Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour."
+      ],
+      "stack": [
+        "Swift 6",
+        "SwiftUI",
+        "UIKit & AppKit",
+        "Metal",
+        "Network framework",
+        "CryptoKit & Security",
+        "iCloud Keychain",
+        "Swift Testing",
+        "XcodeGen"
+      ],
+      "shots": 0,
+      "appStore": null,
+      "website": null,
+      "legal": false,
+      "shotShape": "portrait",
+      "architecture": [
+        {
+          "label": "Apps",
+          "nodes": [
+            {
+              "name": "iPhone & iPad viewer",
+              "detail": "Gestures, key bar, Metal"
+            },
+            {
+              "name": "Mac viewer",
+              "detail": "AppKit, Metal"
+            },
+            {
+              "name": "Computer list",
+              "detail": "SwiftUI, shared"
+            }
+          ],
+          "flow": "one session per open viewer"
+        },
+        {
+          "label": "CandidlyKit",
+          "nodes": [
+            {
+              "name": "ComputerStore",
+              "detail": "iCloud key-value store + local file"
+            },
+            {
+              "name": "CredentialStore",
+              "detail": "iCloud Keychain"
+            },
+            {
+              "name": "BonjourBrowser",
+              "detail": "Finds Macs with Screen Sharing on"
+            }
+          ],
+          "flow": "connect, sign in, stream"
+        },
+        {
+          "label": "RFBKit (Swift package, no UI)",
+          "nodes": [
+            {
+              "name": "Transport",
+              "detail": "Network framework, keepalive"
+            },
+            {
+              "name": "Sign-in",
+              "detail": "VNC, Apple DH, RSA tunnel"
+            },
+            {
+              "name": "Decoders",
+              "detail": "ZRLE, Zlib, Hextile, CopyRect"
+            },
+            {
+              "name": "Apple extensions",
+              "detail": "Displays, sessions, clipboard"
+            }
+          ],
+          "flow": "RFB over TCP, on the LAN or Tailscale"
+        },
+        {
+          "label": "Your Mac",
+          "nodes": [
+            {
+              "name": "macOS Screen Sharing",
+              "detail": "Built in, nothing to install"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
