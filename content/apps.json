@@ -450,7 +450,7 @@
       "shots": 0,
       "appStore": null,
       "website": null,
-      "legal": false,
+      "legal": true,
       "shotShape": "portrait",
       "architecture": [
         {

@@ -10,7 +10,7 @@ Garrett Franks's site: the home page, and each app's page, privacy policy, terms
 | Tydé | `/tyde/` | `/tyde/privacy/` | `/tyde/terms/` | `/tyde/support/` |
 | Pyllar | `/pyllar/` | (its own site) | | |
 | Whisper Court | `/whispercourt/` | `/whispercourt/privacy/` | `/whispercourt/terms/` | `/whispercourt/support/` |
-| Candidly | `/candidly/` | (before App Store submission) | | |
+| Candidly | `/candidly/` | `/candidly/privacy/` | `/candidly/terms/` | `/candidly/support/` |
 
 These are the URLs to give App Store Connect. Don't rename an app's folder once it's live.
 
