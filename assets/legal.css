@@ -14,15 +14,15 @@ a { color: var(--accent); }
 .hero {
   position: relative;
   background: linear-gradient(180deg, var(--hero-top) 0%, var(--hero-bottom) 100%);
-  padding: 64px 20px 48px;
+  padding: calc(64px + env(safe-area-inset-top, 0px)) 20px 48px;
   text-align: center;
   color: var(--hero-ink);
 }
-.hero-big { padding: 76px 20px 64px; }
+.hero-big { padding: calc(76px + env(safe-area-inset-top, 0px)) 20px 64px; }
 .hero .back {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  left: max(16px, env(safe-area-inset-left, 0px));
   color: var(--hero-ink);
   opacity: 0.8;
   font-size: 14px;

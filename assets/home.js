@@ -16,6 +16,14 @@ if (matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").mat
   }
 }
 
+// Safari tints the status bar from a fixed element at the top; hand it back once the aurora has scrolled away.
+const tint = document.querySelector(".tint");
+if (tint) {
+  const update = () => tint.classList.toggle("off", scrollY > 320);
+  addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 const rotator = document.querySelector(".rotator");
 if (rotator && matchMedia("(prefers-reduced-motion: no-preference)").matches) {
   const words = [...rotator.children];

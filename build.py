@@ -76,7 +76,7 @@ def head(title, description, icon, extra_css, path, og_image, app_id=None, scrip
 <html lang="en"{data_app}>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{SITE_URL}{path}">
@@ -212,6 +212,7 @@ def home():
     return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["home.css"], "/", "home",
                 scripts=["home.js"]) + f"""<body class="home">
 
+  <div class="tint" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <header class="intro">
@@ -358,6 +359,7 @@ def not_found():
     return head("Page not found — Garrett Franks", "Page not found.", "/assets/favicon.svg", ["home.css"],
                 "/404.html", "home") + """<body class="home">
 
+  <div class="tint" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <header class="intro">

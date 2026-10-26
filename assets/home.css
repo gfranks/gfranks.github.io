@@ -10,6 +10,7 @@
   --blob-d: #8FB0F5;
   --blob-opacity: 0.55;
   --grain-opacity: 0.45;
+  --tint: #E5BFB3;
   --fibre-opacity: 0.16;
   --rot-a: #B8562F;
   --rot-b: #C2304A;
@@ -27,6 +28,7 @@
     --blob-d: #2A54AE;
     --blob-opacity: 0.4;
     --grain-opacity: 0.5;
+    --tint: #643F3A;
     --fibre-opacity: 0;
     --rot-a: #F0A27A;
     --rot-b: #FF7A8E;
@@ -83,6 +85,16 @@ body::after {
   mix-blend-mode: multiply;
 }
 
+.tint {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 6px;
+  z-index: 3;
+  background: var(--tint);
+  pointer-events: none;
+}
+.tint.off { display: none; }
+
 .aurora span {
   position: absolute;
   width: 46vmax;
@@ -106,7 +118,7 @@ body::after {
 .intro {
   max-width: 1080px;
   margin: 0 auto;
-  padding: clamp(88px, 16vw, 168px) 20px 64px;
+  padding: calc(clamp(88px, 16vw, 168px) + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 64px max(20px, env(safe-area-inset-left, 0px));
 }
 .eyebrow {
   margin: 0 0 18px;
@@ -593,7 +605,7 @@ footer .fine { opacity: 0.7; }
 }
 
 @media (max-width: 680px) {
-  .intro { padding-top: 56px; padding-bottom: 44px; }
+  .intro { padding-top: calc(56px + env(safe-area-inset-top, 0px)); padding-bottom: 44px; }
   .stats { display: grid; grid-template-columns: repeat(2, max-content); gap: 20px 44px; margin-top: 36px; }
   .ticker { margin-bottom: 40px; }
   .ticker span { font-size: 30px; padding-inline: 16px; }
