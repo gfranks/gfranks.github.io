@@ -426,7 +426,7 @@
       "name": "Candidly",
       "kind": "Remote desktop",
       "platforms": "iPhone, iPad & Mac",
-      "status": "In development",
+      "status": "On the App Store",
       "tagline": "Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.",
       "about": "Candidly connects to the Screen Sharing that's already built into macOS, so there's nothing to install on the Mac. Sign in with your Mac account, pick a display, and work with touch, a trackpad-style cursor, or a hardware keyboard and mouse. Your computers and their passwords follow you through iCloud.",
       "highlights": [
@@ -448,7 +448,7 @@
         "XcodeGen"
       ],
       "shots": 0,
-      "appStore": null,
+      "appStore": "https://apps.apple.com/app/id6827271660",
       "website": null,
       "legal": true,
       "shotShape": "portrait",
