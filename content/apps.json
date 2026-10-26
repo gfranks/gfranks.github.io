@@ -353,7 +353,7 @@
       "name": "Whisper Court",
       "kind": "Strategy game",
       "platforms": "iPhone",
-      "status": "Coming soon",
+      "status": "On the App Store",
       "tagline": "You are a Renaissance spymaster. Spread one rumor through the court.",
       "about": "Gossips spread it, skeptics need two sources, and the loyal will expose you. Each turn you whisper, silence, forge or bribe before the rumor travels one more step, and every court can be won in a set number of turns.",
       "highlights": [
@@ -369,7 +369,7 @@
         "XcodeGen"
       ],
       "shots": 4,
-      "appStore": null,
+      "appStore": "https://apps.apple.com/app/id6826357250",
       "website": null,
       "legal": true,
       "shotShape": "portrait",
