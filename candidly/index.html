@@ -36,6 +36,13 @@
 
   <nav class="pillbar"><a href="/candidly/privacy/">Privacy Policy</a><a href="/candidly/terms/">Terms of Use</a><a href="/candidly/support/">Support</a></nav>
 
+  <div class="gallery portrait" tabindex="0" aria-label="Candidly screenshots">
+      <img src="/assets/shots/candidly/01.jpg?v=c50e8ef9" alt="Candidly screenshot 1" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/candidly/02.jpg?v=78f2c593" alt="Candidly screenshot 2" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/candidly/03.jpg?v=a7a8e827" alt="Candidly screenshot 3" loading="lazy" width="441" height="960">
+      <img src="/assets/shots/candidly/04.jpg?v=3a287a5b" alt="Candidly screenshot 4" loading="lazy" width="441" height="960">
+  </div>
+
   <main>
     <section class="card">
       <h2>About</h2>
@@ -48,9 +55,12 @@
       <ul class="built">
         <li>The VNC (RFB) protocol written from scratch in Swift, including Apple&#x27;s Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice and the Mac clipboard. No third-party code.</li>
         <li>ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server, with output and size limits, and tested against an in-process fake server and a real VNC server.</li>
+        <li>Whole-session encryption with Apple&#x27;s own Screen Sharing scheme (AES-128 records, on by default after Mac account sign-in), a lock in the viewer, and a per-computer setting that refuses unencrypted sessions.</li>
         <li>A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone.</li>
         <li>Touch and Trackpad modes with the full gesture set: multi-finger clicks and drags, two-finger scroll, pinch zoom, edge and corner swipes, and three-finger swipes for Mission Control and Spaces.</li>
         <li>Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.</li>
+        <li>The Mac&#x27;s real pointer, drawn on the device from Apple&#x27;s cursor-shape messages at three sizes, so it stays sharp and moves without waiting on the network.</li>
+        <li>A preview of each computer&#x27;s last screen in the list, kept on the device only, with a switch in Settings to turn it off.</li>
       </ul>
     </section>
 

@@ -432,9 +432,12 @@
       "highlights": [
         "The VNC (RFB) protocol written from scratch in Swift, including Apple's Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice and the Mac clipboard. No third-party code.",
         "ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server, with output and size limits, and tested against an in-process fake server and a real VNC server.",
+        "Whole-session encryption with Apple's own Screen Sharing scheme (AES-128 records, on by default after Mac account sign-in), a lock in the viewer, and a per-computer setting that refuses unencrypted sessions.",
         "A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone.",
         "Touch and Trackpad modes with the full gesture set: multi-finger clicks and drags, two-finger scroll, pinch zoom, edge and corner swipes, and three-finger swipes for Mission Control and Spaces.",
-        "Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour."
+        "Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.",
+        "The Mac's real pointer, drawn on the device from Apple's cursor-shape messages at three sizes, so it stays sharp and moves without waiting on the network.",
+        "A preview of each computer's last screen in the list, kept on the device only, with a switch in Settings to turn it off."
       ],
       "stack": [
         "Swift 6",
@@ -447,7 +450,7 @@
         "Swift Testing",
         "XcodeGen"
       ],
-      "shots": 0,
+      "shots": 4,
       "appStore": "https://apps.apple.com/app/id6827271660",
       "website": null,
       "legal": true,
