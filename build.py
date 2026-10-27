@@ -4,10 +4,12 @@
 Run: python3 -I build.py          (pages only)
      python3 -I build.py --og     (pages, then re-render the share images with headless Chrome)
 """
+import base64
 import hashlib
 import html
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -469,7 +471,22 @@ def render_og():
     print(f"Rendered {len(jobs)} share images.")
 
 
+MAILTO = re.compile(r'href="mailto:' + re.escape(CONTACT) + r'"(>' + re.escape(CONTACT) + r'</a>)?')
+ENCODED = base64.b64encode(CONTACT[::-1].encode()).decode()
+FALLBACK = CONTACT.replace("@", " (at) ").replace(".", " (dot) ")
+UNHIDE = ('<script>for(const a of document.querySelectorAll("a[data-e]")){const m=atob(a.dataset.e).split("").reverse().join("");'
+          'a.href="mailto:"+m;if(a.hasAttribute("data-show"))a.textContent=m}</script>')
+
+
+def hide_email(text):
+    # Scrapers read raw HTML; the address only exists once the inline script rebuilds the link.
+    text = MAILTO.sub(lambda m: f'href="#" data-e="{ENCODED}"' + (f' data-show>{FALLBACK}</a>' if m.group(1) else ""), text)
+    assert CONTACT not in text, "contact address left in plain text"
+    return text.replace("</body>", UNHIDE + "\n</body>")
+
+
 def write(path, text):
+    text = hide_email(text)
     path = ROOT / path
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text)
