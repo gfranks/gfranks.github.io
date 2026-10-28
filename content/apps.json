@@ -425,32 +425,35 @@
       "id": "candidly",
       "name": "Candidly",
       "kind": "Remote desktop",
-      "platforms": "iPhone, iPad & Mac",
+      "platforms": "iPhone & iPad",
       "status": "On the App Store",
-      "tagline": "Control your Mac from your iPhone, iPad or another Mac, with your phone as the trackpad.",
-      "about": "Candidly connects to the Screen Sharing that's already built into macOS, so there's nothing to install on the Mac. Sign in with your Mac account, pick a display, and work with touch, a trackpad-style cursor, or a hardware keyboard and mouse. Your computers and their passwords follow you through iCloud.",
+      "tagline": "Control your Mac from your iPhone or iPad, and keep an eye on it from any app.",
+      "about": "Candidly connects to the Screen Sharing that's already built into macOS, so there's nothing to install on the Mac. Use your phone as the trackpad and keyboard, float your Mac in Picture in Picture while you use other apps, get a notification when a build or export finishes, copy text straight off the screen, keep up to four Macs open, and wake a sleeping one with a tap. Your computers and their passwords follow you through iCloud. One price, no subscription.",
       "highlights": [
-        "The VNC (RFB) protocol written from scratch in Swift, including Apple's Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice and the Mac clipboard. No third-party code.",
-        "ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server, with output and size limits, and tested against an in-process fake server and a real VNC server.",
+        "The VNC (RFB) protocol written from scratch in Swift, including Apple's Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice, the Mac clipboard and curtain mode. No third-party code.",
         "Whole-session encryption with Apple's own Screen Sharing scheme (AES-128 records, on by default after Mac account sign-in), a lock in the viewer, and a per-computer setting that refuses unencrypted sessions.",
-        "A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone.",
-        "Touch and Trackpad modes with the full gesture set: multi-finger clicks and drags, two-finger scroll, pinch zoom, edge and corner swipes, and three-finger swipes for Mission Control and Spaces.",
-        "Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.",
-        "The Mac's real pointer, drawn on the device from Apple's cursor-shape messages at three sizes, so it stays sharp and moves without waiting on the network.",
-        "A preview of each computer's last screen in the list, kept on the device only, with a switch in Settings to turn it off."
+        "A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone, plus ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server.",
+        "Picture in Picture for a remote screen: frames scaled with vImage into an AVSampleBufferDisplayLayer, a session that stays live in the background while PiP is open, and a handover when you switch Macs or windows.",
+        "Watch Area: draw a box over the Mac's screen and get a notification when it changes or stops changing, using a luminance grid that ignores a blinking cursor but catches a slow progress bar.",
+        "Up to four Macs open at once with a switcher, and multiple windows on iPad, built on an app-wide session manager that pauses whatever isn't on screen.",
+        "Select Text with Live Text (VisionKit) on a full-resolution crop of what you're looking at, Wake-on-LAN with an on-demand check for Macs that aren't responding, Trackpad Only mode, and custom shortcut buttons on the key strip.",
+        "Touch and Trackpad modes with the full gesture set (multi-finger clicks and drags, two-finger scroll, pinch zoom at your fingers, edge and corner swipes, three-finger swipes for Mission Control and Spaces) and the Mac's real pointer drawn on the device.",
+        "Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour."
       ],
       "stack": [
         "Swift 6",
         "SwiftUI",
-        "UIKit & AppKit",
+        "UIKit",
         "Metal",
+        "AVKit & Accelerate",
+        "VisionKit",
         "Network framework",
         "CryptoKit & Security",
         "iCloud Keychain",
         "Swift Testing",
         "XcodeGen"
       ],
-      "shots": 4,
+      "shots": 9,
       "appStore": "https://apps.apple.com/app/id6827271660",
       "website": null,
       "legal": true,
@@ -461,18 +464,18 @@
           "nodes": [
             {
               "name": "iPhone & iPad viewer",
-              "detail": "Gestures, key bar, Metal"
+              "detail": "Gestures, key strip, Metal, PiP"
             },
             {
-              "name": "Mac viewer",
-              "detail": "AppKit, Metal"
+              "name": "Session manager",
+              "detail": "Up to 4 Macs, one per window"
             },
             {
               "name": "Computer list",
-              "detail": "SwiftUI, shared"
+              "detail": "SwiftUI, wake and status"
             }
           ],
-          "flow": "one session per open viewer"
+          "flow": "the Mac on screen streams; the rest pause"
         },
         {
           "label": "CandidlyKit",
