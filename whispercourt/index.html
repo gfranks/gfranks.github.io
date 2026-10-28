@@ -19,63 +19,75 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/whispercourt.jpg?v=25bebf42">
 <link rel="icon" type="image/jpeg" href="/assets/icons/whispercourt.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/whispercourt.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=2d90d8d8">
-<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
-<script src="/assets/home.js?v=3dcd8510" defer></script>
+<link rel="stylesheet" href="/assets/base.css?v=ab7e61ff">
+<link rel="stylesheet" href="/assets/themes.css?v=0ce46594">
+<link rel="stylesheet" href="/assets/app.css?v=fdc37ae4">
+<script src="/assets/home.js?v=643a0d84" defer></script>
 </head>
 <body>
 
-  <div class="hero hero-big">
+  <header class="app-hero">
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
-    <a href="/whispercourt/"><img src="/assets/icons/whispercourt.jpg?v=96eb96cc" alt="Whisper Court icon" width="512" height="512"></a>
-    <h1>Whisper Court</h1>
-    <p>Strategy game · iPhone</p>
-    <p class="hero-tagline">You are a Renaissance spymaster. Spread one rumor through the court.</p>
-    <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6826357250">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-
-  <nav class="pillbar"><a href="/whispercourt/privacy/">Privacy Policy</a><a href="/whispercourt/terms/">Terms of Use</a><a href="/whispercourt/support/">Support</a></nav>
-
-  <div class="gallery portrait" tabindex="0" aria-label="Whisper Court screenshots">
-      <video class="clip" src="/assets/video/whispercourt.mp4?v=18759580" poster="/assets/video/whispercourt-poster.jpg?v=997e894b" autoplay muted loop playsinline preload="metadata" aria-label="Whisper Court in use"></video>
-      <img src="/assets/shots/whispercourt/01.jpg?v=516379b4" alt="Whisper Court screenshot 1" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/whispercourt/02.jpg?v=a1856243" alt="Whisper Court screenshot 2" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/whispercourt/03.jpg?v=dce01529" alt="Whisper Court screenshot 3" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/whispercourt/04.jpg?v=9629c45b" alt="Whisper Court screenshot 4" loading="lazy" width="441" height="960">
-  </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="/assets/icons/whispercourt.jpg?v=96eb96cc" alt="" width="512" height="512">
+        <h1>Whisper Court</h1>
+        <p class="hero-kind">Strategy game · iPhone</p>
+        <p class="hero-tagline">You are a Renaissance spymaster. Spread one rumor through the court.</p>
+        <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6826357250">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="hero-phones"><img class="phone rear device-framed" src="/assets/devices/whispercourt/05-court.webp?v=debc917f" alt="The court: the daily intrigue and seasons" width="538" height="1100" decoding="async"><img class="phone front device-framed" src="/assets/devices/whispercourt/01-spread.webp?v=08150316" alt="A court of characters linked by who talks to whom" width="538" height="1100" decoding="async"></div>
+    </div>
+  </header>
 
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">Gossips spread it, skeptics need two sources, and the loyal will expose you. Each turn you whisper, silence, forge or bribe before the rumor travels one more step, and every court can be won in a set number of turns.</p>
-      <ul class="facts"><li>Swift 6</li><li>SwiftUI</li><li>Swift Testing</li><li>Swift Package Manager</li><li>XcodeGen</li></ul>
-    </section>
-
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">
-        <li>A deterministic rules engine in its own Swift package, with no UI code, so every rule is unit-tested.</li>
-        <li>A solver that proves each level&#x27;s best score; tests fail if a level&#x27;s par isn&#x27;t the true optimum or if its new mechanic isn&#x27;t actually needed.</li>
-        <li>Swift 6 and SwiftUI, with Swift Testing and an XcodeGen project.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>How it fits together</h2>
-      <div class="arch">
-        <div class="tier"><h3>App (SwiftUI)</h3><ul style="--cols:2"><li><strong>Court board</strong><span>Characters, links, rumor animation</span></li><li><strong>Levels &amp; progress</strong><span>Stored on device</span></li></ul></div>
-        <p class="flow"><span>actions in, new state out</span></p>
-        <div class="tier"><h3>WhisperCore (Swift package, no UI)</h3><ul style="--cols:3"><li><strong>Engine</strong><span>Deterministic rules</span></li><li><strong>Solver</strong><span>Finds each level&#x27;s best solution</span></li><li><strong>LevelLibrary</strong><span>levelNN.json</span></li></ul></div>
-        <p class="flow"><span>checked by</span></p>
-        <div class="tier"><h3>Tests (Swift Testing)</h3><ul style="--cols:2"><li><strong>Rule tests</strong><span>Required with every engine change</span></li><li><strong>Level tests</strong><span>Par equals the solver&#x27;s optimum; each new mechanic is required</span></li></ul></div>
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>Gossips spread it, skeptics need two sources, and the loyal will expose you. Each turn you whisper, silence, forge or bribe before the rumor travels one more step, and every court can be won in a set number of turns.</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">On the App Store</p><a class="tile-link" href="https://apps.apple.com/app/id6826357250">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">iPhone</p><p class="note">Strategy game</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p><ul class="chips"><li>Swift 6</li><li>SwiftUI</li><li>Swift Testing</li><li>Swift Package Manager</li><li>XcodeGen</li></ul></div>
       </div>
     </section>
 
-    <div class="tiles">
-        <a class="tile" href="/whispercourt/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/whispercourt/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/whispercourt/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">
+        <div class="tile rise tilt" style="--i:0;--span:2"><span class="num" aria-hidden="true">01</span><p>A deterministic rules engine in its own Swift package, with no UI code, so every rule is unit-tested.</p></div>
+        <div class="tile rise tilt" style="--i:1;--span:1"><span class="num" aria-hidden="true">02</span><p>A solver that proves each level&#x27;s best score; tests fail if a level&#x27;s par isn&#x27;t the true optimum or if its new mechanic isn&#x27;t actually needed.</p></div>
+        <div class="tile rise tilt" style="--i:2;--span:3"><span class="num" aria-hidden="true">03</span><p>Swift 6 and SwiftUI, with Swift Testing and an XcodeGen project.</p></div>
+      </div>
+    </section>
+
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="Whisper Court screens, scrolls sideways">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/01-spread.webp?v=08150316" alt="A court of characters linked by who talks to whom" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/05-court.webp?v=debc917f" alt="The court: the daily intrigue and seasons" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/03-letter.webp?v=e38ed992" alt="A sealed letter between levels" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/04-seasons.webp?v=82734707" alt="Choosing a favor after surviving a night" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/07-win.webp?v=5babd6d5" alt="The court believes: a level won" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/whispercourt/06-forge.webp?v=7965e79e" alt="Forging a link between two courtiers" width="538" height="1100" decoding="async">
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
+      <div class="arch">
+        <div class="tier rise" style="--i:0"><h3>App (SwiftUI)</h3><ul style="--cols:2"><li><strong>Court board</strong><span>Characters, links, rumor animation</span></li><li><strong>Levels &amp; progress</strong><span>Stored on device</span></li></ul></div>
+        <p class="flow rise" style="--i:0"><span>actions in, new state out</span></p>
+        <div class="tier rise" style="--i:1"><h3>WhisperCore (Swift package, no UI)</h3><ul style="--cols:3"><li><strong>Engine</strong><span>Deterministic rules</span></li><li><strong>Solver</strong><span>Finds each level&#x27;s best solution</span></li><li><strong>LevelLibrary</strong><span>levelNN.json</span></li></ul></div>
+        <p class="flow rise" style="--i:1"><span>checked by</span></p>
+        <div class="tier rise" style="--i:2"><h3>Tests (Swift Testing)</h3><ul style="--cols:2"><li><strong>Rule tests</strong><span>Required with every engine change</span></li><li><strong>Level tests</strong><span>Par equals the solver&#x27;s optimum; each new mechanic is required</span></li></ul></div>
+      </div>
+    </section>
+
+    <nav class="legal" aria-label="Whisper Court policies">
+      <a href="/whispercourt/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/whispercourt/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/whispercourt/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+
   </main>
 
   <footer>

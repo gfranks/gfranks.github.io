@@ -19,59 +19,70 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/pyllar.jpg?v=6d745171">
 <link rel="icon" type="image/jpeg" href="/assets/icons/pyllar.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/pyllar.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=2d90d8d8">
-<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
-<script src="/assets/home.js?v=3dcd8510" defer></script>
+<link rel="stylesheet" href="/assets/base.css?v=ab7e61ff">
+<link rel="stylesheet" href="/assets/themes.css?v=0ce46594">
+<link rel="stylesheet" href="/assets/app.css?v=fdc37ae4">
+<script src="/assets/home.js?v=643a0d84" defer></script>
 </head>
 <body>
 
-  <div class="hero hero-big">
+  <header class="app-hero">
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
-    <a href="/pyllar/"><img src="/assets/icons/pyllar.jpg?v=9011e968" alt="Pyllar icon" width="512" height="512"></a>
-    <h1>Pyllar</h1>
-    <p>Field service platform · iOS, Android &amp; web</p>
-    <p class="hero-tagline">Run a lawn care business from one place: scheduling, dispatch, invoicing and the crew&#x27;s day.</p>
-    <div class="hero-actions"><a class="hero-store" href="https://pyllarhq.com">pyllarhq.com <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="hero-status">Launching soon</span></div>
-  </div>
-
-  <div class="gallery portrait" tabindex="0" aria-label="Pyllar screenshots">
-      <img src="/assets/shots/pyllar/01.jpg?v=154b9a4d" alt="Pyllar screenshot 1" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/02.jpg?v=6ba61b02" alt="Pyllar screenshot 2" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/03.jpg?v=038d1f5f" alt="Pyllar screenshot 3" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/04.jpg?v=c92ea42d" alt="Pyllar screenshot 4" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/05.jpg?v=324275da" alt="Pyllar screenshot 5" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/06.jpg?v=803a5860" alt="Pyllar screenshot 6" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/pyllar/07.jpg?v=be9e372b" alt="Pyllar screenshot 7" loading="lazy" width="441" height="960">
-  </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="/assets/icons/pyllar.jpg?v=9011e968" alt="" width="512" height="512">
+        <h1>Pyllar</h1>
+        <p class="hero-kind">Field service platform · iOS, Android &amp; web</p>
+        <p class="hero-tagline">Run a lawn care business from one place: scheduling, dispatch, invoicing and the crew&#x27;s day.</p>
+        <div class="hero-actions"><a class="hero-store" href="https://pyllarhq.com">pyllarhq.com <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="hero-status">Launching soon</span></div>
+      </div>
+      <div class="hero-phones"><img class="phone rear device-framed" src="/assets/devices/pyllar/04-schedule.webp?v=f8a51aa6" alt="The day&#x27;s route, stop by stop" width="538" height="1100" decoding="async"><img class="phone front device-framed" src="/assets/devices/pyllar/01-dashboard.webp?v=fa2d2c62" alt="The owner&#x27;s dashboard: today&#x27;s jobs, weather and revenue" width="538" height="1100" decoding="async"></div>
+    </div>
+  </header>
 
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">A multi-tenant SaaS for lawn care and landscaping companies, built and run by my company, C&amp;F Solutions LLC. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.</p>
-      <ul class="facts"><li>Swift</li><li>SwiftUI</li><li>Kotlin</li><li>Jetpack Compose</li><li>TypeScript</li><li>Next.js</li><li>Fastify</li><li>PostgreSQL</li><li>Stripe</li><li>Claude API</li></ul>
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>A multi-tenant SaaS for lawn care and landscaping companies, built and run by my company, C&amp;F Solutions LLC. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">Launching soon</p><a class="tile-link" href="https://pyllarhq.com">pyllarhq.com <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">iOS, Android &amp; web</p><p class="note">Field service platform</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p><ul class="chips"><li>Swift</li><li>SwiftUI</li><li>Kotlin</li><li>Jetpack Compose</li><li>TypeScript</li><li>Next.js</li><li>Fastify</li><li>PostgreSQL</li><li>Stripe</li><li>Claude API</li></ul></div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">
-        <li>Native iOS (Swift 6, SwiftUI) and Android (Kotlin, Jetpack Compose) apps kept at feature parity, with a Live Activity for the job in progress.</li>
-        <li>Next.js web app, customer portal and internal staff portal on a TypeScript Fastify API with PostgreSQL and Drizzle.</li>
-        <li>An AI assistant built on Claude that returns structured intents, which the API validates and permission-checks by role before acting.</li>
-        <li>Stripe billing and invoice payments, Typesense search, and role-based access control across owners, managers and technicians.</li>
-        <li>Dockerized deploys to staging and production through GitHub Actions.</li>
-      </ul>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">
+        <div class="tile rise tilt" style="--i:0;--span:2"><span class="num" aria-hidden="true">01</span><p>Native iOS (Swift 6, SwiftUI) and Android (Kotlin, Jetpack Compose) apps kept at feature parity, with a Live Activity for the job in progress.</p></div>
+        <div class="tile rise tilt" style="--i:1;--span:1"><span class="num" aria-hidden="true">02</span><p>Next.js web app, customer portal and internal staff portal on a TypeScript Fastify API with PostgreSQL and Drizzle.</p></div>
+        <div class="tile rise tilt" style="--i:2;--span:1"><span class="num" aria-hidden="true">03</span><p>An AI assistant built on Claude that returns structured intents, which the API validates and permission-checks by role before acting.</p></div>
+        <div class="tile rise tilt" style="--i:3;--span:1"><span class="num" aria-hidden="true">04</span><p>Stripe billing and invoice payments, Typesense search, and role-based access control across owners, managers and technicians.</p></div>
+        <div class="tile rise tilt" style="--i:4;--span:1"><span class="num" aria-hidden="true">05</span><p>Dockerized deploys to staging and production through GitHub Actions.</p></div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>How it fits together</h2>
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="Pyllar screens, scrolls sideways">
+        <img class="shot device-framed" src="/assets/devices/pyllar/01-dashboard.webp?v=fa2d2c62" alt="The owner&#x27;s dashboard: today&#x27;s jobs, weather and revenue" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/pyllar/04-schedule.webp?v=f8a51aa6" alt="The day&#x27;s route, stop by stop" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/pyllar/03-dispatch.webp?v=8527a67f" alt="Dispatch map with crews live on it" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/pyllar/05-job-details.webp?v=756a1464" alt="A job in progress with its timer and checklist" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/pyllar/07-payments.webp?v=07e49d8a" alt="A paid invoice" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/pyllar/02-tech-home.webp?v=0346f1e1" alt="A technician&#x27;s day with the job in progress" width="538" height="1100" decoding="async">
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
       <div class="arch">
-        <div class="tier"><h3>Clients</h3><ul style="--cols:3"><li><strong>iOS</strong><span>SwiftUI, offline-first, Live Activity</span></li><li><strong>Android</strong><span>Jetpack Compose, offline-first</span></li><li><strong>Web app</strong><span>Next.js, for owners</span></li><li><strong>Customer portal</strong><span>Next.js, self-serve</span></li><li><strong>Staff portal</strong><span>Next.js, internal</span></li></ul></div>
-        <p class="flow"><span>HTTPS REST and WebSocket, JWT</span></p>
-        <div class="tier"><h3>API (TypeScript, Fastify)</h3><ul style="--cols:2"><li><strong>Core API</strong><span>Jobs, scheduling, invoicing, CRM</span></li><li><strong>AI service</strong><span>Claude intents, role checks</span></li><li><strong>Payments</strong><span>Stripe Connect</span></li><li><strong>Weather</strong><span>Cached per job site</span></li></ul></div>
-        <p class="flow"><span>shared database and job queues</span></p>
-        <div class="tier"><h3>Data &amp; jobs</h3><ul style="--cols:2"><li><strong>PostgreSQL</strong><span>Drizzle schema and migrations</span></li><li><strong>Redis &amp; BullMQ</strong><span>Background workers</span></li><li><strong>Typesense</strong><span>Search</span></li><li><strong>Cloudflare R2</strong><span>Photos and files</span></li></ul></div>
-        <p class="flow"><span>notifications and integrations</span></p>
-        <div class="tier"><h3>Outside</h3><ul style="--cols:2"><li><strong>Stripe</strong><span>Billing and invoice payments</span></li><li><strong>Claude API</strong><span>Assistant</span></li><li><strong>APNs &amp; FCM</strong><span>Push</span></li><li><strong>Twilio &amp; Resend</strong><span>SMS and email</span></li></ul></div>
+        <div class="tier rise" style="--i:0"><h3>Clients</h3><ul style="--cols:3"><li><strong>iOS</strong><span>SwiftUI, offline-first, Live Activity</span></li><li><strong>Android</strong><span>Jetpack Compose, offline-first</span></li><li><strong>Web app</strong><span>Next.js, for owners</span></li><li><strong>Customer portal</strong><span>Next.js, self-serve</span></li><li><strong>Staff portal</strong><span>Next.js, internal</span></li></ul></div>
+        <p class="flow rise" style="--i:0"><span>HTTPS REST and WebSocket, JWT</span></p>
+        <div class="tier rise" style="--i:1"><h3>API (TypeScript, Fastify)</h3><ul style="--cols:2"><li><strong>Core API</strong><span>Jobs, scheduling, invoicing, CRM</span></li><li><strong>AI service</strong><span>Claude intents, role checks</span></li><li><strong>Payments</strong><span>Stripe Connect</span></li><li><strong>Weather</strong><span>Cached per job site</span></li></ul></div>
+        <p class="flow rise" style="--i:1"><span>shared database and job queues</span></p>
+        <div class="tier rise" style="--i:2"><h3>Data &amp; jobs</h3><ul style="--cols:2"><li><strong>PostgreSQL</strong><span>Drizzle schema and migrations</span></li><li><strong>Redis &amp; BullMQ</strong><span>Background workers</span></li><li><strong>Typesense</strong><span>Search</span></li><li><strong>Cloudflare R2</strong><span>Photos and files</span></li></ul></div>
+        <p class="flow rise" style="--i:2"><span>notifications and integrations</span></p>
+        <div class="tier rise" style="--i:3"><h3>Outside</h3><ul style="--cols:2"><li><strong>Stripe</strong><span>Billing and invoice payments</span></li><li><strong>Claude API</strong><span>Assistant</span></li><li><strong>APNs &amp; FCM</strong><span>Push</span></li><li><strong>Twilio &amp; Resend</strong><span>SMS and email</span></li></ul></div>
       </div>
     </section>
 

@@ -33,19 +33,25 @@ NOW = [("Mobile technical lead", "Wahoo Fitness", "https://www.wahoofitness.com"
        ("Founder", "C&F Solutions LLC", "/pyllar/")]
 
 ROTATING = ["iPhone", "iPad", "Android", "the web"]
-TICKER = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "SwiftData", "CloudKit", "TypeScript", "Next.js",
-          "PostgreSQL", "App Intents", "WidgetKit", "Live Activities", "MapKit", "Claude API"]
+
+DEVICE_SIZE = {"framed": (538, 1100), "store": (506, 1100)}
 
 PAGES = [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support")]
 
 SKILLS = [
-    ("Apple platforms", ["Swift", "SwiftUI", "UIKit", "AppKit", "Metal", "SwiftData", "CloudKit", "WidgetKit", "ActivityKit",
-                         "App Intents", "MapKit", "StoreKit", "Swift Testing"]),
-    ("Android", ["Kotlin", "Jetpack Compose", "Gradle"]),
-    ("Web & backend", ["TypeScript", "Next.js", "React", "Fastify", "PostgreSQL", "Drizzle", "Docker",
-                       "GitHub Actions"]),
-    ("Product & leadership", ["Technical leadership", "Product design", "Accessibility", "Platform parity",
-                              "App Store releases", "AI features with the Claude API"]),
+    ("Apple platforms", ["Swift", "Swift Concurrency", "SwiftUI", "UIKit", "AppKit", "SwiftData", "CloudKit", "Metal",
+                         "Network framework", "CryptoKit", "Core Bluetooth", "HealthKit", "MapKit", "Swift Charts", "PencilKit",
+                         "WidgetKit", "ActivityKit", "App Intents", "StoreKit", "Swift Testing", "Swift Package Manager",
+                         "XcodeGen", "Instruments", "TestFlight"]),
+    ("Android", ["Kotlin", "Java", "Jetpack Compose", "Material Design 3", "Coroutines & Flow", "Hilt / Dagger", "Room",
+                 "Retrofit / OkHttp", "WorkManager", "Firebase", "Bluetooth LE", "Espresso & Compose UI tests",
+                 "JUnit & MockK", "R8 / ProGuard", "Android Studio profilers", "Gradle", "Google Play releases"]),
+    ("Web & backend", ["TypeScript", "Node.js", "Fastify", "Next.js", "React", "REST & OpenAPI", "PostgreSQL", "Drizzle",
+                       "Redis", "Typesense", "Docker", "GitHub Actions", "AWS", "DigitalOcean", "Linux server ops"]),
+    ("Product & leadership", ["Technical leadership", "Mentoring", "Architecture reviews", "Code review standards",
+                              "Product design", "Cross-platform API design", "Platform parity", "Accessibility",
+                              "Privacy-first design", "Release management", "App Store Optimization",
+                              "AI features with the Claude API"]),
 ]
 
 ARROW = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -120,10 +126,8 @@ def primary_link(app, cls):
     return f'<span class="{cls} soon">Coming soon to the App Store</span>'
 
 
-def chips(items, cls="chips", limit=None):
-    shown = items[:limit] if limit else items
-    more = f'<li class="more">+{len(items) - len(shown)}</li>' if limit and len(items) > limit else ""
-    return f'<ul class="{cls}">' + "".join(f"<li>{e(i)}</li>" for i in shown) + more + "</ul>"
+def chips(items):
+    return '<ul class="chips">' + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
 
 
 def profile_links():
@@ -134,36 +138,16 @@ def profile_links():
     return "".join(links)
 
 
-def icon(app, cls="app-icon"):
-    a = app["id"]
-    src = f"/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}"
-    return (f'<a class="{cls}" href="/{a}/" aria-hidden="true" tabindex="-1">'
-            f'<img src="{src}" alt="" class="glow" width="512" height="512">'
-            f'<img src="{src}" alt="" width="512" height="512"></a>')
+def icon_src(a):
+    return f"/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}"
 
 
-def video(app, cls=""):
-    a = app["id"]
-    if not (ROOT / "assets" / "video" / f"{a}.mp4").exists():
-        return ""
-    poster = f"/assets/video/{a}-poster.jpg?v={asset_version(f'video/{a}-poster.jpg')}"
-    src = f"/assets/video/{a}.mp4?v={asset_version(f'video/{a}.mp4')}"
-    return (f'<video class="{cls}" src="{src}" poster="{poster}" autoplay muted loop playsinline '
-            f'preload="metadata" aria-label="{e(app["name"])} in use"></video>')
-
-
-def card_art(app):
-    a = app["id"]
-    if not app["shots"]:
-        return f'<div class="app-art">{icon(app)}</div>'
-    order = [1, 2] if app["shotShape"] == "landscape" else [2, 1, 3]
-    width, height = (1280, 900) if app["shotShape"] == "landscape" else (441, 960)
-    clip = video(app) if app["shotShape"] == "portrait" else ""
-    shots = "".join(
-        clip if n == 1 and clip else
-        f'<img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="" width="{width}" height="{height}">'
-        for n in order)
-    return f'<a class="app-shots {app["shotShape"]}" href="/{a}/" aria-hidden="true" tabindex="-1">{shots}</a>'
+def device(app, screen, cls):
+    path = f'devices/{app["id"]}/{screen["file"]}.webp'
+    style = app.get("screenStyle", "framed")
+    width, height = DEVICE_SIZE[style]
+    return (f'<img class="{cls} device-{style}" src="/assets/{path}?v={asset_version(path)}" alt="{e(screen["alt"])}" '
+            f'width="{width}" height="{height}" decoding="async">')
 
 
 def rotator():
@@ -173,46 +157,36 @@ def rotator():
     return f'<span class="rotator" aria-hidden="true">{words}</span><span class="sr-only">{e(spoken)}</span>'
 
 
-def ticker():
-    items = "".join(f'<span>{e(t)}</span><i></i>' for t in TICKER)
-    return f'<div class="ticker" aria-hidden="true"><div class="ticker-track">{items}{items}</div></div>'
+def app_tile(app, i, big):
+    a = app["id"]
+    screens = app["screens"]
+    peek = device(app, screens[1], "peek rear") + device(app, screens[0], "peek front")
+    size = " big" if big else (" wide" if i == len(APPS) - 1 and len(APPS) % 2 == 0 else "")
+    return f"""
+        <article class="tile rise tilt app-tile{size}" data-app="{a}" style="--i:{i}">
+          <img class="tile-icon" src="{icon_src(a)}" alt="" width="512" height="512">
+          <p class="kind">{e(app["kind"])} <span class="status">{e(app["status"])}</span></p>
+          <h3><a class="tile-main" href="/{a}/">{e(app["name"])}<span class="sr-only">: see how it's built</span></a></h3>
+          <p class="tagline">{e(app["tagline"])}</p>
+          <p class="tile-links"><span class="cue" aria-hidden="true">See how it's built {NEXT}</span>{primary_link(app, "secondary")}</p>
+          {peek}
+        </article>"""
 
 
 def home():
-    cards = []
-    for i, app in enumerate(APPS):
-        a = app["id"]
-        cards.append(f"""
-      <article class="app" data-app="{a}" style="--i:{i}">
-        <span class="spot" aria-hidden="true"></span>
-        <div class="app-body">
-          <div class="app-head">
-            {icon(app)}
-            <div>
-              <p class="kind">{e(app["kind"])} <span class="status">{e(app["status"])}</span></p>
-              <h3><a href="/{a}/">{e(app["name"])}</a></h3>
-            </div>
-          </div>
-          <p class="tagline">{e(app["tagline"])}</p>
-          {chips(app["stack"], "facts", 6)}
-          <div class="actions">
-            <a class="store" href="/{a}/">See how it's built {NEXT}</a>
-            {primary_link(app, "secondary")}
-          </div>
-        </div>
-        {card_art(app)}
-      </article>""")
-
+    featured = next((app for app in APPS if app.get("featured")), APPS[0])
+    ordered = [featured] + [app for app in APPS if app is not featured]
+    tiles = "".join(app_tile(app, i, app is featured) for i, app in enumerate(ordered))
     groups = "".join(f"""
-      <div class="skill">
-        <h3>{e(title)}</h3>
-        {chips(items, "skill-chips")}
-      </div>""" for title, items in SKILLS)
+        <div class="tile rise tilt{' skill-lead' if i < 2 else ''}" style="--i:{i}">
+          <h3>{e(title)}</h3>
+          {chips(items)}
+        </div>""" for i, (title, items) in enumerate(SKILLS))
 
     on_store = sum(1 for app in APPS if app["appStore"])
     now = "".join(f'<li><span>{e(role)}</span> <a href="{e(url)}">{e(org)}</a></li>' for role, org, url in NOW)
-    return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["home.css"], "/", "home",
-                scripts=["home.js"]) + f"""<body class="home">
+    return head("Garrett Franks", f"{ROLE}. {INTRO}", "/assets/favicon.svg", ["base.css", "themes.css", "home.css"], "/",
+                "home", scripts=["home.js"]) + f"""<body class="home">
 
   <div class="tint" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
@@ -231,16 +205,16 @@ def home():
     </dl>
   </header>
 
-  {ticker()}
-
   <main>
-    <h2 class="section-title">Selected work</h2>
-    <div class="apps">{"".join(cards)}
-    </div>
+    <section class="work" aria-labelledby="work-title">
+      <h2 class="section-title" id="work-title">Selected work</h2>
+      <div class="bento app-tiles">{tiles}
+      </div>
+    </section>
 
-    <section class="skills">
-      <h2 class="section-title">What I work with</h2>
-      <div class="skill-grid">{groups}
+    <section class="skills" aria-labelledby="skills-title">
+      <h2 class="section-title" id="skills-title">What I work with</h2>
+      <div class="bento">{groups}
       </div>
     </section>
 
@@ -253,20 +227,14 @@ def home():
 """ + footer()
 
 
-def app_hero(app, subtitle, big=False):
+def app_hero(app, subtitle):
     a = app["id"]
-    extra = ""
-    status = "" if app["appStore"] else f'<span class="hero-status">{e(app["status"])}</span>'
-    if big:
-        extra = f"""
-    <p class="hero-tagline">{e(app["tagline"])}</p>
-    <div class="hero-actions">{primary_link(app, "hero-store")}{status}</div>"""
     return f"""
-  <div class="hero{' hero-big' if big else ''}">
+  <div class="hero">
     <a class="back" href="/">{BACK} Garrett Franks</a>
-    <a href="/{a}/"><img src="/assets/icons/{a}.jpg?v={asset_version(f'icons/{a}.jpg')}" alt="{e(app["name"])} icon" width="512" height="512"></a>
+    <a href="/{a}/"><img src="{icon_src(a)}" alt="{e(app["name"])} icon" width="512" height="512"></a>
     <h1>{e(app["name"])}</h1>
-    <p>{e(subtitle)}</p>{extra}
+    <p>{e(subtitle)}</p>
   </div>
 """
 
@@ -283,60 +251,86 @@ def pillbar(app, current=None):
 
 def architecture(app):
     tiers = []
-    for tier in app.get("architecture", []):
+    for i, tier in enumerate(app.get("architecture", [])):
         nodes = "".join(f'<li><strong>{e(n["name"])}</strong><span>{e(n["detail"])}</span></li>' for n in tier["nodes"])
-        flow = f'\n        <p class="flow"><span>{e(tier["flow"])}</span></p>' if tier.get("flow") else ""
+        flow = f'\n        <p class="flow rise" style="--i:{i}"><span>{e(tier["flow"])}</span></p>' if tier.get("flow") else ""
         cols = {1: 1, 2: 2, 3: 3, 4: 2}.get(len(tier["nodes"]), 3)
-        tiers.append(f'\n        <div class="tier"><h3>{e(tier["label"])}</h3><ul style="--cols:{cols}">{nodes}</ul></div>{flow}')
+        tiers.append(f'\n        <div class="tier rise" style="--i:{i}"><h3>{e(tier["label"])}</h3><ul style="--cols:{cols}">{nodes}</ul></div>{flow}')
     if not tiers:
         return ""
     return f"""
-    <section class="card">
-      <h2>How it fits together</h2>
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
       <div class="arch">{"".join(tiers)}
       </div>
     </section>
 """
 
 
-def gallery(app):
-    if not app["shots"]:
-        return ""
-    a = app["id"]
-    shape = app["shotShape"]
-    width, height = (1280, 900) if shape == "landscape" else (441, 960)
-    clip = video(app, "clip") if shape == "portrait" else ""
-    shots = (f"\n      {clip}" if clip else "") + "".join(
-        f'\n      <img src="/assets/shots/{a}/{n:02d}.jpg?v={asset_version(f"shots/{a}/{n:02d}.jpg")}" alt="{e(app["name"])} screenshot {n}" loading="lazy" width="{width}" height="{height}">'
-        for n in range(1, app["shots"] + 1))
-    return f'\n  <div class="gallery {shape}" tabindex="0" aria-label="{e(app["name"])} screenshots">{shots}\n  </div>\n'
+def built_spans(highlights, cols=3):
+    """Column span per highlight tile: the first and the longest get two columns, and rows always fill."""
+    spans, col = [], 0
+    for i, text in enumerate(highlights):
+        span = 2 if i == 0 or len(text) >= 200 else 1
+        span = min(span, cols - col)
+        spans.append(span)
+        col = (col + span) % cols
+    if col:
+        spans[-1] += cols - col
+    return spans
 
 
 def app_page(app):
     a = app["id"]
-    highlights = "".join(f"\n        <li>{e(h)}</li>" for h in app["highlights"])
-    tiles = ""
+    screens = app["screens"]
+    status = "" if app["appStore"] else f'<span class="hero-status">{e(app["status"])}</span>'
+    built = "".join(f"""
+        <div class="tile rise tilt" style="--i:{i};--span:{span}"><span class="num" aria-hidden="true">{i + 1:02d}</span><p>{e(text)}</p></div>"""
+                    for i, (text, span) in enumerate(zip(app["highlights"], built_spans(app["highlights"]))))
+    shots = "".join(f"\n        {device(app, s, 'shot')}" for s in screens)
+    legal = ""
     if app["legal"]:
-        tiles = "".join(f"""
-        <a class="tile" href="/{a}/{slug}/"><span>{title}</span>{ARROW}</a>""" for slug, title in PAGES)
-        tiles = f'\n    <div class="tiles">{tiles}\n    </div>'
+        links = "".join(f'\n      <a href="/{a}/{slug}/"><span>{title}</span>{ARROW}</a>' for slug, title in PAGES)
+        legal = f'\n    <nav class="legal" aria-label="{e(app["name"])} policies">{links}\n    </nav>\n'
     return head(f'{app["name"]} — Garrett Franks', f'{app["name"]}: {app["tagline"]}', f"/assets/icons/{a}.jpg",
-                ["legal.css", "themes.css"], f"/{a}/", a, a, scripts=["home.js"]) + \
-        "<body>\n" + app_hero(app, f'{app["kind"]} · {app["platforms"]}', big=True) + pillbar(app) + \
-        gallery(app) + f"""
+                ["base.css", "themes.css", "app.css"], f"/{a}/", a, a, scripts=["home.js"]) + f"""<body>
+
+  <header class="app-hero">
+    <a class="back" href="/">{BACK} Garrett Franks</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="{icon_src(a)}" alt="" width="512" height="512">
+        <h1>{e(app["name"])}</h1>
+        <p class="hero-kind">{e(app["kind"])} · {e(app["platforms"])}</p>
+        <p class="hero-tagline">{e(app["tagline"])}</p>
+        <div class="hero-actions">{primary_link(app, "hero-store")}{status}</div>
+      </div>
+      <div class="hero-phones">{device(app, screens[1], "phone rear")}{device(app, screens[0], "phone front")}</div>
+    </div>
+  </header>
+
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">{e(app["about"])}</p>
-      {chips(app["stack"], "facts")}
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>{e(app["about"])}</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">{e(app["status"])}</p>{primary_link(app, "tile-link")}</div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">{e(app["platforms"])}</p><p class="note">{e(app["kind"])}</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p>{chips(app["stack"])}</div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">{highlights}
-      </ul>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">{built}
+      </div>
     </section>
-{architecture(app)}{tiles}
+
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="{e(app["name"])} screens, scrolls sideways">{shots}
+      </div>
+    </section>
+{architecture(app)}{legal}
   </main>
 """ + footer()
 
@@ -358,7 +352,7 @@ def legal_page(app, slug, title):
 
 
 def not_found():
-    return head("Page not found — Garrett Franks", "Page not found.", "/assets/favicon.svg", ["home.css"],
+    return head("Page not found — Garrett Franks", "Page not found.", "/assets/favicon.svg", ["base.css", "home.css"],
                 "/404.html", "home") + """<body class="home">
 
   <div class="tint" aria-hidden="true"></div>

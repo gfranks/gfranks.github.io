@@ -19,75 +19,86 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/candidly.jpg?v=f55754d4">
 <link rel="icon" type="image/jpeg" href="/assets/icons/candidly.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/candidly.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=2d90d8d8">
-<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
-<script src="/assets/home.js?v=3dcd8510" defer></script>
+<link rel="stylesheet" href="/assets/base.css?v=ab7e61ff">
+<link rel="stylesheet" href="/assets/themes.css?v=0ce46594">
+<link rel="stylesheet" href="/assets/app.css?v=fdc37ae4">
+<script src="/assets/home.js?v=643a0d84" defer></script>
 </head>
 <body>
 
-  <div class="hero hero-big">
+  <header class="app-hero">
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
-    <a href="/candidly/"><img src="/assets/icons/candidly.jpg?v=275b5fed" alt="Candidly icon" width="512" height="512"></a>
-    <h1>Candidly</h1>
-    <p>Remote desktop · iPhone &amp; iPad</p>
-    <p class="hero-tagline">Control your Mac from your iPhone or iPad, and keep an eye on it from any app.</p>
-    <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6827271660">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-
-  <nav class="pillbar"><a href="/candidly/privacy/">Privacy Policy</a><a href="/candidly/terms/">Terms of Use</a><a href="/candidly/support/">Support</a></nav>
-
-  <div class="gallery portrait" tabindex="0" aria-label="Candidly screenshots">
-      <img src="/assets/shots/candidly/01.jpg?v=26a85823" alt="Candidly screenshot 1" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/02.jpg?v=a6923b58" alt="Candidly screenshot 2" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/03.jpg?v=2648bf05" alt="Candidly screenshot 3" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/04.jpg?v=0ec71b34" alt="Candidly screenshot 4" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/05.jpg?v=48b53177" alt="Candidly screenshot 5" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/06.jpg?v=3c4f60a6" alt="Candidly screenshot 6" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/07.jpg?v=9f7e3728" alt="Candidly screenshot 7" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/08.jpg?v=10be0304" alt="Candidly screenshot 8" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/candidly/09.jpg?v=7b57adb3" alt="Candidly screenshot 9" loading="lazy" width="441" height="960">
-  </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="/assets/icons/candidly.jpg?v=275b5fed" alt="" width="512" height="512">
+        <h1>Candidly</h1>
+        <p class="hero-kind">Remote desktop · iPhone &amp; iPad</p>
+        <p class="hero-tagline">Control your Mac from your iPhone or iPad, and keep an eye on it from any app.</p>
+        <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6827271660">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="hero-phones"><img class="phone rear device-store" src="/assets/devices/candidly/02-picture-in-picture.webp?v=b4b37c7f" alt="Keep an eye on it from any app. Picture in Picture keeps your Mac live while you do something else." width="506" height="1100" decoding="async"><img class="phone front device-store" src="/assets/devices/candidly/01-control.webp?v=1ec357c1" alt="Your Mac, wherever you are. Full control from your iPhone. Nothing to install on the Mac." width="506" height="1100" decoding="async"></div>
+    </div>
+  </header>
 
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">Candidly connects to the Screen Sharing that&#x27;s already built into macOS, so there&#x27;s nothing to install on the Mac. Use your phone as the trackpad and keyboard, float your Mac in Picture in Picture while you use other apps, get a notification when a build or export finishes, copy text straight off the screen, keep up to four Macs open, and wake a sleeping one with a tap. Your computers and their passwords follow you through iCloud. One price, no subscription.</p>
-      <ul class="facts"><li>Swift 6</li><li>SwiftUI</li><li>UIKit</li><li>Metal</li><li>AVKit &amp; Accelerate</li><li>VisionKit</li><li>Network framework</li><li>CryptoKit &amp; Security</li><li>iCloud Keychain</li><li>Swift Testing</li><li>XcodeGen</li></ul>
-    </section>
-
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">
-        <li>The VNC (RFB) protocol written from scratch in Swift, including Apple&#x27;s Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice, the Mac clipboard and curtain mode. No third-party code.</li>
-        <li>Whole-session encryption with Apple&#x27;s own Screen Sharing scheme (AES-128 records, on by default after Mac account sign-in), a lock in the viewer, and a per-computer setting that refuses unencrypted sessions.</li>
-        <li>A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone, plus ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server.</li>
-        <li>Picture in Picture for a remote screen: frames scaled with vImage into an AVSampleBufferDisplayLayer, a session that stays live in the background while PiP is open, and a handover when you switch Macs or windows.</li>
-        <li>Watch Area: draw a box over the Mac&#x27;s screen and get a notification when it changes or stops changing, using a luminance grid that ignores a blinking cursor but catches a slow progress bar.</li>
-        <li>Up to four Macs open at once with a switcher, and multiple windows on iPad, built on an app-wide session manager that pauses whatever isn&#x27;t on screen.</li>
-        <li>Select Text with Live Text (VisionKit) on a full-resolution crop of what you&#x27;re looking at, Wake-on-LAN with an on-demand check for Macs that aren&#x27;t responding, Trackpad Only mode, and custom shortcut buttons on the key strip.</li>
-        <li>Touch and Trackpad modes with the full gesture set (multi-finger clicks and drags, two-finger scroll, pinch zoom at your fingers, edge and corner swipes, three-finger swipes for Mission Control and Spaces) and the Mac&#x27;s real pointer drawn on the device.</li>
-        <li>Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>How it fits together</h2>
-      <div class="arch">
-        <div class="tier"><h3>Apps</h3><ul style="--cols:3"><li><strong>iPhone &amp; iPad viewer</strong><span>Gestures, key strip, Metal, PiP</span></li><li><strong>Session manager</strong><span>Up to 4 Macs, one per window</span></li><li><strong>Computer list</strong><span>SwiftUI, wake and status</span></li></ul></div>
-        <p class="flow"><span>the Mac on screen streams; the rest pause</span></p>
-        <div class="tier"><h3>CandidlyKit</h3><ul style="--cols:3"><li><strong>ComputerStore</strong><span>iCloud key-value store + local file</span></li><li><strong>CredentialStore</strong><span>iCloud Keychain</span></li><li><strong>BonjourBrowser</strong><span>Finds Macs with Screen Sharing on</span></li></ul></div>
-        <p class="flow"><span>connect, sign in, stream</span></p>
-        <div class="tier"><h3>RFBKit (Swift package, no UI)</h3><ul style="--cols:2"><li><strong>Transport</strong><span>Network framework, keepalive</span></li><li><strong>Sign-in</strong><span>VNC, Apple DH, RSA tunnel</span></li><li><strong>Decoders</strong><span>ZRLE, Zlib, Hextile, CopyRect</span></li><li><strong>Apple extensions</strong><span>Displays, sessions, clipboard</span></li></ul></div>
-        <p class="flow"><span>RFB over TCP, on the LAN or Tailscale</span></p>
-        <div class="tier"><h3>Your Mac</h3><ul style="--cols:1"><li><strong>macOS Screen Sharing</strong><span>Built in, nothing to install</span></li></ul></div>
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>Candidly connects to the Screen Sharing that&#x27;s already built into macOS, so there&#x27;s nothing to install on the Mac. Use your phone as the trackpad and keyboard, float your Mac in Picture in Picture while you use other apps, get a notification when a build or export finishes, copy text straight off the screen, keep up to four Macs open, and wake a sleeping one with a tap. Your computers and their passwords follow you through iCloud. One price, no subscription.</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">On the App Store</p><a class="tile-link" href="https://apps.apple.com/app/id6827271660">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">iPhone &amp; iPad</p><p class="note">Remote desktop</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p><ul class="chips"><li>Swift 6</li><li>SwiftUI</li><li>UIKit</li><li>Metal</li><li>AVKit &amp; Accelerate</li><li>VisionKit</li><li>Network framework</li><li>CryptoKit &amp; Security</li><li>iCloud Keychain</li><li>Swift Testing</li><li>XcodeGen</li></ul></div>
       </div>
     </section>
 
-    <div class="tiles">
-        <a class="tile" href="/candidly/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/candidly/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/candidly/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">
+        <div class="tile rise tilt" style="--i:0;--span:2"><span class="num" aria-hidden="true">01</span><p>The VNC (RFB) protocol written from scratch in Swift, including Apple&#x27;s Screen Sharing extensions: Mac account sign-in over Diffie-Hellman and RSA, display selection, the shared-or-private session choice, the Mac clipboard and curtain mode. No third-party code.</p></div>
+        <div class="tile rise tilt" style="--i:1;--span:1"><span class="num" aria-hidden="true">02</span><p>Whole-session encryption with Apple&#x27;s own Screen Sharing scheme (AES-128 records, on by default after Mac account sign-in), a lock in the viewer, and a per-computer setting that refuses unencrypted sessions.</p></div>
+        <div class="tile rise tilt" style="--i:2;--span:1"><span class="num" aria-hidden="true">03</span><p>A Metal renderer that uploads only the parts of the screen that changed, so a 5K Mac stays smooth on an iPhone, plus ZRLE, Zlib, Hextile and CopyRect decoders hardened against a misbehaving server.</p></div>
+        <div class="tile rise tilt" style="--i:3;--span:2"><span class="num" aria-hidden="true">04</span><p>Picture in Picture for a remote screen: frames scaled with vImage into an AVSampleBufferDisplayLayer, a session that stays live in the background while PiP is open, and a handover when you switch Macs or windows.</p></div>
+        <div class="tile rise tilt" style="--i:4;--span:1"><span class="num" aria-hidden="true">05</span><p>Watch Area: draw a box over the Mac&#x27;s screen and get a notification when it changes or stops changing, using a luminance grid that ignores a blinking cursor but catches a slow progress bar.</p></div>
+        <div class="tile rise tilt" style="--i:5;--span:1"><span class="num" aria-hidden="true">06</span><p>Up to four Macs open at once with a switcher, and multiple windows on iPad, built on an app-wide session manager that pauses whatever isn&#x27;t on screen.</p></div>
+        <div class="tile rise tilt" style="--i:6;--span:1"><span class="num" aria-hidden="true">07</span><p>Select Text with Live Text (VisionKit) on a full-resolution crop of what you&#x27;re looking at, Wake-on-LAN with an on-demand check for Macs that aren&#x27;t responding, Trackpad Only mode, and custom shortcut buttons on the key strip.</p></div>
+        <div class="tile rise tilt" style="--i:7;--span:2"><span class="num" aria-hidden="true">08</span><p>Touch and Trackpad modes with the full gesture set (multi-finger clicks and drags, two-finger scroll, pinch zoom at your fingers, edge and corner swipes, three-finger swipes for Mission Control and Spaces) and the Mac&#x27;s real pointer drawn on the device.</p></div>
+        <div class="tile rise tilt" style="--i:8;--span:1"><span class="num" aria-hidden="true">09</span><p>Saved computers sync through iCloud with merge rules and deletion tombstones, passwords live in iCloud Keychain, and Macs on the network are found with Bonjour.</p></div>
+      </div>
+    </section>
+
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="Candidly screens, scrolls sideways">
+        <img class="shot device-store" src="/assets/devices/candidly/01-control.webp?v=1ec357c1" alt="Your Mac, wherever you are. Full control from your iPhone. Nothing to install on the Mac." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/02-picture-in-picture.webp?v=b4b37c7f" alt="Keep an eye on it from any app. Picture in Picture keeps your Mac live while you do something else." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/03-watch-area.webp?v=32ca1548" alt="Get a ping when it&#x27;s done. Draw a box around any part of the screen. Candidly tells you when it changes or stops." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/04-multiple-macs.webp?v=29ef57fa" alt="Every Mac you own, one tap apart. Keep up to four Macs open and switch in a tap." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/05-select-text.webp?v=927554a7" alt="Copy text right off the screen. Error messages, logs, links: select them and paste anywhere." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/06-wake.webp?v=95e397a0" alt="Wake a sleeping Mac with a tap. See which Macs are asleep, wake one, then connect." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/07-keys.webp?v=bbc5c63d" alt="Every key, plus your own shortcuts. ⌘, Esc, arrows, F-keys, and buttons for the combos you use most." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/08-trackpad-only.webp?v=9ec56abe" alt="Just a trackpad, when you can see the Mac. Hide the picture and drive a Mac on your TV from the couch." width="506" height="1100" decoding="async">
+        <img class="shot device-store" src="/assets/devices/candidly/09-private.webp?v=8eedc3c9" alt="Pay once. No subscription. Encrypted sessions, Face ID, curtain mode, and Tailscale or your own VPN. No account." width="506" height="1100" decoding="async">
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
+      <div class="arch">
+        <div class="tier rise" style="--i:0"><h3>Apps</h3><ul style="--cols:3"><li><strong>iPhone &amp; iPad viewer</strong><span>Gestures, key strip, Metal, PiP</span></li><li><strong>Session manager</strong><span>Up to 4 Macs, one per window</span></li><li><strong>Computer list</strong><span>SwiftUI, wake and status</span></li></ul></div>
+        <p class="flow rise" style="--i:0"><span>the Mac on screen streams; the rest pause</span></p>
+        <div class="tier rise" style="--i:1"><h3>CandidlyKit</h3><ul style="--cols:3"><li><strong>ComputerStore</strong><span>iCloud key-value store + local file</span></li><li><strong>CredentialStore</strong><span>iCloud Keychain</span></li><li><strong>BonjourBrowser</strong><span>Finds Macs with Screen Sharing on</span></li></ul></div>
+        <p class="flow rise" style="--i:1"><span>connect, sign in, stream</span></p>
+        <div class="tier rise" style="--i:2"><h3>RFBKit (Swift package, no UI)</h3><ul style="--cols:2"><li><strong>Transport</strong><span>Network framework, keepalive</span></li><li><strong>Sign-in</strong><span>VNC, Apple DH, RSA tunnel</span></li><li><strong>Decoders</strong><span>ZRLE, Zlib, Hextile, CopyRect</span></li><li><strong>Apple extensions</strong><span>Displays, sessions, clipboard</span></li></ul></div>
+        <p class="flow rise" style="--i:2"><span>RFB over TCP, on the LAN or Tailscale</span></p>
+        <div class="tier rise" style="--i:3"><h3>Your Mac</h3><ul style="--cols:1"><li><strong>macOS Screen Sharing</strong><span>Built in, nothing to install</span></li></ul></div>
+      </div>
+    </section>
+
+    <nav class="legal" aria-label="Candidly policies">
+      <a href="/candidly/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/candidly/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/candidly/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+
   </main>
 
   <footer>

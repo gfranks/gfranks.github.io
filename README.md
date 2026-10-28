@@ -18,27 +18,26 @@ These are the URLs to give App Store Connect. Don't rename an app's folder once 
 
 The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` and commit everything. Run `python3 -I build.py --og` instead when anything on a share image changes (an app's name, kind, tagline or icon, or the role line); it re-renders `assets/og/*.jpg`, `favicon.ico` and `assets/apple-touch-icon.png` (from `assets/favicon.svg`) with headless Chrome.
 
-- `content/apps.json`: contact email, GitHub and LinkedIn links, and per app its id (the folder name), name, kind, platforms, status, tagline, about text, highlights ("What I built"), stack, screenshot count, App Store link or website, and whether it has legal pages here (`legal`).
+- `content/apps.json`: contact email, GitHub and LinkedIn links, and per app its id (the folder name), name, kind, platforms, status, tagline, about text, highlights ("What I built"), stack, `screens` (the framed phones, each a `file` and its `alt` text, in display order: the first peeks out of the app's home page tile, the first two stand in its app page hero, and all of them fill its gallery), `screenStyle` (`"store"` shows finished App Store images unframed with rounded corners instead of framed captures), `featured` (one app gets the big home page tile; otherwise the first), App Store link or website, and whether it has legal pages here (`legal`).
 - `build.py`: the role line, intro and the "What I work with" skills list.
-- `assets/shots/<app>/01.jpg`…: screenshots for the app page gallery.
+- `assets/devices/<app>/<file>.webp`: each screen framed in an iPhone, made by `tools/frame_screens.py`.
 - `content/<app>/privacy.html`, `terms.html`, `support.html`: the page body. Update the `Last updated` line when a policy changes.
-- `assets/themes.css`: each app's colors. `assets/legal.css`: app and legal pages. `assets/home.css`: the home page.
+- `assets/themes.css`: each app's colors. `assets/base.css`: shared by the home and app pages. `assets/home.css`: the home page. `assets/app.css`: the app pages. `assets/legal.css`: the privacy, terms and support pages. `assets/home.js`: the bento tiles rising into place and tilting toward the pointer (both off with Reduce Motion), used by the home and app pages.
 - `assets/icons/<app>.jpg`: the app icon, 512 px.
 
 ## Adding an app
 
 1. Add it to `content/apps.json` and, if it has `legal: true`, create `content/<id>/privacy.html`, `terms.html` and `support.html`.
-2. Add its icon as `assets/icons/<id>.jpg`, its colors to `assets/themes.css`, `assets/home.css` (`.app[data-app="<id>"]`) and `OG_CARDS` in `build.py`, and any screenshots.
+2. Add its icon as `assets/icons/<id>.jpg`, its colors (including `--glow`) to `assets/themes.css` and `OG_CARDS` in `build.py`, its raw screenshot folder to `SOURCES` in `tools/frame_screens.py`, and at least two `screens` to `apps.json`; then run `python3 -I tools/frame_screens.py <id>`.
 3. Run `python3 -I build.py --og`, commit and push.
 
-## Framing screenshots and clips
+## Framing screens
 
-Screenshots and clips that aren't already store-framed (and every clip) go through `tools/frame_media.py`, which puts them in the ai-toolkit iPhone frame under a caption, store-screenshot style. `tools/style-<app>.json` holds each app's background and caption colors.
+Every phone on the site is a real screen inside the ai-toolkit iPhone 17 Pro frame, framed by `tools/frame_screens.py` from the raw simulator screenshots listed in `SOURCES`. It reads each app's `screens` from `apps.json` and writes `assets/devices/<app>/<file>.webp` (transparent, 1100 px tall). For an app with `"screenStyle": "store"` (Candidly), `SOURCES` points at its finished App Store images, which are only resized. Read a screen before adding it: no real personal names, launch screens or half-loaded states.
 
 ```bash
-python3 -I tools/frame_media.py shot  tools/style-<app>.json <raw.jpg> assets/shots/<app>/NN.jpg "Title." "Subtitle."
-python3 -I tools/frame_media.py video tools/style-<app>.json <raw.mp4> assets/video/<app>.mp4 assets/video/<app>-poster.jpg "Title." "Subtitle."
+python3 -I tools/frame_screens.py            # every app
+python3 -I tools/frame_screens.py tyde       # one app
 ```
 
-A clip in `assets/video/<app>.mp4` (with its `-poster.jpg`) plays in the middle of the app's screenshot fan on the home page and first in its gallery. Record clips as plain simulator video (`xcrun simctl io <udid> recordVideo`), about 8–10 seconds that loop cleanly.
-
+`tools/frame_media.py` makes store-style images with a caption above the phone (`assets/shots`, `assets/video`); the pages don't use those any more.

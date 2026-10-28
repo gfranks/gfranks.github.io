@@ -33,6 +33,32 @@
         "PencilKit"
       ],
       "shots": 6,
+      "screens": [
+        {
+          "file": "01-feed",
+          "alt": "The verse feed, one verse to a page"
+        },
+        {
+          "file": "03-reader",
+          "alt": "The chapter reader with an engraving above John 3"
+        },
+        {
+          "file": "08-journeys",
+          "alt": "Paul's second journey on a map"
+        },
+        {
+          "file": "04-original",
+          "alt": "John 3:16 word by word in the Greek"
+        },
+        {
+          "file": "05-threads",
+          "alt": "A study thread tracing the names of God"
+        },
+        {
+          "file": "02-opener",
+          "alt": "A chapter opener with a Doré engraving"
+        }
+      ],
       "appStore": "https://apps.apple.com/app/id6762307221",
       "website": null,
       "legal": true,
@@ -151,6 +177,32 @@
         "Claude API"
       ],
       "shots": 7,
+      "screens": [
+        {
+          "file": "01-dashboard",
+          "alt": "The owner's dashboard: today's jobs, weather and revenue"
+        },
+        {
+          "file": "04-schedule",
+          "alt": "The day's route, stop by stop"
+        },
+        {
+          "file": "03-dispatch",
+          "alt": "Dispatch map with crews live on it"
+        },
+        {
+          "file": "05-job-details",
+          "alt": "A job in progress with its timer and checklist"
+        },
+        {
+          "file": "07-payments",
+          "alt": "A paid invoice"
+        },
+        {
+          "file": "02-tech-home",
+          "alt": "A technician's day with the job in progress"
+        }
+      ],
       "appStore": null,
       "website": "https://pyllarhq.com",
       "legal": false,
@@ -274,6 +326,32 @@
         "Lottie"
       ],
       "shots": 6,
+      "screens": [
+        {
+          "file": "01-today",
+          "alt": "Today's room and plan"
+        },
+        {
+          "file": "02-spin-wheel",
+          "alt": "The wheel landing on a task"
+        },
+        {
+          "file": "03-rooms-grid",
+          "alt": "Every room and its tasks"
+        },
+        {
+          "file": "04-room-detail",
+          "alt": "A room's tasks sorted Easy and Medium"
+        },
+        {
+          "file": "05-weekly-plan",
+          "alt": "One room for each day of the week"
+        },
+        {
+          "file": "06-progress",
+          "alt": "A month of progress and a seven-day streak"
+        }
+      ],
       "appStore": "https://apps.apple.com/app/id6792855453",
       "website": null,
       "legal": true,
@@ -369,6 +447,32 @@
         "XcodeGen"
       ],
       "shots": 4,
+      "screens": [
+        {
+          "file": "01-spread",
+          "alt": "A court of characters linked by who talks to whom"
+        },
+        {
+          "file": "05-court",
+          "alt": "The court: the daily intrigue and seasons"
+        },
+        {
+          "file": "03-letter",
+          "alt": "A sealed letter between levels"
+        },
+        {
+          "file": "04-seasons",
+          "alt": "Choosing a favor after surviving a night"
+        },
+        {
+          "file": "07-win",
+          "alt": "The court believes: a level won"
+        },
+        {
+          "file": "06-forge",
+          "alt": "Forging a link between two courtiers"
+        }
+      ],
       "appStore": "https://apps.apple.com/app/id6826357250",
       "website": null,
       "legal": true,
@@ -427,6 +531,7 @@
       "kind": "Remote desktop",
       "platforms": "iPhone & iPad",
       "status": "On the App Store",
+      "featured": true,
       "tagline": "Control your Mac from your iPhone or iPad, and keep an eye on it from any app.",
       "about": "Candidly connects to the Screen Sharing that's already built into macOS, so there's nothing to install on the Mac. Use your phone as the trackpad and keyboard, float your Mac in Picture in Picture while you use other apps, get a notification when a build or export finishes, copy text straight off the screen, keep up to four Macs open, and wake a sleeping one with a tap. Your computers and their passwords follow you through iCloud. One price, no subscription.",
       "highlights": [
@@ -454,6 +559,45 @@
         "XcodeGen"
       ],
       "shots": 9,
+      "screenStyle": "store",
+      "screens": [
+        {
+          "file": "01-control",
+          "alt": "Your Mac, wherever you are. Full control from your iPhone. Nothing to install on the Mac."
+        },
+        {
+          "file": "02-picture-in-picture",
+          "alt": "Keep an eye on it from any app. Picture in Picture keeps your Mac live while you do something else."
+        },
+        {
+          "file": "03-watch-area",
+          "alt": "Get a ping when it's done. Draw a box around any part of the screen. Candidly tells you when it changes or stops."
+        },
+        {
+          "file": "04-multiple-macs",
+          "alt": "Every Mac you own, one tap apart. Keep up to four Macs open and switch in a tap."
+        },
+        {
+          "file": "05-select-text",
+          "alt": "Copy text right off the screen. Error messages, logs, links: select them and paste anywhere."
+        },
+        {
+          "file": "06-wake",
+          "alt": "Wake a sleeping Mac with a tap. See which Macs are asleep, wake one, then connect."
+        },
+        {
+          "file": "07-keys",
+          "alt": "Every key, plus your own shortcuts. ⌘, Esc, arrows, F-keys, and buttons for the combos you use most."
+        },
+        {
+          "file": "08-trackpad-only",
+          "alt": "Just a trackpad, when you can see the Mac. Hide the picture and drive a Mac on your TV from the couch."
+        },
+        {
+          "file": "09-private",
+          "alt": "Pay once. No subscription. Encrypted sessions, Face ID, curtain mode, and Tailscale or your own VPN. No account."
+        }
+      ],
       "appStore": "https://apps.apple.com/app/id6827271660",
       "website": null,
       "legal": true,

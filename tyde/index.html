@@ -19,68 +19,78 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/tyde.jpg?v=c6dfd00d">
 <link rel="icon" type="image/jpeg" href="/assets/icons/tyde.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/tyde.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=2d90d8d8">
-<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
-<script src="/assets/home.js?v=3dcd8510" defer></script>
+<link rel="stylesheet" href="/assets/base.css?v=ab7e61ff">
+<link rel="stylesheet" href="/assets/themes.css?v=0ce46594">
+<link rel="stylesheet" href="/assets/app.css?v=fdc37ae4">
+<script src="/assets/home.js?v=643a0d84" defer></script>
 </head>
 <body>
 
-  <div class="hero hero-big">
+  <header class="app-hero">
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
-    <a href="/tyde/"><img src="/assets/icons/tyde.jpg?v=72a8ea02" alt="Tydé icon" width="512" height="512"></a>
-    <h1>Tydé</h1>
-    <p>Cleaning planner · iPhone &amp; iPad</p>
-    <p class="hero-tagline">A calm cleaning planner built for ADHD brains: one room a day, and no guilt.</p>
-    <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6792855453">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-
-  <nav class="pillbar"><a href="/tyde/privacy/">Privacy Policy</a><a href="/tyde/terms/">Terms of Use</a><a href="/tyde/support/">Support</a></nav>
-
-  <div class="gallery portrait" tabindex="0" aria-label="Tydé screenshots">
-      <video class="clip" src="/assets/video/tyde.mp4?v=960e4195" poster="/assets/video/tyde-poster.jpg?v=e4b05143" autoplay muted loop playsinline preload="metadata" aria-label="Tydé in use"></video>
-      <img src="/assets/shots/tyde/01.jpg?v=ea90a841" alt="Tydé screenshot 1" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/tyde/02.jpg?v=85b7d744" alt="Tydé screenshot 2" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/tyde/03.jpg?v=222e7265" alt="Tydé screenshot 3" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/tyde/04.jpg?v=6e4d15b0" alt="Tydé screenshot 4" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/tyde/05.jpg?v=205bed14" alt="Tydé screenshot 5" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/tyde/06.jpg?v=8189a489" alt="Tydé screenshot 6" loading="lazy" width="441" height="960">
-  </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="/assets/icons/tyde.jpg?v=72a8ea02" alt="" width="512" height="512">
+        <h1>Tydé</h1>
+        <p class="hero-kind">Cleaning planner · iPhone &amp; iPad</p>
+        <p class="hero-tagline">A calm cleaning planner built for ADHD brains: one room a day, and no guilt.</p>
+        <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6792855453">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="hero-phones"><img class="phone rear device-framed" src="/assets/devices/tyde/02-spin-wheel.webp?v=08924e69" alt="The wheel landing on a task" width="538" height="1100" decoding="async"><img class="phone front device-framed" src="/assets/devices/tyde/01-today.webp?v=ce018c39" alt="Today&#x27;s room and plan" width="538" height="1100" decoding="async"></div>
+    </div>
+  </header>
 
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">Every task is sorted Easy, Medium or Deep, so a low-energy day still has a real session in it. Pick up to three must-dos, and spin the wheel when you can&#x27;t decide where to start.</p>
-      <ul class="facts"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>WidgetKit</li><li>ActivityKit</li><li>App Intents</li><li>Lottie</li></ul>
-    </section>
-
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">
-        <li>SwiftData with CloudKit sync for rooms, tasks, plans and history, with no account and no server.</li>
-        <li>A Home Screen widget that shows today&#x27;s room and can spin for a task without opening the app, plus a Live Activity for the focus timer, sharing data through an App Group.</li>
-        <li>Siri and Shortcuts through App Intents: spin for a task or hear today&#x27;s room hands-free.</li>
-        <li>Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>How it fits together</h2>
-      <div class="arch">
-        <div class="tier"><h3>Interface</h3><ul style="--cols:3"><li><strong>Today, wheel &amp; focus timer</strong><span>SwiftUI, Lottie</span></li><li><strong>Rooms, plan &amp; progress</strong><span>SwiftUI</span></li><li><strong>Siri &amp; Shortcuts</strong><span>App Intents</span></li></ul></div>
-        <p class="flow"><span>SwiftData queries</span></p>
-        <div class="tier"><h3>Logic</h3><ul style="--cols:3"><li><strong>TodayZoneResolver</strong><span>Which room is today&#x27;s</span></li><li><strong>TaskSuggestions</strong><span>What the wheel can land on</span></li><li><strong>NotificationManager</strong><span>Local reminders only</span></li></ul></div>
-        <p class="flow"><span>one model container</span></p>
-        <div class="tier"><h3>Storage</h3><ul style="--cols:2"><li><strong>SwiftData models</strong><span>Home, zones, tasks, completions</span></li><li><strong>App Group snapshot</strong><span>Today&#x27;s room for the widget</span></li></ul></div>
-        <p class="flow"><span>sync and share</span></p>
-        <div class="tier"><h3>System</h3><ul style="--cols:3"><li><strong>iCloud</strong><span>Private CloudKit database</span></li><li><strong>Home Screen widget</strong><span>Shows the room, spins for a task</span></li><li><strong>Live Activity</strong><span>Focus timer</span></li></ul></div>
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>Every task is sorted Easy, Medium or Deep, so a low-energy day still has a real session in it. Pick up to three must-dos, and spin the wheel when you can&#x27;t decide where to start.</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">On the App Store</p><a class="tile-link" href="https://apps.apple.com/app/id6792855453">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">iPhone &amp; iPad</p><p class="note">Cleaning planner</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p><ul class="chips"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>WidgetKit</li><li>ActivityKit</li><li>App Intents</li><li>Lottie</li></ul></div>
       </div>
     </section>
 
-    <div class="tiles">
-        <a class="tile" href="/tyde/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/tyde/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/tyde/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">
+        <div class="tile rise tilt" style="--i:0;--span:2"><span class="num" aria-hidden="true">01</span><p>SwiftData with CloudKit sync for rooms, tasks, plans and history, with no account and no server.</p></div>
+        <div class="tile rise tilt" style="--i:1;--span:1"><span class="num" aria-hidden="true">02</span><p>A Home Screen widget that shows today&#x27;s room and can spin for a task without opening the app, plus a Live Activity for the focus timer, sharing data through an App Group.</p></div>
+        <div class="tile rise tilt" style="--i:2;--span:1"><span class="num" aria-hidden="true">03</span><p>Siri and Shortcuts through App Intents: spin for a task or hear today&#x27;s room hands-free.</p></div>
+        <div class="tile rise tilt" style="--i:3;--span:2"><span class="num" aria-hidden="true">04</span><p>Lottie animations for the moments that matter, and copy written to avoid streak-shaming or guilt.</p></div>
+      </div>
+    </section>
+
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="Tydé screens, scrolls sideways">
+        <img class="shot device-framed" src="/assets/devices/tyde/01-today.webp?v=ce018c39" alt="Today&#x27;s room and plan" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/tyde/02-spin-wheel.webp?v=08924e69" alt="The wheel landing on a task" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/tyde/03-rooms-grid.webp?v=6415be6c" alt="Every room and its tasks" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/tyde/04-room-detail.webp?v=de2a57c9" alt="A room&#x27;s tasks sorted Easy and Medium" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/tyde/05-weekly-plan.webp?v=146871e9" alt="One room for each day of the week" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/tyde/06-progress.webp?v=6d0a3b87" alt="A month of progress and a seven-day streak" width="538" height="1100" decoding="async">
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
+      <div class="arch">
+        <div class="tier rise" style="--i:0"><h3>Interface</h3><ul style="--cols:3"><li><strong>Today, wheel &amp; focus timer</strong><span>SwiftUI, Lottie</span></li><li><strong>Rooms, plan &amp; progress</strong><span>SwiftUI</span></li><li><strong>Siri &amp; Shortcuts</strong><span>App Intents</span></li></ul></div>
+        <p class="flow rise" style="--i:0"><span>SwiftData queries</span></p>
+        <div class="tier rise" style="--i:1"><h3>Logic</h3><ul style="--cols:3"><li><strong>TodayZoneResolver</strong><span>Which room is today&#x27;s</span></li><li><strong>TaskSuggestions</strong><span>What the wheel can land on</span></li><li><strong>NotificationManager</strong><span>Local reminders only</span></li></ul></div>
+        <p class="flow rise" style="--i:1"><span>one model container</span></p>
+        <div class="tier rise" style="--i:2"><h3>Storage</h3><ul style="--cols:2"><li><strong>SwiftData models</strong><span>Home, zones, tasks, completions</span></li><li><strong>App Group snapshot</strong><span>Today&#x27;s room for the widget</span></li></ul></div>
+        <p class="flow rise" style="--i:2"><span>sync and share</span></p>
+        <div class="tier rise" style="--i:3"><h3>System</h3><ul style="--cols:3"><li><strong>iCloud</strong><span>Private CloudKit database</span></li><li><strong>Home Screen widget</strong><span>Shows the room, spins for a task</span></li><li><strong>Live Activity</strong><span>Focus timer</span></li></ul></div>
+      </div>
+    </section>
+
+    <nav class="legal" aria-label="Tydé policies">
+      <a href="/tyde/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/tyde/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/tyde/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+
   </main>
 
   <footer>

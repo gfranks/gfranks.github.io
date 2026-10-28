@@ -1,0 +1,93 @@
+* { box-sizing: border-box; }
+:root {
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+a { color: inherit; }
+.ic { width: 1em; height: 1em; vertical-align: -0.15em; }
+:focus-visible { outline: 2px solid var(--focus, currentColor); outline-offset: 3px; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+}
+.chips li {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.tile {
+  position: relative;
+  min-width: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.tile.wide { grid-column: span 2; }
+
+.device-store { border-radius: 9% / 4.15%; }
+
+/* Reveals move things only; content is readable at rest and before any script runs. */
+.rise { --rise: translate 0.8s var(--ease) calc(var(--i, 0) * 70ms), scale 0.8s var(--ease) calc(var(--i, 0) * 70ms); transition: var(--rise); }
+.rise.pending { translate: 0 36px; scale: 0.97; }
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: var(--rise, translate 0s), transform 0.5s var(--ease);
+}
+
+@media (max-width: 860px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .tile.wide { grid-column: auto; }
+}
+
+footer {
+  position: relative;
+  text-align: center;
+  padding: 24px 20px calc(56px + env(safe-area-inset-bottom, 0px));
+  color: var(--ink-2);
+  font-size: 13px;
+}
+footer p { margin: 4px 0; }
+footer a { color: var(--ink-2); }
+footer .fine { opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .tilt { transition: none; }
+  .rise.pending { translate: none; scale: none; }
+  .tilt { transform: none; }
+}

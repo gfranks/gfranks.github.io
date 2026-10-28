@@ -19,71 +19,81 @@
 <meta name="twitter:image" content="https://gfranks.github.io/assets/og/arkive.jpg?v=a0cb6f0d">
 <link rel="icon" type="image/jpeg" href="/assets/icons/arkive.jpg">
 <link rel="apple-touch-icon" href="/assets/icons/arkive.jpg">
-<link rel="stylesheet" href="/assets/legal.css?v=2d90d8d8">
-<link rel="stylesheet" href="/assets/themes.css?v=5572d4c5">
-<script src="/assets/home.js?v=3dcd8510" defer></script>
+<link rel="stylesheet" href="/assets/base.css?v=ab7e61ff">
+<link rel="stylesheet" href="/assets/themes.css?v=0ce46594">
+<link rel="stylesheet" href="/assets/app.css?v=fdc37ae4">
+<script src="/assets/home.js?v=643a0d84" defer></script>
 </head>
 <body>
 
-  <div class="hero hero-big">
+  <header class="app-hero">
     <a class="back" href="/"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Garrett Franks</a>
-    <a href="/arkive/"><img src="/assets/icons/arkive.jpg?v=0ab42e74" alt="Arkive icon" width="512" height="512"></a>
-    <h1>Arkive</h1>
-    <p>Bible study · iPhone &amp; iPad</p>
-    <p class="hero-tagline">Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.</p>
-    <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6762307221">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-
-  <nav class="pillbar"><a href="/arkive/privacy/">Privacy Policy</a><a href="/arkive/terms/">Terms of Use</a><a href="/arkive/support/">Support</a></nav>
-
-  <div class="gallery portrait" tabindex="0" aria-label="Arkive screenshots">
-      <video class="clip" src="/assets/video/arkive.mp4?v=84ba6b29" poster="/assets/video/arkive-poster.jpg?v=c4bc735e" autoplay muted loop playsinline preload="metadata" aria-label="Arkive in use"></video>
-      <img src="/assets/shots/arkive/01.jpg?v=21ad99df" alt="Arkive screenshot 1" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/arkive/02.jpg?v=4f5f794f" alt="Arkive screenshot 2" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/arkive/03.jpg?v=cf0901d6" alt="Arkive screenshot 3" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/arkive/04.jpg?v=f53bca7a" alt="Arkive screenshot 4" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/arkive/05.jpg?v=745972e6" alt="Arkive screenshot 5" loading="lazy" width="441" height="960">
-      <img src="/assets/shots/arkive/06.jpg?v=8edaaa17" alt="Arkive screenshot 6" loading="lazy" width="441" height="960">
-  </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <img class="hero-icon" src="/assets/icons/arkive.jpg?v=0ab42e74" alt="" width="512" height="512">
+        <h1>Arkive</h1>
+        <p class="hero-kind">Bible study · iPhone &amp; iPad</p>
+        <p class="hero-tagline">Scripture one verse at a time, with the Hebrew and Greek, history and maps beside it.</p>
+        <div class="hero-actions"><a class="hero-store" href="https://apps.apple.com/app/id6762307221">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="hero-phones"><img class="phone rear device-framed" src="/assets/devices/arkive/03-reader.webp?v=75b32299" alt="The chapter reader with an engraving above John 3" width="538" height="1100" decoding="async"><img class="phone front device-framed" src="/assets/devices/arkive/01-feed.webp?v=138d169a" alt="The verse feed, one verse to a page" width="538" height="1100" decoding="async"></div>
+    </div>
+  </header>
 
   <main>
-    <section class="card">
-      <h2>About</h2>
-      <p class="lede">Read a verse per page or by chapter, tap any word for the original language, and follow it through the whole Bible. Commentaries, dictionaries, a timeline and journey maps sit behind the text, and your notes and study threads sync through your own iCloud.</p>
-      <ul class="facts"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>SQLite FTS5</li><li>MapKit</li><li>ActivityKit</li><li>App Intents</li><li>Swift Charts</li><li>PencilKit</li></ul>
-    </section>
-
-    <section class="card">
-      <h2>What I built</h2>
-      <ul class="built">
-        <li>Three SwiftData stores in one container: bundled Bible text, a purgeable cache for online text, and CloudKit-synced user data with merge rules for records two devices create at once.</li>
-        <li>Full-text and grammar search over a prebuilt SQLite FTS5 index, including 440,000 original-language words searchable by Strong&#x27;s number, tense and voice.</li>
-        <li>A licensed translation fetched live from the YouVersion API and transcoded from HTML into the app&#x27;s own text format, so every reader feature works on it unchanged.</li>
-        <li>Read to Me: on-device speech with an IPA pronunciation lexicon for biblical names, a Live Activity, a sleep timer and Personal Voice support.</li>
-        <li>MapKit timelines and animated journey routes, plus a deep-zoom 1878 history chart drawn with CATiledLayer and tappable scenes.</li>
-        <li>Python data pipelines that turn public-domain lexicons, dictionaries and commentaries into validated bundles, with license checks built in.</li>
-        <li>Siri and Shortcuts, Spotlight, Handoff, hardware keyboard shortcuts and the iPad menu bar.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>How it fits together</h2>
-      <div class="arch">
-        <div class="tier"><h3>Interface</h3><ul style="--cols:2"><li><strong>Scroll feed &amp; Chapters reader</strong><span>SwiftUI</span></li><li><strong>Word study &amp; search</strong><span>Interlinear, Strong&#x27;s, grammar</span></li><li><strong>Chronicle &amp; maps</strong><span>MapKit, CATiledLayer chart</span></li><li><strong>System features</strong><span>Siri, Spotlight, Handoff, Live Activity</span></li></ul></div>
-        <p class="flow"><span>async loads and SwiftData queries</span></p>
-        <div class="tier"><h3>Services</h3><ul style="--cols:2"><li><strong>BibleService &amp; BibleCatalog</strong><span>Bundled or online, per version</span></li><li><strong>InterlinearService</strong><span>In-memory, loaded per version</span></li><li><strong>BibleSearchIndex</strong><span>SQLite FTS5, read-only</span></li><li><strong>ReadingTracker &amp; SpeechService</strong><span>Reading credit, Read to Me</span></li></ul></div>
-        <p class="flow"><span>one ModelContainer, bundle files</span></p>
-        <div class="tier"><h3>Storage</h3><ul style="--cols:2"><li><strong>Bible text</strong><span>SwiftData, bundled, never syncs</span></li><li><strong>Online cache</strong><span>SwiftData, 30-day expiry</span></li><li><strong>User data</strong><span>SwiftData + CloudKit</span></li><li><strong>Reference bundles</strong><span>Commentaries, lexicons, maps</span></li></ul></div>
-        <p class="flow"><span>fetch, sync and build</span></p>
-        <div class="tier"><h3>Outside the app</h3><ul style="--cols:3"><li><strong>YouVersion API</strong><span>Live NASB text, per chapter</span></li><li><strong>iCloud</strong><span>Private CloudKit database</span></li><li><strong>Python pipelines</strong><span>Public-domain sources to validated bundles</span></li></ul></div>
+    <section class="block" aria-labelledby="about-title">
+      <div class="bento overview">
+        <div class="tile rise tilt about" style="--i:0"><h2 id="about-title">About</h2><p>Read a verse per page or by chapter, tap any word for the original language, and follow it through the whole Bible. Commentaries, dictionaries, a timeline and journey maps sit behind the text, and your notes and study threads sync through your own iCloud.</p></div>
+        <div class="tile rise tilt" style="--i:1"><p class="label">Status</p><p class="value">On the App Store</p><a class="tile-link" href="https://apps.apple.com/app/id6762307221">View on the App Store <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="tile rise tilt" style="--i:2"><p class="label">Platforms</p><p class="value">iPhone &amp; iPad</p><p class="note">Bible study</p></div>
+        <div class="tile rise tilt wide" style="--i:3"><p class="label">Built with</p><ul class="chips"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>CloudKit</li><li>SQLite FTS5</li><li>MapKit</li><li>ActivityKit</li><li>App Intents</li><li>Swift Charts</li><li>PencilKit</li></ul></div>
       </div>
     </section>
 
-    <div class="tiles">
-        <a class="tile" href="/arkive/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/arkive/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="tile" href="/arkive/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
+    <section class="block" aria-labelledby="built-title">
+      <h2 class="block-title" id="built-title">What I built</h2>
+      <div class="bento built">
+        <div class="tile rise tilt" style="--i:0;--span:2"><span class="num" aria-hidden="true">01</span><p>Three SwiftData stores in one container: bundled Bible text, a purgeable cache for online text, and CloudKit-synced user data with merge rules for records two devices create at once.</p></div>
+        <div class="tile rise tilt" style="--i:1;--span:1"><span class="num" aria-hidden="true">02</span><p>Full-text and grammar search over a prebuilt SQLite FTS5 index, including 440,000 original-language words searchable by Strong&#x27;s number, tense and voice.</p></div>
+        <div class="tile rise tilt" style="--i:2;--span:1"><span class="num" aria-hidden="true">03</span><p>A licensed translation fetched live from the YouVersion API and transcoded from HTML into the app&#x27;s own text format, so every reader feature works on it unchanged.</p></div>
+        <div class="tile rise tilt" style="--i:3;--span:1"><span class="num" aria-hidden="true">04</span><p>Read to Me: on-device speech with an IPA pronunciation lexicon for biblical names, a Live Activity, a sleep timer and Personal Voice support.</p></div>
+        <div class="tile rise tilt" style="--i:4;--span:1"><span class="num" aria-hidden="true">05</span><p>MapKit timelines and animated journey routes, plus a deep-zoom 1878 history chart drawn with CATiledLayer and tappable scenes.</p></div>
+        <div class="tile rise tilt" style="--i:5;--span:1"><span class="num" aria-hidden="true">06</span><p>Python data pipelines that turn public-domain lexicons, dictionaries and commentaries into validated bundles, with license checks built in.</p></div>
+        <div class="tile rise tilt" style="--i:6;--span:2"><span class="num" aria-hidden="true">07</span><p>Siri and Shortcuts, Spotlight, Handoff, hardware keyboard shortcuts and the iPad menu bar.</p></div>
+      </div>
+    </section>
+
+    <section class="block screens" aria-labelledby="screens-title">
+      <h2 class="block-title" id="screens-title">Screens</h2>
+      <div class="gallery" tabindex="0" role="region" aria-label="Arkive screens, scrolls sideways">
+        <img class="shot device-framed" src="/assets/devices/arkive/01-feed.webp?v=138d169a" alt="The verse feed, one verse to a page" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/arkive/03-reader.webp?v=75b32299" alt="The chapter reader with an engraving above John 3" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/arkive/08-journeys.webp?v=e4ecb567" alt="Paul&#x27;s second journey on a map" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/arkive/04-original.webp?v=fcbc5eda" alt="John 3:16 word by word in the Greek" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/arkive/05-threads.webp?v=02154e85" alt="A study thread tracing the names of God" width="538" height="1100" decoding="async">
+        <img class="shot device-framed" src="/assets/devices/arkive/02-opener.webp?v=fd3d7614" alt="A chapter opener with a Doré engraving" width="538" height="1100" decoding="async">
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="arch-title">
+      <h2 class="block-title" id="arch-title">How it fits together</h2>
+      <div class="arch">
+        <div class="tier rise" style="--i:0"><h3>Interface</h3><ul style="--cols:2"><li><strong>Scroll feed &amp; Chapters reader</strong><span>SwiftUI</span></li><li><strong>Word study &amp; search</strong><span>Interlinear, Strong&#x27;s, grammar</span></li><li><strong>Chronicle &amp; maps</strong><span>MapKit, CATiledLayer chart</span></li><li><strong>System features</strong><span>Siri, Spotlight, Handoff, Live Activity</span></li></ul></div>
+        <p class="flow rise" style="--i:0"><span>async loads and SwiftData queries</span></p>
+        <div class="tier rise" style="--i:1"><h3>Services</h3><ul style="--cols:2"><li><strong>BibleService &amp; BibleCatalog</strong><span>Bundled or online, per version</span></li><li><strong>InterlinearService</strong><span>In-memory, loaded per version</span></li><li><strong>BibleSearchIndex</strong><span>SQLite FTS5, read-only</span></li><li><strong>ReadingTracker &amp; SpeechService</strong><span>Reading credit, Read to Me</span></li></ul></div>
+        <p class="flow rise" style="--i:1"><span>one ModelContainer, bundle files</span></p>
+        <div class="tier rise" style="--i:2"><h3>Storage</h3><ul style="--cols:2"><li><strong>Bible text</strong><span>SwiftData, bundled, never syncs</span></li><li><strong>Online cache</strong><span>SwiftData, 30-day expiry</span></li><li><strong>User data</strong><span>SwiftData + CloudKit</span></li><li><strong>Reference bundles</strong><span>Commentaries, lexicons, maps</span></li></ul></div>
+        <p class="flow rise" style="--i:2"><span>fetch, sync and build</span></p>
+        <div class="tier rise" style="--i:3"><h3>Outside the app</h3><ul style="--cols:3"><li><strong>YouVersion API</strong><span>Live NASB text, per chapter</span></li><li><strong>iCloud</strong><span>Private CloudKit database</span></li><li><strong>Python pipelines</strong><span>Public-domain sources to validated bundles</span></li></ul></div>
+      </div>
+    </section>
+
+    <nav class="legal" aria-label="Arkive policies">
+      <a href="/arkive/privacy/"><span>Privacy Policy</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/arkive/terms/"><span>Terms of Use</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/arkive/support/"><span>Support</span><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+
   </main>
 
   <footer>
