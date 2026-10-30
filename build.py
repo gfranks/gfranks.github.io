@@ -395,7 +395,7 @@ def og_home():
 
 
 OG_CARDS = {
-    "arkive": ("linear-gradient(135deg, #C97952 0%, #7A5540 52%, #3B2D23 100%)", "#FBF4EA"),
+    "arkive": ("linear-gradient(135deg, #7A4E2C 0%, #3B2116 52%, #1A0F0A 100%)", "#FBF4EA"),
     "pyllar": ("linear-gradient(135deg, #3B6FD8 0%, #1E4596 50%, #0C1630 100%)", "#F2F6FF"),
     "tyde": ("linear-gradient(135deg, #FF6B7A 0%, #8E2F52 48%, #14121F 100%)", "#FBEEF0"),
     "whispercourt": ("linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%)", "#EFE3C8"),

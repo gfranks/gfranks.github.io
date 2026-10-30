@@ -3,8 +3,8 @@
 
 [data-app="arkive"] {
   --bg: #FAF8F4; --bg-app: #F7F5F1; --text: #2A2520; --text-secondary: #6B6258;
-  --accent: #D93B45; --accent-ink: #ffffff; --hero-top: #C97952; --hero-bottom: #5B4636; --hero-ink: #FAF3E8;
-  --card-border: rgba(42, 37, 32, 0.10); --rule: rgba(42, 37, 32, 0.12); --glow: #E39B6B;
+  --accent: #9A5B12; --accent-ink: #ffffff; --hero-top: #6B4426; --hero-bottom: #2A160F; --hero-ink: #FAF3E8;
+  --card-border: rgba(42, 37, 32, 0.10); --rule: rgba(42, 37, 32, 0.12); --glow: #C8862B;
 }
 [data-app="pyllar"] {
   --bg: #F6F8FD; --bg-app: #EEF2FA; --text: #121A2E; --text-secondary: #5A6480;
@@ -30,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"])[data-app="arkive"] {
     --bg: #1C1A17; --bg-app: #191816; --text: #F2ECE1; --text-secondary: #B4AA9C;
-    --accent: #F3666D; --accent-ink: #1C1A17; --hero-top: #8A5236; --hero-bottom: #2A2018;
+    --accent: #C8862B; --accent-ink: #1C1A17; --hero-top: #4A2C1A; --hero-bottom: #1A0F0A;
     --card-border: rgba(242, 236, 225, 0.10); --rule: rgba(242, 236, 225, 0.12);
   }
   :root:not([data-theme="light"])[data-app="pyllar"] {
