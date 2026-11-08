@@ -33,7 +33,7 @@ The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` an
 
 ## Framing screens
 
-Every phone on the site is a real screen inside the ai-toolkit iPhone 17 Pro frame, framed by `tools/frame_screens.py` from the raw simulator screenshots listed in `SOURCES`. It reads each app's `screens` from `apps.json` and writes `assets/devices/<app>/<file>.webp` (transparent, 1100 px tall). For an app with `"screenStyle": "store"` (Candidly), `SOURCES` points at its finished App Store images, which are only resized. Read a screen before adding it: no real personal names, launch screens or half-loaded states.
+Every phone on the site is a real screen inside the ai-toolkit iPhone 17 Pro frame, framed by `tools/frame_screens.py` from the raw simulator screenshots listed in `SOURCES`. It reads each app's `screens` from `apps.json` and writes `assets/devices/<app>/<file>.webp` (transparent, 1100 px tall). Pyllar has no native apps yet, so its screens are its web app captured at phone size (402 × 820 at 3x, with a blank status-bar strip on top), kept in `content/raw-screens/pyllar`. For an app with `"screenStyle": "store"` (Candidly), `SOURCES` points at its finished App Store images, which are only resized. Read a screen before adding it: no real personal names, launch screens or half-loaded states.
 
 ```bash
 python3 -I tools/frame_screens.py            # every app

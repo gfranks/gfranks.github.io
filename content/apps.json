@@ -58,7 +58,7 @@
         },
         {
           "file": "02-opener",
-          "alt": "A chapter opener with a Doré engraving"
+          "alt": "A chapter opener with a Dor\u00e9 engraving"
         }
       ],
       "appStore": "https://apps.apple.com/app/id6762307221",
@@ -155,54 +155,54 @@
       "id": "pyllar",
       "name": "Pyllar",
       "kind": "Field service platform",
-      "platforms": "iOS, Android & web",
-      "status": "Launching soon",
-      "tagline": "Run a lawn care business from one place: scheduling, dispatch, invoicing and the crew's day.",
-      "about": "A multi-tenant SaaS for lawn care and landscaping companies, built and run by my company, C&F Solutions LLC. Crews work from native iOS and Android apps, owners run the business from a web app, and customers pay and request work through their own portal.",
+      "platforms": "Web now, mobile in progress",
+      "status": "In development",
+      "tagline": "Run a lawn care or pest control business from one place, with bots that follow your rules.",
+      "about": "A ground-up rebuild of my company's field service software for lawn care and pest control, built by C&F Solutions LLC, in English and Spanish from the first screen. Owners run the day from a web app, customers pay and reschedule in their own portal, and native iOS and Android apps are in progress.",
       "highlights": [
-        "Native iOS (Swift 6, SwiftUI) and Android (Kotlin, Jetpack Compose) apps kept at feature parity, with a Live Activity for the job in progress.",
-        "Next.js web app, customer portal and internal staff portal on a TypeScript Fastify API with PostgreSQL and Drizzle.",
-        "An AI assistant built on Claude that returns structured intents, which the API validates and permission-checks by role before acting.",
-        "Stripe billing and invoice payments, Typesense search, and role-based access control across owners, managers and technicians.",
-        "Dockerized deploys to staging and production through GitHub Actions."
+        "Six bots, Remi, Skip, Penny, Stella, Boomer and Tally, handle reminders, rescheduling, billing, reviews, win-back and a weekly summary. They follow fixed rules rather than AI, and the owner sets each action to do it, ask first, suggest, only note it or never.",
+        "Next.js owner web app, customer portal and internal staff portal on a TypeScript Fastify API, with PostgreSQL row-level security per company that fails closed, and live updates over a WebSocket.",
+        "A modular monolith: every write goes through one command that checks permission, idempotency and status rules and writes the audit row and event in one transaction, and a Postgres-backed queue delivers events and runs jobs.",
+        "Outside services sit behind swappable providers with fakes for tests: Stripe Connect payments, Census geocoding, OpenFreeMap maps, and Tomorrow.io or OpenWeatherMap weather.",
+        "Industry packs for lawn and pest, including product application records per visit, and TypeScript, Swift and Kotlin clients generated from one API contract for a Kotlin Multiplatform core with native SwiftUI and Compose screens."
       ],
       "stack": [
-        "Swift",
-        "SwiftUI",
-        "Kotlin",
-        "Jetpack Compose",
         "TypeScript",
         "Next.js",
         "Fastify",
         "PostgreSQL",
+        "Drizzle",
+        "Zod & OpenAPI",
+        "WebSocket",
         "Stripe",
-        "Claude API"
+        "MapLibre",
+        "Kotlin Multiplatform"
       ],
-      "shots": 7,
+      "shots": 6,
       "screens": [
         {
-          "file": "01-dashboard",
-          "alt": "The owner's dashboard: today's jobs, weather and revenue"
+          "file": "01-bots",
+          "alt": "The six bots, each on or asleep, with what it does"
         },
         {
-          "file": "04-schedule",
-          "alt": "The day's route, stop by stop"
+          "file": "02-visit",
+          "alt": "A pest control visit's status steps and the product applied"
         },
         {
-          "file": "03-dispatch",
-          "alt": "Dispatch map with crews live on it"
+          "file": "03-report",
+          "alt": "A preview of the visit report the customer sees"
         },
         {
-          "file": "05-job-details",
-          "alt": "A job in progress with its timer and checklist"
+          "file": "04-bot-levels",
+          "alt": "Choosing what Penny may do: does it, asks first, only notes it or never"
         },
         {
-          "file": "07-payments",
-          "alt": "A paid invoice"
+          "file": "05-customer",
+          "alt": "A customer's visits, invoices and messages, newest first"
         },
         {
-          "file": "02-tech-home",
-          "alt": "A technician's day with the job in progress"
+          "file": "06-reports",
+          "alt": "Reports: money collected this month, by day and by how it was paid"
         }
       ],
       "appStore": null,
@@ -214,90 +214,86 @@
           "label": "Clients",
           "nodes": [
             {
-              "name": "iOS",
-              "detail": "SwiftUI, offline-first, Live Activity"
-            },
-            {
-              "name": "Android",
-              "detail": "Jetpack Compose, offline-first"
-            },
-            {
               "name": "Web app",
-              "detail": "Next.js, for owners"
+              "detail": "Next.js, for owners and office"
             },
             {
               "name": "Customer portal",
-              "detail": "Next.js, self-serve"
+              "detail": "Next.js, sign in by code, pay, reschedule"
             },
             {
               "name": "Staff portal",
-              "detail": "Next.js, internal"
+              "detail": "Next.js, MFA, audit log"
+            },
+            {
+              "name": "iOS & Android",
+              "detail": "In progress: Kotlin Multiplatform core, native screens"
             }
           ],
-          "flow": "HTTPS REST and WebSocket, JWT"
+          "flow": "generated clients, HTTPS and a live WebSocket"
         },
         {
           "label": "API (TypeScript, Fastify)",
           "nodes": [
             {
-              "name": "Core API",
-              "detail": "Jobs, scheduling, invoicing, CRM"
+              "name": "Modules",
+              "detail": "Customers, plans, schedule, billing, bots"
             },
             {
-              "name": "AI service",
-              "detail": "Claude intents, role checks"
+              "name": "command()",
+              "detail": "Permission, idempotency, audit, event"
             },
             {
-              "name": "Payments",
-              "detail": "Stripe Connect"
+              "name": "Live hub",
+              "detail": "WebSocket topics per role"
             },
             {
-              "name": "Weather",
-              "detail": "Cached per job site"
+              "name": "Auth guard",
+              "detail": "Sessions, roles, rate limits"
             }
           ],
-          "flow": "shared database and job queues"
+          "flow": "one transaction per write, events in the same commit"
         },
         {
           "label": "Data & jobs",
           "nodes": [
             {
               "name": "PostgreSQL",
-              "detail": "Drizzle schema and migrations"
+              "detail": "Row-level security per company"
             },
             {
-              "name": "Redis & BullMQ",
-              "detail": "Background workers"
+              "name": "Events",
+              "detail": "Partitioned by month"
             },
             {
-              "name": "Typesense",
-              "detail": "Search"
+              "name": "Worker",
+              "detail": "Postgres queue, listeners, scheduled jobs"
             },
             {
-              "name": "Cloudflare R2",
-              "detail": "Photos and files"
+              "name": "Industry packs",
+              "detail": "Lawn and pest, English and Spanish"
             }
           ],
-          "flow": "notifications and integrations"
+          "flow": "provider interfaces, with fakes in tests"
         },
         {
           "label": "Outside",
           "nodes": [
             {
               "name": "Stripe",
-              "detail": "Billing and invoice payments"
+              "detail": "Connect payments and subscriptions"
             },
             {
-              "name": "Claude API",
-              "detail": "Assistant"
+              "name": "Census",
+              "detail": "Geocoding"
             },
             {
-              "name": "APNs & FCM",
-              "detail": "Push"
+              "name": "OpenFreeMap",
+              "detail": "Map tiles for MapLibre"
             },
             {
-              "name": "Twilio & Resend",
-              "detail": "SMS and email"
+              "name": "Weather",
+              "detail": "Tomorrow.io or OpenWeatherMap"
             }
           ]
         }
@@ -305,7 +301,7 @@
     },
     {
       "id": "tyde",
-      "name": "Tydé",
+      "name": "Tyd\u00e9",
       "kind": "Cleaning planner",
       "platforms": "iPhone & iPad",
       "status": "On the App Store",
@@ -589,7 +585,7 @@
         },
         {
           "file": "07-keys",
-          "alt": "Every key, plus your own shortcuts. ⌘, Esc, arrows, F-keys, and buttons for the combos you use most."
+          "alt": "Every key, plus your own shortcuts. \u2318, Esc, arrows, F-keys, and buttons for the combos you use most."
         },
         {
           "file": "08-trackpad-only",

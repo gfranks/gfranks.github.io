@@ -24,7 +24,7 @@ HEIGHT = 1100
 PERSONAL = Path.home() / "personal"
 SOURCES = {
     "arkive": PERSONAL / "Arkive/store-screenshots/input/iphone",
-    "pyllar": PERSONAL / "Pyllar/store-screenshots/input/iphone",
+    "pyllar": ROOT / "content/raw-screens/pyllar",
     "tyde": PERSONAL / "Tyde/AppStoreScreenshots/raw",
     "whispercourt": PERSONAL / "WhisperCourt/store-screenshots/input/iphone",
     "candidly": PERSONAL / "Candidly/store-screenshots/output/iphone",
