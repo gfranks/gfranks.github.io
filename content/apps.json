@@ -152,15 +152,15 @@
       ]
     },
     {
-      "id": "pyllar",
-      "name": "Pyllar",
+      "id": "fieldfrog",
+      "name": "FieldFrog",
       "kind": "Field service platform",
       "platforms": "Web now, mobile in progress",
       "status": "In development",
-      "tagline": "Run a lawn care or pest control business from one place, with bots that follow your rules.",
-      "about": "A ground-up rebuild of my company's field service software for lawn care and pest control, built by C&F Solutions LLC, in English and Spanish from the first screen. Owners run the day from a web app, customers pay and reschedule in their own portal, and native iOS and Android apps are in progress.",
+      "tagline": "Run a lawn care or pest control business from one place, with a garden crew of bots that follow your rules.",
+      "about": "FieldFrog is my company's field service software for lawn care and pest control, rebuilt from the ground up by C&F Solutions LLC, in English and Spanish from the first screen. Owners run the day from a web app, customers pay and reschedule in their own portal, and native iOS and Android apps are in progress.",
       "highlights": [
-        "Six bots, Remi, Skip, Penny, Stella, Boomer and Tally, handle reminders, rescheduling, billing, reviews, win-back and a weekly summary. They follow fixed rules rather than AI, and the owner sets each action to do it, ask first, suggest, only note it or never.",
+        "A garden crew of six bots, Remi the frog, Skip the turtle, Penny the bee, Stella the ladybug, Boomer the bunny and Tally the dragonfly, handle reminders, rescheduling, billing, reviews, win-back and a weekly summary. They follow fixed rules rather than AI, and the owner sets each action to do it, ask first, suggest, only note it or never.",
         "Next.js owner web app, customer portal and internal staff portal on a TypeScript Fastify API, with PostgreSQL row-level security per company that fails closed, and live updates over a WebSocket.",
         "A modular monolith: every write goes through one command that checks permission, idempotency and status rules and writes the audit row and event in one transaction, and a Postgres-backed queue delivers events and runs jobs.",
         "Outside services sit behind swappable providers with fakes for tests: Stripe Connect payments, Census geocoding, OpenFreeMap maps, and Tomorrow.io or OpenWeatherMap weather.",
@@ -206,7 +206,7 @@
         }
       ],
       "appStore": null,
-      "website": "https://pyllarhq.com",
+      "website": "https://usefieldfrog.com",
       "legal": false,
       "shotShape": "portrait",
       "architecture": [

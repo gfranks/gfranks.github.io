@@ -30,7 +30,7 @@ INTRO = ("I lead mobile teams and build apps end to end, from the first sketch t
          "Swift and SwiftUI, Kotlin and Compose, and the web and backend behind them.")
 
 NOW = [("Mobile technical lead", "Wahoo Fitness", "https://www.wahoofitness.com"),
-       ("Founder", "C&F Solutions LLC", "/pyllar/")]
+       ("Founder", "C&F Solutions LLC", "/fieldfrog/")]
 
 ROTATING = ["iPhone", "iPad", "Android", "the web"]
 
@@ -396,7 +396,7 @@ def og_home():
 
 OG_CARDS = {
     "arkive": ("linear-gradient(135deg, #7A4E2C 0%, #3B2116 52%, #1A0F0A 100%)", "#FBF4EA"),
-    "pyllar": ("linear-gradient(135deg, #F4846F 0%, #8C3B2C 48%, #2E2430 100%)", "#FFF6EE"),
+    "fieldfrog": ("linear-gradient(135deg, #5BBE8A 0%, #2F7A55 48%, #2E2430 100%)", "#F1FAF4"),
     "tyde": ("linear-gradient(135deg, #FF6B7A 0%, #8E2F52 48%, #14121F 100%)", "#FBEEF0"),
     "whispercourt": ("linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%)", "#EFE3C8"),
     "candidly": ("linear-gradient(135deg, #22C3FF 0%, #3348F5 48%, #1A1050 100%)", "#EEF2FF"),

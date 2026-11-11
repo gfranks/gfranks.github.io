@@ -8,11 +8,11 @@ Garrett Franks's site: the home page, and each app's page, privacy policy, terms
 |---|---|---|---|---|
 | Arkive | `/arkive/` | `/arkive/privacy/` | `/arkive/terms/` | `/arkive/support/` |
 | Tydé | `/tyde/` | `/tyde/privacy/` | `/tyde/terms/` | `/tyde/support/` |
-| Pyllar | `/pyllar/` | (its own site) | | |
+| FieldFrog | `/fieldfrog/` (`/pyllar/` redirects here) | (its own site) | | |
 | Whisper Court | `/whispercourt/` | `/whispercourt/privacy/` | `/whispercourt/terms/` | `/whispercourt/support/` |
 | Candidly | `/candidly/` | `/candidly/privacy/` | `/candidly/terms/` | `/candidly/support/` |
 
-These are the URLs to give App Store Connect. Don't rename an app's folder once it's live.
+These are the URLs to give App Store Connect. Don't rename an app's folder once it's live. `pyllar/index.html` is a hand-written redirect to `/fieldfrog/`, kept for old links; the build doesn't touch it.
 
 ## Editing
 
@@ -33,7 +33,7 @@ The HTML pages are generated. Edit `content/`, then run `python3 -I build.py` an
 
 ## Framing screens
 
-Every phone on the site is a real screen inside the ai-toolkit iPhone 17 Pro frame, framed by `tools/frame_screens.py` from the raw simulator screenshots listed in `SOURCES`. It reads each app's `screens` from `apps.json` and writes `assets/devices/<app>/<file>.webp` (transparent, 1100 px tall). Pyllar has no native apps yet, so its screens are its web app captured at phone size (402 × 820 at 3x, with a blank status-bar strip on top), kept in `content/raw-screens/pyllar`. For an app with `"screenStyle": "store"` (Candidly), `SOURCES` points at its finished App Store images, which are only resized. Read a screen before adding it: no real personal names, launch screens or half-loaded states.
+Every phone on the site is a real screen inside the ai-toolkit iPhone 17 Pro frame, framed by `tools/frame_screens.py` from the raw simulator screenshots listed in `SOURCES`. It reads each app's `screens` from `apps.json` and writes `assets/devices/<app>/<file>.webp` (transparent, 1100 px tall). FieldFrog has no native apps yet, so its screens are its web app captured at phone size (402 × 874 at 3x, the top 62 points a blank status-bar strip), kept in `content/raw-screens/fieldfrog`. For an app with `"screenStyle": "store"` (Candidly), `SOURCES` points at its finished App Store images, which are only resized. Read a screen before adding it: no real personal names, launch screens or half-loaded states.
 
 ```bash
 python3 -I tools/frame_screens.py            # every app
