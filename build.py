@@ -38,6 +38,8 @@ DEVICE_SIZE = {"framed": (538, 1100), "store": (506, 1100)}
 
 PAGES = [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support")]
 
+REDIRECTS = {"pyllar": "fieldfrog"}
+
 SKILLS = [
     ("Apple platforms", ["Swift", "Swift Concurrency", "SwiftUI", "UIKit", "AppKit", "SwiftData", "CloudKit", "Metal",
                          "Network framework", "CryptoKit", "Core Bluetooth", "HealthKit", "MapKit", "Swift Charts", "PencilKit",
@@ -367,6 +369,23 @@ def not_found():
 """ + footer()
 
 
+def redirect(target, name):
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{e(name)} — Garrett Franks</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{SITE_URL}{target}">
+<meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body>
+  <p><a href="{target}">{e(name)}</a></p>
+</body>
+</html>
+"""
+
+
 def og_home():
     icons = "".join(f'<img src="{ROOT}/assets/icons/{a["id"]}.jpg">' for a in APPS)
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
@@ -396,7 +415,7 @@ def og_home():
 
 OG_CARDS = {
     "arkive": ("linear-gradient(135deg, #7A4E2C 0%, #3B2116 52%, #1A0F0A 100%)", "#FBF4EA"),
-    "fieldfrog": ("linear-gradient(135deg, #5BBE8A 0%, #2F7A55 48%, #2E2430 100%)", "#F1FAF4"),
+    "fieldfrog": ("linear-gradient(135deg, #5BBE8A 0%, #2F7D4F 48%, #1C191B 100%)", "#F7F2E8"),
     "tyde": ("linear-gradient(135deg, #FF6B7A 0%, #8E2F52 48%, #14121F 100%)", "#FBEEF0"),
     "whispercourt": ("linear-gradient(135deg, #5A4129 0%, #2C2017 50%, #120E0B 100%)", "#EFE3C8"),
     "candidly": ("linear-gradient(135deg, #22C3FF 0%, #3348F5 48%, #1A1050 100%)", "#EEF2FF"),
@@ -476,6 +495,8 @@ def hide_email(text):
     # Scrapers read raw HTML; the address only exists once the inline script rebuilds the link.
     text = MAILTO.sub(lambda m: f'href="#" data-e="{ENCODED}"' + (f' data-show>{FALLBACK}</a>' if m.group(1) else ""), text)
     assert CONTACT not in text, "contact address left in plain text"
+    if "data-e=" not in text:
+        return text
     return text.replace("</body>", UNHIDE + "\n</body>")
 
 
@@ -491,6 +512,9 @@ def main():
         render_og()
     write("index.html", home())
     write("404.html", not_found())
+    for old, app_id in REDIRECTS.items():
+        app = next(a for a in APPS if a["id"] == app_id)
+        write(f"{old}/index.html", redirect(f"/{app_id}/", app["name"]))
     for app in APPS:
         write(f'{app["id"]}/index.html', app_page(app))
         if app["legal"]:

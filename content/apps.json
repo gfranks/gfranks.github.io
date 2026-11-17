@@ -58,7 +58,7 @@
         },
         {
           "file": "02-opener",
-          "alt": "A chapter opener with a Dor\u00e9 engraving"
+          "alt": "A chapter opener with a Doré engraving"
         }
       ],
       "appStore": "https://apps.apple.com/app/id6762307221",
@@ -155,145 +155,146 @@
       "id": "fieldfrog",
       "name": "FieldFrog",
       "kind": "Field service platform",
-      "platforms": "Web now, mobile in progress",
-      "status": "In development",
-      "tagline": "Run a lawn care or pest control business from one place, with a garden crew of bots that follow your rules.",
-      "about": "FieldFrog is my company's field service software for lawn care and pest control, rebuilt from the ground up by C&F Solutions LLC, in English and Spanish from the first screen. Owners run the day from a web app, customers pay and reschedule in their own portal, and native iOS and Android apps are in progress.",
+      "platforms": "iPhone, iPad, Android & web",
+      "status": "Launching soon",
+      "tagline": "Scheduling, dispatch, service plans, invoicing and payments for lawn care and pest control companies, in English and Spanish.",
+      "about": "A multi-tenant SaaS for lawn care and pest control companies, built by my company, C&F Solutions LLC. Owners and the office run the business from the web app, techs work their day from one app on iPhone, iPad and Android, and customers pay and request service through their own portal. Everything is in English and Spanish, including what customers receive.",
       "highlights": [
-        "A garden crew of six bots, Remi the frog, Skip the turtle, Penny the bee, Stella the ladybug, Boomer the bunny and Tally the dragonfly, handle reminders, rescheduling, billing, reviews, win-back and a weekly summary. They follow fixed rules rather than AI, and the owner sets each action to do it, ask first, suggest, only note it or never.",
-        "Next.js owner web app, customer portal and internal staff portal on a TypeScript Fastify API, with PostgreSQL row-level security per company that fails closed, and live updates over a WebSocket.",
-        "A modular monolith: every write goes through one command that checks permission, idempotency and status rules and writes the audit row and event in one transaction, and a Postgres-backed queue delivers events and runs jobs.",
-        "Outside services sit behind swappable providers with fakes for tests: Stripe Connect payments, Census geocoding, OpenFreeMap maps, and Tomorrow.io or OpenWeatherMap weather.",
-        "Industry packs for lawn and pest, including product application records per visit, and TypeScript, Swift and Kotlin clients generated from one API contract for a Kotlin Multiplatform core with native SwiftUI and Compose screens."
+        "One Flutter app for iPhone, iPad and Android (Riverpod, go_router) with the web app's side navigation and tablet layouts, MapLibre maps, location sharing only while clocked in, and a Lock Screen Live Activity for the clock-in on iPhone.",
+        "A Next.js company web app, customer portal, staff portal and marketing site on a TypeScript Fastify API, with PostgreSQL row-level security on every tenant table and Drizzle.",
+        "Each feature is a module with a manifest. Every write is a tracked command that checks a permission, writes the audit trail and emits an event in one transaction, and other modules react to the events.",
+        "API clients for Dart, TypeScript, Swift and Kotlin, design tokens and strings are generated from one source, and a missing Spanish string fails the check.",
+        "Seven rule-based bots, not AI: Remi, Skip, Penny, Stella, Boomer, Tally and Scout handle reminders, rescheduling, billing follow-ups, reviews, win-backs, a weekly report and quality spot checks, each off until the owner previews what it sends.",
+        "Stripe Connect for card and bank payments, saved cards and autopay, with every charge keyed to an intent committed before the call so a retry can't charge twice.",
+        "Automated checks on every change: a browser walk from sign-up to payment in both trades and both languages, with screenshots at 390 and 1440 px, accessibility checks, module boundary and consistency rules, and a secret scan."
       ],
       "stack": [
+        "Flutter",
+        "Dart",
+        "Riverpod",
+        "MapLibre",
+        "ActivityKit",
         "TypeScript",
         "Next.js",
         "Fastify",
         "PostgreSQL",
         "Drizzle",
-        "Zod & OpenAPI",
-        "WebSocket",
-        "Stripe",
-        "MapLibre",
-        "Kotlin Multiplatform"
+        "Stripe"
       ],
-      "shots": 6,
       "screens": [
         {
-          "file": "01-bots",
-          "alt": "The six bots, each on or asleep, with what it does"
+          "file": "01-home",
+          "alt": "The owner's Home: money collected this month, today's progress and what needs them"
         },
         {
-          "file": "02-visit",
-          "alt": "A pest control visit's status steps and the product applied"
+          "file": "02-today",
+          "alt": "A tech's day, stop by stop with drive times, a late warning and the week's weather"
         },
         {
-          "file": "03-report",
-          "alt": "A preview of the visit report the customer sees"
+          "file": "03-visit",
+          "alt": "A visit on site, with directions, a call button, payment and the gate code"
         },
         {
-          "file": "04-bot-levels",
-          "alt": "Choosing what Penny may do: does it, asks first, only notes it or never"
+          "file": "04-payment",
+          "alt": "Recording a cash payment at the door"
         },
         {
-          "file": "05-customer",
-          "alt": "A customer's visits, invoices and messages, newest first"
+          "file": "05-menu",
+          "alt": "The side menu: Home, Schedule, Customers, Quality, Plans, Sales, Money, Reports, Messages and Bots"
         },
         {
-          "file": "06-reports",
-          "alt": "Reports: money collected this month, by day and by how it was paid"
+          "file": "06-clock-in",
+          "alt": "The clock-in sheet with the first stop and the time"
         }
       ],
       "appStore": null,
       "website": "https://usefieldfrog.com",
       "legal": false,
-      "shotShape": "portrait",
       "architecture": [
         {
           "label": "Clients",
           "nodes": [
             {
+              "name": "Phone app",
+              "detail": "Flutter, iPhone, iPad and Android"
+            },
+            {
               "name": "Web app",
-              "detail": "Next.js, for owners and office"
+              "detail": "Next.js, for owners and the office"
             },
             {
               "name": "Customer portal",
-              "detail": "Next.js, sign in by code, pay, reschedule"
+              "detail": "Next.js, pay and request service"
             },
             {
               "name": "Staff portal",
-              "detail": "Next.js, MFA, audit log"
+              "detail": "Next.js, MFA and audit log"
             },
             {
-              "name": "iOS & Android",
-              "detail": "In progress: Kotlin Multiplatform core, native screens"
+              "name": "Marketing site",
+              "detail": "Next.js, English and Spanish"
             }
           ],
-          "flow": "generated clients, HTTPS and a live WebSocket"
+          "flow": "generated API clients, HTTPS and WebSocket"
         },
         {
           "label": "API (TypeScript, Fastify)",
           "nodes": [
             {
               "name": "Modules",
-              "detail": "Customers, plans, schedule, billing, bots"
+              "detail": "One per feature, tracked commands"
             },
             {
-              "name": "command()",
-              "detail": "Permission, idempotency, audit, event"
+              "name": "Worker",
+              "detail": "Delivers events, runs jobs"
             },
             {
-              "name": "Live hub",
-              "detail": "WebSocket topics per role"
+              "name": "Bots",
+              "detail": "Seven rule-based modules"
             },
             {
-              "name": "Auth guard",
-              "detail": "Sessions, roles, rate limits"
+              "name": "Live updates",
+              "detail": "WebSocket from Postgres notifications"
             }
           ],
-          "flow": "one transaction per write, events in the same commit"
+          "flow": "events written in the same transaction"
         },
         {
           "label": "Data & jobs",
           "nodes": [
             {
               "name": "PostgreSQL",
-              "detail": "Row-level security per company"
+              "detail": "Row-level security, Drizzle"
             },
             {
-              "name": "Events",
-              "detail": "Partitioned by month"
+              "name": "Queue",
+              "detail": "Events and jobs on Postgres"
             },
             {
-              "name": "Worker",
-              "detail": "Postgres queue, listeners, scheduled jobs"
-            },
-            {
-              "name": "Industry packs",
-              "detail": "Lawn and pest, English and Spanish"
+              "name": "Cloudflare R2",
+              "detail": "Photos and files"
             }
           ],
-          "flow": "provider interfaces, with fakes in tests"
+          "flow": "provider adapters, never inside a transaction"
         },
         {
           "label": "Outside",
           "nodes": [
             {
               "name": "Stripe",
-              "detail": "Connect payments and subscriptions"
+              "detail": "Payments and subscriptions"
             },
             {
-              "name": "Census",
-              "detail": "Geocoding"
+              "name": "Resend",
+              "detail": "Email"
             },
             {
-              "name": "OpenFreeMap",
-              "detail": "Map tiles for MapLibre"
+              "name": "APNs & FCM",
+              "detail": "Push"
             },
             {
-              "name": "Weather",
-              "detail": "Tomorrow.io or OpenWeatherMap"
+              "name": "QuickBooks",
+              "detail": "One-way sync"
             }
           ]
         }
@@ -301,7 +302,7 @@
     },
     {
       "id": "tyde",
-      "name": "Tyd\u00e9",
+      "name": "Tydé",
       "kind": "Cleaning planner",
       "platforms": "iPhone & iPad",
       "status": "On the App Store",
@@ -585,7 +586,7 @@
         },
         {
           "file": "07-keys",
-          "alt": "Every key, plus your own shortcuts. \u2318, Esc, arrows, F-keys, and buttons for the combos you use most."
+          "alt": "Every key, plus your own shortcuts. ⌘, Esc, arrows, F-keys, and buttons for the combos you use most."
         },
         {
           "file": "08-trackpad-only",

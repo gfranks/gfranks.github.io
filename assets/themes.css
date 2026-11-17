@@ -8,7 +8,7 @@
 }
 [data-app="fieldfrog"] {
   --bg: #FFFDF8; --bg-app: #F7F2E8; --text: #2E2430; --text-secondary: #6F636B;
-  --accent: #2F7A55; --accent-ink: #ffffff; --hero-top: #2F7A55; --hero-bottom: #2E2430; --hero-ink: #F1FAF4;
+  --accent: #2F7D4F; --accent-ink: #ffffff; --hero-top: #2F7D4F; --hero-bottom: #1C191B; --hero-ink: #F7F2E8;
   --card-border: rgba(46, 36, 48, 0.10); --rule: rgba(46, 36, 48, 0.12); --glow: #5BBE8A;
 }
 [data-app="tyde"] {
@@ -34,9 +34,9 @@
     --card-border: rgba(242, 236, 225, 0.10); --rule: rgba(242, 236, 225, 0.12);
   }
   :root:not([data-theme="light"])[data-app="fieldfrog"] {
-    --bg: #241D25; --bg-app: #1A151B; --text: #F4ECEF; --text-secondary: #B3A6AE;
-    --accent: #5BBE8A; --accent-ink: #1A151B; --hero-top: #2A6B4B; --hero-bottom: #1A151B;
-    --card-border: rgba(244, 236, 239, 0.10); --rule: rgba(244, 236, 239, 0.12);
+    --bg: #262124; --bg-app: #1C191B; --text: #F3EDE4; --text-secondary: #A89DA4;
+    --accent: #6FCB9A; --accent-ink: #2E2430; --hero-top: #1E3D2B; --hero-bottom: #1C191B;
+    --card-border: rgba(243, 237, 228, 0.10); --rule: rgba(243, 237, 228, 0.12);
   }
   :root:not([data-theme="light"])[data-app="tyde"] {
     --bg: #16161F; --bg-app: #0B0B12; --text: #F5F4FB; --text-secondary: #9793B0;
